@@ -3,15 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MapManager : MonoBehaviour
-{
+{	
 	public HexGrid hexGrid;
 
 	void Awake()
     {
-    }
+		
+	}
 
 	void Update()
 	{
+		if (Input.GetMouseButton(0))
+		{
+			HandleInput();
+		}
 		if (Input.GetMouseButton(0))
 		{
 			HandleInput();
@@ -24,11 +29,12 @@ public class MapManager : MonoBehaviour
 		RaycastHit hit;
 		if (Physics.Raycast(inputRay, out hit))
 		{
-			Vector3 position = hit.point;
-			position = hexGrid.transform.InverseTransformPoint(position);
-			HexCoordinates coordinates = HexCoordinates.FromPosition(position);
-			Vector3 centerPosition = HexCoordinates.FromCooradiante(coordinates);
-			hexGrid.TouchCell(coordinates);
+
+			if(true)
+            {
+				HexCell instance = hit.collider.GetComponent<HexCell>();
+				Debug.Log("hit:" + instance.coordinates.ToString());
+            }
 		}
 	}
 }
