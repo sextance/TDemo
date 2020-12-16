@@ -17,6 +17,19 @@ public class TowerShape : PersistableObject
         }
     }
 
+    int serialId = int.MinValue; //Default value
+    public int SerialId
+    {
+        get { return serialId; }
+        set
+        {
+            if (serialId != int.MaxValue && value != int.MinValue)
+                serialId = value;
+            else
+                Debug.LogError("Not allowed to change SerialId.");
+        }
+    }
+
     MeshRenderer meshRenderer;
 
     public int MaterialId { get; private set; }

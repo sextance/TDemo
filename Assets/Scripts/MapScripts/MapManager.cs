@@ -13,14 +13,7 @@ public class MapManager : MonoBehaviour
 
 	void Update()
 	{
-		if (Input.GetMouseButton(0))
-		{
-			HandleInput();
-		}
-		if (Input.GetMouseButton(0))
-		{
-			HandleInput();
-		}
+
 	}
 
 	public void HandleInput()
