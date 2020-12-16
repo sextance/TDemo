@@ -22,10 +22,12 @@ public class Game : MonoBehaviour
     [SerializeField]
     float timeLimit = 0f;
 
+
     EnemyCollections enemies = new EnemyCollections();
 
     List<Vector3> Position = new List<Vector3>();
 
+    Enemy enemy;
 
     void Start()
     {
@@ -34,29 +36,64 @@ public class Game : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            SpawnDpsEnemy();
+        }
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            SpawnTEnemy();
+        }
         TimeToSpawn();
         enemies.GameUpdate();
-
+        
     }
 
-    void SpawnEnemy(float enemySpawnSpeed)//生成敌人
+    void SpawnCommonEnemy(float enemySpawnSpeed)//生成敌人
     {
         spawnSpeed += spawnSpeed * Time.deltaTime;
         while (spawnSpeed >= enemySpawnSpeed)
         {
             spawnSpeed -= enemySpawnSpeed;
-            Enemy enemy = enemyFactory.Get();
+            Enemy enemy = enemyFactory.GetEnemy();
             enemies.Add(enemy);
+            if(TowerShapeFactory.tsf.pools == null)
+            {
+                return;
+            }
+            enemy.Search(TowerShapeFactory.tsf.pools);
         }
+    }
+
+    void SpawnTEnemy()
+    {
+        TEnemy tEnemy = enemyFactory.GetTEnemy();
+        enemies.Add(tEnemy);
+        if (TowerShapeFactory.tsf.pools == null)
+        {
+            return;
+        }
+        enemy.Search(TowerShapeFactory.tsf.pools);
+    }
+
+    void SpawnDpsEnemy()
+    {
+        DpsEnemy dpsEnemy = enemyFactory.GetDpsEnemy();
+        enemies.Add(dpsEnemy);
+        if (TowerShapeFactory.tsf.pools == null)
+        {
+            return;
+        }
+        enemy.Search(TowerShapeFactory.tsf.pools);
     }
 
     void TimeToSpawn()//随时间限制改变怪物生成速度
     {
         time += Time.deltaTime;
-        SpawnEnemy(enemySpawnSpeed1);
+        SpawnCommonEnemy(enemySpawnSpeed1);
         if(time > timeLimit)
         {
-            SpawnEnemy(enemySpawnSpeed2);
+            SpawnCommonEnemy(enemySpawnSpeed2);
         }
     }
 

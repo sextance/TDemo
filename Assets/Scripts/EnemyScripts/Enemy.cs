@@ -5,19 +5,22 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
+    public static Enemy enemy;
+
     EnemyFactory originFactory;
 
     [SerializeField]
     NavMeshAgent navEnemy = default;
 
     [SerializeField]
-    Transform TargetPoint = default;
+    Transform cube = default;
 
-    public float Health { get; set; }
+    public Vector3 point;
 
-    float attack;
-    float attackRange;
-    float tauntRange;
+    public float health,
+        attack, attackingRange,
+        tauntRange, searchRange;
+
 
     private void Update()
     {
@@ -25,7 +28,7 @@ public class Enemy : MonoBehaviour
         Attack();
     }
 
-    public EnemyType enemyType => EnemyType.common;
+
 
     public EnemyFactory OriginFactory
     {
@@ -37,17 +40,10 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void Initialize(float health,float attack,float attackingRange,float tauntRange)
-    {
-        this.attack = attack;
-        this.attackRange = attackingRange;
-        this.tauntRange = tauntRange;
-        Health = health;
-    }
 
     public bool GameUpdate()
     {
-        if(this == null)
+        if (this == null)
         {
             return false;
         }
@@ -56,25 +52,73 @@ public class Enemy : MonoBehaviour
 
     bool FindAndGo()
     {
-        navEnemy.SetDestination(TargetPoint.position);
-        return true;
+        if (point != null)
+        {
+            navEnemy.SetDestination(point);
+            return true;
+        }
+        return false;
     }
 
     void Attack()
     {
-        if(navEnemy.velocity.x == 0 && navEnemy.velocity.z == 0)
+        if (Vector3.Distance(navEnemy.transform.position, point) <= 0.5f)
         {
             Debug.Log("Attack Tower");
         }
     }
 
-    void ApplyDamge(float damge)
+    public void ApplyDamge(float damge)
     {
-        Health -= damge;
+        if (health <= 0f)
+        {
+            OriginFactory.Reclaim(this);
+            return;
+        }
+        health -= damge;
     }
 
-    public enum EnemyType
+   /* public void SearchTower()
     {
-        T,DPS,common
+        Vector3 a =  this.transform.localPosition;
+        Vector3 b = a;
+        b.y += 5f;
+        
+        Collider[] towerColliders = Physics.OverlapCapsule(a,b,searchRange,LayerMask.GetMask("Tower"));
+        if(towerColliders.Length <= 0f)
+        {
+            return;
+        }
+        else
+        {
+            point = towerColliders[0].transform.localPosition;
+        }
+       
+    }*/
+
+    public TowerShape Search(List<TowerShape>[] pools)
+    {
+        TowerShape instance = null;
+        float min = 19900000;
+        float distance = 1000000;
+        for (int i=0; i<=pools.Length; i++)
+        {
+            List<TowerShape> pool = pools[i];
+            for(int j=0; j<=pool.Count; j++)
+            {
+                distance = Vector3.Distance(pool[j].transform.localPosition, this.transform.localPosition);
+                if (distance < min)
+                {
+                    min = distance;
+                    instance = pool[j];
+                }
+
+            }
+        }
+        return instance;
     }
+}
+public enum EnemyType
+{
+    T, DPS, common
 }

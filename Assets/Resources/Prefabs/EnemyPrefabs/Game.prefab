@@ -49,3 +49,4 @@ MonoBehaviour:
   enemySpawnSpeed1: 10
   enemySpawnSpeed2: 5
   timeLimit: 300
+  cube: {fileID: 4704406828582473895, guid: 96443a3988f811b449d31e531378e4dd, type: 3}

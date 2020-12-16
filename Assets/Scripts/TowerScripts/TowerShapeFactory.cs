@@ -6,6 +6,7 @@ using UnityEngine;
 [CreateAssetMenu]
 public class TowerShapeFactory : ScriptableObject
 {
+    public static TowerShapeFactory tsf;
     [SerializeField]
     TowerShape[] prefabs;
 
@@ -15,7 +16,8 @@ public class TowerShapeFactory : ScriptableObject
 
     [SerializeField]
     bool recycle;
-    List<TowerShape>[] pools;
+
+    public List<TowerShape>[] pools;
 
     int serialNumber;
 

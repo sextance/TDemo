@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour
     HexCell pickRegion;
     Vector3 buildPosition;
 
+    Enemy enemy;
+
     /*Reserve for other objects*/
     void Start()
     {
@@ -46,6 +48,7 @@ public class GameManager : MonoBehaviour
             {
                 CreateTowerShape(0, pickRegion);
                 selectTypeHandler = 0;
+                enemy.Search(TowerShapeFactory.tsf.pools);
             }
             else
                 Debug.Log("No building region selected.");
@@ -56,6 +59,7 @@ public class GameManager : MonoBehaviour
             {
                 CreateTowerShape(1, pickRegion);
                 selectTypeHandler = 0;
+                enemy.Search(TowerShapeFactory.tsf.pools);
             } 
             else
                 Debug.Log("No building region selected.");
@@ -66,6 +70,7 @@ public class GameManager : MonoBehaviour
             {
                 CreateTowerShape(2, pickRegion);
                 selectTypeHandler = 0;
+                enemy.Search(TowerShapeFactory.tsf.pools);
             }
             else
                 Debug.Log("No building region selected.");
@@ -76,6 +81,7 @@ public class GameManager : MonoBehaviour
             {
                 SolidificateTowerShape(pickTower);
                 //selectTypeHandler = 0;
+                enemy.Search(TowerShapeFactory.tsf.pools);
             }
             else
                 Debug.Log("No tower selected.");
@@ -86,6 +92,7 @@ public class GameManager : MonoBehaviour
             {
                 DestroyTowerShape(pickTower);
                 selectTypeHandler = 0;
+                enemy.Search(TowerShapeFactory.tsf.pools);
             }
             else
                 Debug.Log("No tower selected.");

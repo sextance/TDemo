@@ -8,10 +8,32 @@ public class EnemyFactory : ScriptableObject
     [SerializeField]
     public Enemy enemyPrefab = default;
 
-    public Enemy Get()
+    [SerializeField]
+    public TEnemy tEnemyPrefab = default;
+
+    [SerializeField]
+    public DpsEnemy dpsEnemyPrefab = default;
+
+    public Enemy GetEnemy()
     {
         Vector3 Position = new Vector3(Random.Range(-2f, 2f), 0f, Random.Range(-2f, 2f));
         Enemy instance = Instantiate(enemyPrefab,Position,Quaternion.identity);
+        instance.OriginFactory = this;
+        return instance;
+    }
+
+    public TEnemy GetTEnemy()
+    {
+        Vector3 Position = new Vector3(Random.Range(-2f, 2f), 0f, Random.Range(-2f, 2f));
+        TEnemy instance = Instantiate(tEnemyPrefab, Position, Quaternion.identity);
+        instance.OriginFactory = this;
+        return instance;
+    }
+
+    public DpsEnemy GetDpsEnemy()
+    {
+        Vector3 Position = new Vector3(Random.Range(-2f, 2f), 0f, Random.Range(-2f, 2f));
+        DpsEnemy instance = Instantiate(dpsEnemyPrefab, Position, Quaternion.identity);
         instance.OriginFactory = this;
         return instance;
     }
@@ -20,5 +42,17 @@ public class EnemyFactory : ScriptableObject
     {
         Debug.Assert(enemy == this, "Wrong Factory Reclaimed!");
         Destroy(enemy.gameObject);
+    }
+
+    public void Reclaim(TEnemy tEnemy)
+    {
+        Debug.Assert(tEnemy == this, "Wrong Factory Reclaimed!");
+        Destroy(tEnemy.gameObject);
+    }
+
+    public void Reclaim(DpsEnemy dpsEnemy)
+    {
+        Debug.Assert(dpsEnemy == this, "Wrong Factory Reclaimed!");
+        Destroy(dpsEnemy.gameObject);
     }
 }
