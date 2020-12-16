@@ -38,26 +38,11 @@ public class HexGrid : MonoBehaviour
 
 	void Update()
 	{
-		if (Input.GetMouseButton(0))
-		{
-			HandleInput();
-		}
+
 	}
 
-	void HandleInput()
+	public void TouchCell(HexCoordinates coordinates)
 	{
-		Ray inputRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-		RaycastHit hit;
-		if (Physics.Raycast(inputRay, out hit))
-		{
-			TouchCell(hit.point);
-		}
-	}
-
-	void TouchCell(Vector3 position)
-	{
-		position = transform.InverseTransformPoint(position);
-		HexCoordinates coordinates = HexCoordinates.FromPosition(position);
 		int index = coordinates.X + coordinates.Y * width;
 		HexCell cell = cells[index];
 		cell.color = touchedColor;

@@ -60,4 +60,14 @@ public struct HexCoordinates
 
 		return new HexCoordinates(iX, iY);
 	}
+
+	public static Vector3 FromCooradiante(HexCoordinates coordinates)
+	{
+		Vector3 position;
+		position.x = (coordinates.x + coordinates.y * 0.5f - coordinates.y / 2) * (HexMetrics.innerRadius * 2f);
+		position.y = 0f;
+		position.z = coordinates.y * (HexMetrics.outerRadius * 1.5f);
+
+		return position;
+	}
 }
