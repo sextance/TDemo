@@ -29,7 +29,6 @@ public class Game : MonoBehaviour
 			HexCoordinates coordinates = HexCoordinates.FromPosition(position);
 			Vector3 centerPosition = HexCoordinates.FromCooradiante(coordinates);
 			hexGrid.TouchCell(coordinates);
-			Debug.Log("!");
 		}
 	}
 }
