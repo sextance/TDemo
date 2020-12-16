@@ -8,13 +8,19 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
-    path: Assets/Scenes/preload.unity
-    guid: 98110bb5bd2304c489afcc08f2df7342
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/GameLogin.unity
     guid: a72f99757b89a6a4786c19e27ad77566
   - enabled: 1
     path: Assets/Scenes/GameNode.unity
     guid: 08532c28140444542bebd65c5193f614
+  - enabled: 1
+    path: Assets/Scenes/Test/StartScene.unity
+    guid: 1e5e5254acccd8d45965dd71c89f88ed
+  - enabled: 1
+    path: Assets/Scenes/Test/TowerScene.unity
+    guid: 91155c4496771d64f8a9f67ddf4a56bc
   m_configObjects: {}
