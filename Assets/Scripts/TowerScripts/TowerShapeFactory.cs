@@ -17,7 +17,7 @@ public class TowerShapeFactory : ScriptableObject
     bool recycle;
     List<TowerShape>[] pools;
 
-    Scene poolScene;
+   // Scene poolScene;
 
     //Get new tower from factory
     public TowerShape Get(int shapeId = 0, int materialId = 0)
@@ -44,7 +44,7 @@ public class TowerShapeFactory : ScriptableObject
             } else {
                 instance = Instantiate(prefabs[shapeId]);
                 instance.ShapeId = shapeId;
-                SceneManager.MoveGameObjectToScene(instance.gameObject, poolScene);
+                //SceneManager.MoveGameObjectToScene(instance.gameObject, poolScene);
             }
         } else {
             instance = Instantiate(prefabs[shapeId]);

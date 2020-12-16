@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     static public GameManager gm; //Only one game manager instance is allowance
+
     /*public ServerMsg... serverMsg.....*/
     public TowerShapeFactory towerShapeFactory;
-
 
     //KeyCode to call event
     public KeyCode createAttackTower = KeyCode.Z;
@@ -20,7 +21,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         /* Reserve for Sence logic*/
-
+        towerShapes = new List<TowerShape>();
     }
 
 
@@ -30,11 +31,11 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(createAttackTower) ) //需要交互 isZoneSelected
             CreateTowerShape(0);
-        if (Input.GetKeyDown(createDefenseTower)) //需要交互 isZoneSelected
+       else if (Input.GetKeyDown(createDefenseTower)) //需要交互 isZoneSelected
             CreateTowerShape(1);
-        if (Input.GetKeyDown(createProductionTower)) //需要交互 isZoneSelected
+        else if(Input.GetKeyDown(createProductionTower)) //需要交互 isZoneSelected
             CreateTowerShape(2);
-        if (Input.GetKeyDown(destroyTower)) //需要交互 isTowerSelected
+        else if (Input.GetKeyDown(destroyTower)) //需要交互 isTowerSelected
             DestroyTowerShape();
     }
 
