@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    static public GameManager gm; //Only one game manager instance is allowance
     /*public ServerMsg... serverMsg.....*/
     public TowerShapeFactory towerShapeFactory;
 
