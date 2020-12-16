@@ -184,7 +184,7 @@ GameObject:
   - component: {fileID: 5345410938162201880}
   - component: {fileID: 231033319796314226}
   m_Layer: 0
-  m_Name: Hex Grid 1
+  m_Name: Hex Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -223,7 +223,8 @@ MonoBehaviour:
   height: 8
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
   touchedColor: {r: 1, g: 0, b: 1, a: 1}
-  cellPrefab: {fileID: 0}
+  cellPrefab: {fileID: 775095235562508397, guid: ad3a88e7b326c894ea219d3d1f0a0637,
+    type: 3}
   cellLabelPrefab: {fileID: 3712672624322545927}
 --- !u!1001 &3421351767151553617
 PrefabInstance:
