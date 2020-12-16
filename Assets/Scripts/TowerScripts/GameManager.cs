@@ -25,6 +25,10 @@ public class GameManager : MonoBehaviour
     TowerShape pickTower;
     HexCell pickRegion;
     Vector3 buildPosition;
+    GameObject selectedObject;
+    Transform highLightObj;
+    Material previousMaterial;
+    Material selectedMaterial;
 
     /*Reserve for other objects*/
     void Start()
@@ -35,6 +39,12 @@ public class GameManager : MonoBehaviour
         pickRegion = null;
         selectTypeHandler = 0;
         buildPosition = Vector3.zero;
+
+        highLightObj = GameObject.CreatePrimitive(PrimitiveType.Sphere).GetComponent<Transform>();
+        Destroy(highLightObj.GetComponent<Collider>());
+        highLightObj.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Materials/MapMaterials/Silhouette");
+        highLightObj.gameObject.SetActive(false);
+        selectedMaterial = Resources.Load<Material>("Materials/MapMaterials/Glow");
     }
 
     // Update is called once per frame
@@ -124,6 +134,10 @@ public class GameManager : MonoBehaviour
             int lastIndex = towerShapes.Count - 1;
             towerShapes[index] = towerShapes[lastIndex];
             towerShapes.RemoveAt(lastIndex);
+            //Disable selected outline
+            highLightObj.gameObject.SetActive(false);
+            selectedObject.GetComponent<MeshRenderer>().material = previousMaterial;
+            selectedObject = null;
         } else {
             Debug.LogError("No tower in pools to destroy!");
         }
@@ -156,6 +170,22 @@ public class GameManager : MonoBehaviour
                 pickTower = hit.collider.GetComponent<TowerShape>();
                 Debug.Log("hit:" + hit.collider.gameObject.name);
                 selectTypeHandler = 1;
+                //Selected effect
+                if(!selectedObject || selectedObject != hit.transform)
+                {
+                    if(selectedObject)
+                    {
+                        selectedObject.GetComponent<MeshRenderer>().material = previousMaterial;
+                    }
+                    selectedObject = hit.transform.gameObject;
+                    previousMaterial = selectedObject.GetComponent<MeshRenderer>().material;
+                    selectedObject.GetComponent<MeshRenderer>().material = selectedMaterial;
+                    highLightObj.position = hit.transform.position;
+                    highLightObj.rotation = hit.transform.rotation;
+                    highLightObj.localScale = hit.transform.localScale;
+                    highLightObj.GetComponent<MeshFilter>().mesh = hit.collider.GetComponent<MeshFilter>().mesh;
+                    highLightObj.gameObject.SetActive(true);
+                }
             } else if (hit.transform.tag == "Map")
             {
                 pickRegion = hit.collider.GetComponent<HexCell>();
@@ -164,11 +194,35 @@ public class GameManager : MonoBehaviour
                     //buildPosition = HexCoordinates.FromCooradiante(instance.coordinates);
                     Debug.Log("hit: map");
                     selectTypeHandler = 2;
+                    if(!selectedObject || selectedObject.name != hit.transform.name)
+                {
+                    if(selectedObject)
+                    {
+                        selectedObject.GetComponent<MeshRenderer>().material = previousMaterial;
+                    }
+                    selectedObject = hit.transform.gameObject;
+                    previousMaterial = selectedObject.GetComponent<MeshRenderer>().material;
+                    selectedObject.GetComponent<MeshRenderer>().material = selectedMaterial;
+                    highLightObj.position = hit.transform.position;
+                    highLightObj.rotation = hit.transform.rotation;
+                    highLightObj.localScale = hit.transform.localScale;
+                    highLightObj.GetComponent<MeshFilter>().mesh = hit.collider.GetComponent<MeshFilter>().mesh;
+                    highLightObj.gameObject.SetActive(true);
+                }
                 }
                 else
                     Debug.Log("Region already accupied by a tower!");
             }
             /*Reserve for other object*/
+        }
+        else
+        {
+            if(selectedObject)
+            {   
+                highLightObj.gameObject.SetActive(false);
+                selectedObject.GetComponent<MeshRenderer>().material = previousMaterial;
+                selectedObject = null;
+            }
         }
     }
 }
