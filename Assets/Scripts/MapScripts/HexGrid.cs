@@ -10,7 +10,7 @@ public class HexGrid : MonoBehaviour
 	bool CoordinateOffset;
 
 	public HexCell cellPrefab;
-	HexCell[] cells;
+	public HexCell[] cells;
 
 	public Text cellLabelPrefab;
 	Canvas gridCanvas;
@@ -63,6 +63,7 @@ public class HexGrid : MonoBehaviour
 		cell.transform.localPosition = position;
 		cell.coordinates = HexCoordinates.FromOffsetCoordinates(x, yInCoordinate, CoordinateOffset);
 		cell.name = cell.coordinates.ToString();
+		cell.available = true;
 		cell.color = defaultColor;
 
 		Text label = Instantiate<Text>(cellLabelPrefab);

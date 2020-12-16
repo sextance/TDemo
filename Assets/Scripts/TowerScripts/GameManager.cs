@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public KeyCode createAttackTower = KeyCode.Z;
     public KeyCode createDefenseTower = KeyCode.X;
     public KeyCode createProductionTower = KeyCode.C;
+    public KeyCode solidificateTower = KeyCode.S;
     public KeyCode destroyTower = KeyCode.D;
     public KeyCode newGameKey = KeyCode.N;
 
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
 
     int selectTypeHandler; // 0 - non, 1 - tower...
     TowerShape pickTower;
+    HexCell pickRegion;
     Vector3 buildPosition;
 
     /*Reserve for other objects*/
@@ -30,6 +32,7 @@ public class GameManager : MonoBehaviour
         /* Reserve for Sence logic*/
         towerShapes = new List<TowerShape>();
         pickTower = null;
+        pickRegion = null;
         selectTypeHandler = 0;
         buildPosition = Vector3.zero;
     }
@@ -39,8 +42,11 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(createAttackTower))
         {
-            if (selectTypeHandler == 2)
-                CreateTowerShape(0, buildPosition);
+            if (selectTypeHandler == 2) 
+            {
+                CreateTowerShape(0, pickRegion);
+                selectTypeHandler = 0;
+            }
             else
                 Debug.Log("No building region selected.");
         }
@@ -48,19 +54,31 @@ public class GameManager : MonoBehaviour
         {
             if (selectTypeHandler == 2)
             {
-                CreateTowerShape(1, buildPosition);
+                CreateTowerShape(1, pickRegion);
                 selectTypeHandler = 0;
-            }
-                
+            } 
             else
                 Debug.Log("No building region selected.");
-        }
+        } 
         else if (Input.GetKeyDown(createProductionTower))
         {
             if (selectTypeHandler == 2)
-                CreateTowerShape(2, buildPosition);
+            {
+                CreateTowerShape(2, pickRegion);
+                selectTypeHandler = 0;
+            }
             else
                 Debug.Log("No building region selected.");
+        } 
+        else if (Input.GetKeyDown(solidificateTower))
+        {
+            if (selectTypeHandler == 1 && pickTower != null)
+            {
+                SolidificateTowerShape(pickTower);
+                //selectTypeHandler = 0;
+            }
+            else
+                Debug.Log("No tower selected.");
         }
         else if (Input.GetKeyDown(destroyTower)) 
         {
@@ -70,41 +88,56 @@ public class GameManager : MonoBehaviour
                 selectTypeHandler = 0;
             }
             else
-                Debug.Log("No tower selected");
+                Debug.Log("No tower selected.");
         }
         //if ( (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         if (Input.GetMouseButton(0))
             MobilePick();
     }
 
-    void CreateTowerShape(int towerId, Vector3 position)
+    void CreateTowerShape(int towerId, HexCell buildRegion)
     {
         TowerShape instance = towerShapeFactory.Get(towerId, towerId);
         Transform t = instance.transform;
-     
+        Vector3 buildPosition = HexCoordinates.FromCooradiante(buildRegion.coordinates);
+
         //Move the root of prefabs to ground
-        t.localPosition = position + Vector3.up * instance.transform.localScale.y/2;
-        /*Reserve for replicating tower problem*/
+        instance.coordinates = buildRegion.coordinates;
+        t.localPosition = buildPosition + Vector3.up * instance.transform.localScale.y/2;
+        if (t.localScale.x >= 10.0f)
+            t.localScale /= 1.5f;
+
+        buildRegion.available = false;
         towerShapes.Add(instance);
     }
 
     void DestroyTowerShape(TowerShape pickTower)
-    {
+    {   
         if (towerShapes.Count > 0)
         {
             //int index = Random.Range(0, towerShapes.Count);
             int index = towerShapes.FindIndex(a => a.SerialId == pickTower.SerialId);
             towerShapeFactory.Reclaim(towerShapes[index]);
 
+            mapManager.hexGrid.cells[pickTower.coordinates.X + pickTower.coordinates.Y * 12].available = true;
             //Switch the index of selected and last one
             int lastIndex = towerShapes.Count - 1;
             towerShapes[index] = towerShapes[lastIndex];
             towerShapes.RemoveAt(lastIndex);
-        }
-        else
-        {
+        } else {
             Debug.LogError("No tower in pools to destroy!");
         }
+    }
+
+    void SolidificateTowerShape(TowerShape pickTower)
+    {
+        if (pickTower != null && pickTower.IsSolidificated == false)
+        {
+            pickTower.IsSolidificated = false;
+            Transform t = pickTower.transform;
+            t.localScale *= 1.5f;
+        } else
+            Debug.Log("Tower already solidificated");
     }
 
     void MobilePick()
@@ -118,19 +151,22 @@ public class GameManager : MonoBehaviour
             if (hit.transform.tag == "Untagged") //any non-interactive objects
             {
                 selectTypeHandler = 0; 
-            }
-            else if (hit.transform.tag == "Tower")
+            } else if (hit.transform.tag == "Tower")
             {
                 pickTower = hit.collider.GetComponent<TowerShape>();
                 Debug.Log("hit:" + hit.collider.gameObject.name);
                 selectTypeHandler = 1;
-            }
-            else if (hit.transform.tag == "Map")
+            } else if (hit.transform.tag == "Map")
             {
-                HexCell instance = hit.collider.GetComponent<HexCell>();
-                buildPosition = HexCoordinates.FromCooradiante(instance.coordinates);
-                Debug.Log("hit: map");
-                selectTypeHandler = 2;
+                pickRegion = hit.collider.GetComponent<HexCell>();
+                if (pickRegion.available == true)
+                {
+                    //buildPosition = HexCoordinates.FromCooradiante(instance.coordinates);
+                    Debug.Log("hit: map");
+                    selectTypeHandler = 2;
+                }
+                else
+                    Debug.Log("Region already accupied by a tower!");
             }
             /*Reserve for other object*/
         }

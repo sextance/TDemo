@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TowerShape : PersistableObject
 {
+    public HexCoordinates coordinates; 
+
     int shapeId = int.MinValue; //Default value
     public int ShapeId
     {
@@ -30,6 +32,8 @@ public class TowerShape : PersistableObject
         }
     }
 
+    bool isSolidificated = false;
+    public bool IsSolidificated { get; set; }
     MeshRenderer meshRenderer;
 
     public int MaterialId { get; private set; }

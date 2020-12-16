@@ -8,7 +8,6 @@ public class MapManager : MonoBehaviour
 
 	void Awake()
     {
-		
 	}
 
 	void Update()

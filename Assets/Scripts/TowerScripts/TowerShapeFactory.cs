@@ -34,7 +34,7 @@ public class TowerShapeFactory : ScriptableObject
             if (pools == null)
                 CreatePools();
 
-            //Recycle last object of pool to enssure consistency of list
+            //Recycle the last object of pool to enssure consistency of list
             List<TowerShape> pool = pools[shapeId];
             int lastIndex = pool.Count - 1;
             if(lastIndex >= 0)
@@ -54,7 +54,7 @@ public class TowerShapeFactory : ScriptableObject
             instance.ShapeId = shapeId;
             instance.SerialId = serialNumber++;
         }
-
+        
         instance.SetMaterial(materials[materialId], materialId);
         return instance;
     }
@@ -83,6 +83,7 @@ public class TowerShapeFactory : ScriptableObject
     // Start is called before the first frame update
     void Awake()
     {
+        recycle = true;
         serialNumber = 0;
     }
 
