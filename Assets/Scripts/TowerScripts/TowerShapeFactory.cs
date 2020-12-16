@@ -17,6 +17,8 @@ public class TowerShapeFactory : ScriptableObject
     bool recycle;
     List<TowerShape>[] pools;
 
+    int serialNumber;
+
    // Scene poolScene;
 
     //Get new tower from factory
@@ -44,11 +46,13 @@ public class TowerShapeFactory : ScriptableObject
             } else {
                 instance = Instantiate(prefabs[shapeId]);
                 instance.ShapeId = shapeId;
+                instance.SerialId = serialNumber++;
                 //SceneManager.MoveGameObjectToScene(instance.gameObject, poolScene);
             }
         } else {
             instance = Instantiate(prefabs[shapeId]);
             instance.ShapeId = shapeId;
+            instance.SerialId = serialNumber++;
         }
 
         instance.SetMaterial(materials[materialId], materialId);
@@ -77,9 +81,9 @@ public class TowerShapeFactory : ScriptableObject
     }
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        serialNumber = 0;
     }
 
     // Update is called once per frame

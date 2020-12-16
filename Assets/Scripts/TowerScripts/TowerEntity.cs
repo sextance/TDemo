@@ -31,9 +31,18 @@ public class TowerEntity : TowerShape
     {
         health -= damage;
         /*Reseve for audio*/
-        if(health <= 0)
+        if (health <= 0)
         {
             state = 2;
         }
     }
+
+    public void ShatterTower(int damage)
+    {
+        health = 0;
+        state = 3;
+        /*Reseve for audio*/
+
+    }
+
 }
