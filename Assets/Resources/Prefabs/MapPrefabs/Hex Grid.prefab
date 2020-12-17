@@ -48,8 +48,9 @@ MonoBehaviour:
   height: 8
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
   touchedColor: {r: 1, g: 0, b: 1, a: 1}
-  cellPrefab: {fileID: 1724360290080123019, guid: a374806eeb2d4664ab862206146963ad,
+  cellPrefab: {fileID: 1218531839394514218, guid: b2ec387ecaeca9943b1d4687e1df299b,
     type: 3}
+  cells: []
   cellLabelPrefab: {fileID: 4783371021245947214}
 --- !u!1 &4783371020659935695
 GameObject:
@@ -143,6 +144,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Hex Cell Label
+      objectReference: {fileID: 0}
+    - target: {fileID: 2088831689775719764, guid: f9ac088f6de76e14085014479befc39c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2088831689775719766, guid: f9ac088f6de76e14085014479befc39c,
+        type: 3}
+      propertyPath: m_Text
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2088831689775719767, guid: f9ac088f6de76e14085014479befc39c,
         type: 3}

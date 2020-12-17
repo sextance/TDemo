@@ -3,20 +3,9 @@ using UnityEngine.SceneManagement;
 
 public class SceneSwitch : MonoBehaviour
 {
-
-    void Start()
+    public void OnStartGame(string SceneName)
     {
-
-    }
-
-    void Update()
-    {
-
-    }
-
-    public void OnStartGame(int SceneNumber)
-    {
-        Debug.Log("pve");
-        SceneManager.LoadScene(SceneNumber);
+        Debug.Log("PVE");
+        SceneLoader._instance.LoadScene(SceneName);
     }
 }
