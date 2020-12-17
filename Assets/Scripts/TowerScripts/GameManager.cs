@@ -22,8 +22,8 @@ public class GameManager : MonoBehaviour
     public KeyCode destroyTower = KeyCode.D;
     public KeyCode newGameKey = KeyCode.N;
 
-    List<TowerShape> towerShapes;
-    List<Enemy> enemies;
+    public List<TowerShape> towerShapes;
+    public List<Enemy> enemies;
 
     int selectTypeHandler; // 0 - non, 1 - tower...
     TowerShape pickTower;
@@ -300,9 +300,6 @@ public class GameManager : MonoBehaviour
             Enemy enemy = enemyFactory.GetEnemy();
             enemies.Add(enemy);
             SearchAndGo(enemy);
-            Attack(enemy);
-
-
         }
     }
 
@@ -311,7 +308,6 @@ public class GameManager : MonoBehaviour
         TEnemy tEnemy = enemyFactory.GetTEnemy();
         enemies.Add(tEnemy);
         SearchAndGo(tEnemy);
-        Attack(tEnemy);
     }
 
     void SpawnDpsEnemy()
@@ -319,31 +315,26 @@ public class GameManager : MonoBehaviour
         DpsEnemy dpsEnemy = enemyFactory.GetDpsEnemy();
         enemies.Add(dpsEnemy);
         SearchAndGo(dpsEnemy);
-        Attack(dpsEnemy);
     }
 
-    void SearchAndGo(Enemy enemy)
+    public void SearchAndGo(Enemy enemy)
     {
-        Vector3 point;
-        point = Search(towerShapes, enemy);
-        enemy.navMesh.SetDestination(point);
-    }
-
-    void Attack(Enemy enemy)
-    {
-        Vector3 point;
-        point = Search(towerShapes,enemy);
-        if (Vector3.Distance(enemy.transform.localPosition, point) < 0.5f)
+        if (enemy.isLock)
         {
-            enemy.gameObject.GetComponent<Animator>().SetBool("walk", false);
-            float attack = 1f;
-            attack += attack * Time.deltaTime;
-            while (attack >= 1f)
-            {
-                attack -= 1f;
-                //TakeDamage(enemy.attack);
-            }
+            return;
         }
+        else
+        {
+            VectorAndNum se = new VectorAndNum();
+            se = Search(towerShapes, enemy);
+            enemy.navMesh.SetDestination(se.point);
+        }
+    }
+
+    public struct VectorAndNum
+    {
+        public Vector3 point;
+        public int num;
     }
 
     void TimeToSpawn()//随时间限制改变怪物生成速度
@@ -400,15 +391,18 @@ public class GameManager : MonoBehaviour
             Enemy enemy = enemyFactory.GetEnemy();
             enemies.Add(enemy);
             SearchAndGo(enemy);
-            Attack(enemy);
         }
     }
 
-    public Vector3 Search(List<TowerShape> pool, Enemy enemy)
+    public VectorAndNum Search(List<TowerShape> pool, Enemy enemy)
     {
-        Vector3 point;
+        if (pool == null)
+        {
+        }
+        VectorAndNum r = new VectorAndNum();
         float min = 199000;
         float distance = 1000;
+        r.num = 0;
         Vector3 v3 = new Vector3();
         for (int i = 0; i < pool.Count; i++)
         {
@@ -417,10 +411,12 @@ public class GameManager : MonoBehaviour
             {
                 min = distance;
                 v3 = pool[i].transform.localPosition;
+                r.num = i;
+                //if(pool[i].)
             }
         }
-        point = v3;
-        return point;
+        r.point = v3;
+        return r;
     }
 
     public void Add(Enemy enemy)

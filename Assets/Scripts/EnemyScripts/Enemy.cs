@@ -5,15 +5,22 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
+    GameManager.VectorAndNum s = new GameManager.VectorAndNum();
+    bool startAttack;
+    float attackTime;
 
     EnemyFactory originFactory;
-
+    Animator anim;
 
     public NavMeshAgent navMesh = default;
 
-    public float health,
-        attack, attackingRange,
-        tauntRange, searchRange;
+    public float health, attackingRange,
+         searchRange;
+
+    public int attack;
+
+    Collider collider;
+    public bool isLock;
 
     public EnemyFactory OriginFactory
     {
@@ -25,6 +32,28 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        collider = GetComponent<Collider>();
+        anim = GetComponent<Animator>();
+        isLock = false;
+        attackTime = 0;
+    }
+
+    private void OnEnable()
+    {
+        health = 3f;
+        startAttack = true;
+        collider = GetComponent<Collider>();
+    }
+
+    protected void Update()
+    {
+        if(health <= 0f)
+        {
+            OriginFactory.Reclaim(this);
+        }
+    }
 
     public bool GameUpdate()
     {
@@ -46,44 +75,71 @@ public class Enemy : MonoBehaviour
         }
     }
 
-   /* public void SearchTower()
+    /*public void Attack(Enemy enemy)
     {
-        Vector3 a =  this.transform.localPosition;
-        Vector3 b = a;
-        b.y += 5f;
-        
-        Collider[] towerColliders = Physics.OverlapCapsule(a,b,searchRange,LayerMask.GetMask("Tower"));
-        if(towerColliders.Length <= 0f)
+        s = GameManager.gm.Search(GameManager.gm.towerShapes, enemy);
+        float distance = Vector3.Distance(enemy.transform.localPosition, s.point);
+        if(distance > 5f) { }
+        else if(distance <= 5f)
+        {
+            GameManager.gm.towerShapes[s.num].GetComponent<AttackTowerEntity>().TakeDamage(attack);
+            Debug.Log("Attacking");
+            Debug.LogError("Can't Attack");
+        }
+    }*/
+
+    private void OnTriggerStay(Collider other)
+    {
+        s = GameManager.gm.Search(GameManager.gm.towerShapes, this);
+        TowerShape t = GameManager.gm.towerShapes[s.num];
+        if (isLock)
         {
             return;
         }
-        else
+        if (t == other.gameObject.GetComponent<TowerShape>())
         {
-            point = towerColliders[0].transform.localPosition;
+            Attack();
         }
-       
-    }*/
-
-   /* public TowerShape Search(List<TowerShape>[] pools)
-    {
-        TowerShape instance = null;
-        float min = 19900000;
-        float distance = 1000000;
-        for (int i=0; i<=pools.Length; i++)
+        if(other == null)
         {
-            List<TowerShape> pool = pools[i];
-            for(int j=0; j<=pool.Count; j++)
-            {
-                distance = Vector3.Distance(pool[j].transform.localPosition, this.transform.localPosition);
-                if (distance < min)
-                {
-                    min = distance;
-                    instance = pool[j];
-                }
+            GameManager.gm.SearchAndGo(this);
+        }
+    }
 
+    void Attack()
+    {
+        s = GameManager.gm.Search(GameManager.gm.towerShapes, this);
+        GameObject t = GameManager.gm.towerShapes[s.num].gameObject;
+        if (startAttack)
+        {
+            anim.SetInteger("CommonEnemy", 2);
+            t.GetComponent<AttackTowerEntity>().TakeDamage(attack);
+            startAttack = false;
+        }
+        else if (!startAttack)
+        {
+            attackTime += Time.deltaTime;
+            if (attackTime >= 1f)
+            {
+                attackTime -= 1f;
+                startAttack = true;
             }
         }
-        return instance;
+    }
+
+    /*public void ForceAttack(DefenceTowerEnity defenceTowerEnity)
+    {
+        if(target == null)
+        {
+            isLock = false;
+        }
+
+        if(isLock == false)
+        {
+            isLock = true;
+            navMesh.SetDestination(target.transform.localPosition);
+        }
+
     }*/
 }
 public enum EnemyType
