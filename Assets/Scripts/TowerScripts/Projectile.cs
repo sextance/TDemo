@@ -39,6 +39,7 @@ public class Projectile : MonoBehaviour
     bool reachTarget;
     bool startTimer;
     Collider collider;
+    Vector3 lastPosition;
 
     void OnEnable()
     {
@@ -46,6 +47,7 @@ public class Projectile : MonoBehaviour
         shapeId = 0;
         delayDeadTime = 0.5f;
         speed = 20.0f;
+        lastPosition = Vector3.zero;
         startTimer = false;
         reachTarget = false;
         collider = GetComponent<SphereCollider>();
@@ -56,12 +58,17 @@ public class Projectile : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (!reachTarget)
+        {
             MoveToPosition();
-        else if(startTimer == true)
+            if (Vector3.Distance(this.transform.localPosition, lastPosition) <= 0.01f)
+            {
+                reachTarget = true;
+                startTimer = true;
+            }
+        } else if(startTimer == true)
         {
             delayDeadTime -= Time.deltaTime;
             if(delayDeadTime <= 0f)
@@ -71,18 +78,25 @@ public class Projectile : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(other == targetEnemy.GetComponent<Collider>() )
+        if (targetEnemy != null)
         {
-            reachTarget = true;
-            startTimer = true;
-            targetEnemy.ApplyDamge(damage);
+            if (other == targetEnemy.GetComponent<Collider>())
+            {
+                reachTarget = true;
+                startTimer = true;
+                targetEnemy.ApplyDamge(damage);
+            }
         }
     }
 
     private void MoveToPosition()
     {
-        this.transform.position = Vector3.MoveTowards(
-    transform.position, targetEnemy.transform.position,
-    Time.deltaTime * speed);
+        if (targetEnemy != null)
+        {
+            lastPosition = targetEnemy.transform.position;
+            this.transform.position = Vector3.MoveTowards(transform.position, lastPosition, Time.deltaTime * speed);
+        } else {
+            this.transform.position = Vector3.MoveTowards(transform.position, lastPosition, Time.deltaTime * speed);
+        }
     }
 }
