@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
+<<<<<<< Updated upstream
 
     EnemyFactory originFactory;
 
@@ -13,6 +14,29 @@ public class Enemy : MonoBehaviour
     public float health,
         attack, attackingRange,
         tauntRange, searchRange;
+=======
+    EnemyFactory originFactory;
+
+    [SerializeField]
+    NavMeshAgent navEnemy = default;
+
+    [SerializeField]
+    Transform TargetPoint = default;
+
+    public float Health { get; set; }
+
+    float attack;
+    float attackRange;
+    float tauntRange;
+
+    private void Update()
+    {
+        FindAndGo();
+        Attack();
+    }
+
+    public EnemyType enemyType => EnemyType.common;
+>>>>>>> Stashed changes
 
     public EnemyFactory OriginFactory
     {
@@ -24,16 +48,31 @@ public class Enemy : MonoBehaviour
         }
     }
 
+<<<<<<< Updated upstream
 
     public bool GameUpdate()
     {
         if (this == null)
+=======
+    public void Initialize(float health,float attack,float attackingRange,float tauntRange)
+    {
+        this.attack = attack;
+        this.attackRange = attackingRange;
+        this.tauntRange = tauntRange;
+        Health = health;
+    }
+
+    public bool GameUpdate()
+    {
+        if(this == null)
+>>>>>>> Stashed changes
         {
             return false;
         }
         return true;
     }
 
+<<<<<<< Updated upstream
 
 
     public void ApplyDamge(float damge)
@@ -71,4 +110,29 @@ public class Enemy : MonoBehaviour
 public enum EnemyType
 {
     T, DPS, common
+=======
+    bool FindAndGo()
+    {
+        navEnemy.SetDestination(TargetPoint.position);
+        return true;
+    }
+
+    void Attack()
+    {
+        if(navEnemy.velocity.x == 0 && navEnemy.velocity.z == 0)
+        {
+            Debug.Log("Attack Tower");
+        }
+    }
+
+    void ApplyDamge(float damge)
+    {
+        Health -= damge;
+    }
+
+    public enum EnemyType
+    {
+        T,DPS,common
+    }
+>>>>>>> Stashed changes
 }
