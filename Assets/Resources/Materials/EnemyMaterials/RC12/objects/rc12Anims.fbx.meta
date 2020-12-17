@@ -1,0 +1,2594 @@
+fileFormatVersion: 2
+guid: 8c6f69c3ef928b345ab5f0689fe4a808
+ModelImporter:
+  serializedVersion: 19301
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: belly
+  - first:
+      1: 100002
+    second: bellycontrol
+  - first:
+      1: 100004
+    second: chest
+  - first:
+      1: 100006
+    second: chestcontrol
+  - first:
+      1: 100008
+    second: constraint_R
+  - first:
+      1: 100010
+    second: constraintL
+  - first:
+      1: 100012
+    second: head
+  - first:
+      1: 100014
+    second: head_Goal
+  - first:
+      1: 100016
+    second: hipcontrol
+  - first:
+      1: 100018
+    second: hips
+  - first:
+      1: 100020
+    second: L_ankle
+  - first:
+      1: 100022
+    second: L_ankle_Goal
+  - first:
+      1: 100024
+    second: L_arm
+  - first:
+      1: 100026
+    second: L_arm2
+  - first:
+      1: 100028
+    second: L_arm3
+  - first:
+      1: 100030
+    second: L_arm_Pole
+  - first:
+      1: 100032
+    second: L_elbow
+  - first:
+      1: 100034
+    second: L_fingers
+  - first:
+      1: 100036
+    second: L_fingers2
+  - first:
+      1: 100038
+    second: L_fingerstip
+  - first:
+      1: 100040
+    second: L_FOOT
+  - first:
+      1: 100042
+    second: L_foot
+  - first:
+      1: 100044
+    second: L_foot_Goal
+  - first:
+      1: 100046
+    second: L_knee
+  - first:
+      1: 100048
+    second: L_leg
+  - first:
+      1: 100050
+    second: L_leg_Pole
+  - first:
+      1: 100052
+    second: L_thumb
+  - first:
+      1: 100054
+    second: L_thumb2
+  - first:
+      1: 100056
+    second: L_thumbtip
+  - first:
+      1: 100058
+    second: L_wrist
+  - first:
+      1: 100060
+    second: L_wrist_Goal
+  - first:
+      1: 100062
+    second: mesh
+  - first:
+      1: 100064
+    second: neck
+  - first:
+      1: 100066
+    second: neck2
+  - first:
+      1: 100068
+    second: R_ankle
+  - first:
+      1: 100070
+    second: R_ankle_Goal
+  - first:
+      1: 100072
+    second: R_arm
+  - first:
+      1: 100074
+    second: R_arm2
+  - first:
+      1: 100076
+    second: R_arm3
+  - first:
+      1: 100078
+    second: R_arm_Pole
+  - first:
+      1: 100080
+    second: R_elbow
+  - first:
+      1: 100082
+    second: R_fingers
+  - first:
+      1: 100084
+    second: R_fingers2
+  - first:
+      1: 100086
+    second: R_fingerstip
+  - first:
+      1: 100088
+    second: R_FOOT
+  - first:
+      1: 100090
+    second: R_foot
+  - first:
+      1: 100092
+    second: R_foot_Goal
+  - first:
+      1: 100094
+    second: R_knee
+  - first:
+      1: 100096
+    second: R_leg
+  - first:
+      1: 100098
+    second: R_leg_Pole
+  - first:
+      1: 100100
+    second: R_thumb
+  - first:
+      1: 100102
+    second: R_thumb2
+  - first:
+      1: 100104
+    second: R_thumbtip
+  - first:
+      1: 100106
+    second: R_wrist
+  - first:
+      1: 100108
+    second: R_wrist_Goal
+  - first:
+      1: 100110
+    second: rc12
+  - first:
+      1: 100112
+    second: //RootNode
+  - first:
+      1: 100114
+    second: Root
+  - first:
+      1: 100116
+    second: Skin
+  - first:
+      1: 100118
+    second: spinespline
+  - first:
+      4: 400000
+    second: belly
+  - first:
+      4: 400002
+    second: bellycontrol
+  - first:
+      4: 400004
+    second: chest
+  - first:
+      4: 400006
+    second: chestcontrol
+  - first:
+      4: 400008
+    second: constraint_R
+  - first:
+      4: 400010
+    second: constraintL
+  - first:
+      4: 400012
+    second: head
+  - first:
+      4: 400014
+    second: head_Goal
+  - first:
+      4: 400016
+    second: hipcontrol
+  - first:
+      4: 400018
+    second: hips
+  - first:
+      4: 400020
+    second: L_ankle
+  - first:
+      4: 400022
+    second: L_ankle_Goal
+  - first:
+      4: 400024
+    second: L_arm
+  - first:
+      4: 400026
+    second: L_arm2
+  - first:
+      4: 400028
+    second: L_arm3
+  - first:
+      4: 400030
+    second: L_arm_Pole
+  - first:
+      4: 400032
+    second: L_elbow
+  - first:
+      4: 400034
+    second: L_fingers
+  - first:
+      4: 400036
+    second: L_fingers2
+  - first:
+      4: 400038
+    second: L_fingerstip
+  - first:
+      4: 400040
+    second: L_FOOT
+  - first:
+      4: 400042
+    second: L_foot
+  - first:
+      4: 400044
+    second: L_foot_Goal
+  - first:
+      4: 400046
+    second: L_knee
+  - first:
+      4: 400048
+    second: L_leg
+  - first:
+      4: 400050
+    second: L_leg_Pole
+  - first:
+      4: 400052
+    second: L_thumb
+  - first:
+      4: 400054
+    second: L_thumb2
+  - first:
+      4: 400056
+    second: L_thumbtip
+  - first:
+      4: 400058
+    second: L_wrist
+  - first:
+      4: 400060
+    second: L_wrist_Goal
+  - first:
+      4: 400062
+    second: mesh
+  - first:
+      4: 400064
+    second: neck
+  - first:
+      4: 400066
+    second: neck2
+  - first:
+      4: 400068
+    second: R_ankle
+  - first:
+      4: 400070
+    second: R_ankle_Goal
+  - first:
+      4: 400072
+    second: R_arm
+  - first:
+      4: 400074
+    second: R_arm2
+  - first:
+      4: 400076
+    second: R_arm3
+  - first:
+      4: 400078
+    second: R_arm_Pole
+  - first:
+      4: 400080
+    second: R_elbow
+  - first:
+      4: 400082
+    second: R_fingers
+  - first:
+      4: 400084
+    second: R_fingers2
+  - first:
+      4: 400086
+    second: R_fingerstip
+  - first:
+      4: 400088
+    second: R_FOOT
+  - first:
+      4: 400090
+    second: R_foot
+  - first:
+      4: 400092
+    second: R_foot_Goal
+  - first:
+      4: 400094
+    second: R_knee
+  - first:
+      4: 400096
+    second: R_leg
+  - first:
+      4: 400098
+    second: R_leg_Pole
+  - first:
+      4: 400100
+    second: R_thumb
+  - first:
+      4: 400102
+    second: R_thumb2
+  - first:
+      4: 400104
+    second: R_thumbtip
+  - first:
+      4: 400106
+    second: R_wrist
+  - first:
+      4: 400108
+    second: R_wrist_Goal
+  - first:
+      4: 400110
+    second: rc12
+  - first:
+      4: 400112
+    second: //RootNode
+  - first:
+      4: 400114
+    second: Root
+  - first:
+      4: 400116
+    second: Skin
+  - first:
+      4: 400118
+    second: spinespline
+  - first:
+      43: 4300000
+    second: mesh
+  - first:
+      74: 7400000
+    second: RCidle
+  - first:
+      74: 7400002
+    second: RCwalkfroward
+  - first:
+      74: 7400004
+    second: RCwalkright
+  - first:
+      74: 7400006
+    second: RCwalkleft
+  - first:
+      74: 7400008
+    second: RCwalkback
+  - first:
+      74: 7400010
+    second: RCrun
+  - first:
+      74: 7400012
+    second: RCjump
+  - first:
+      74: 7400014
+    second: RCair
+  - first:
+      74: 7400016
+    second: RCland
+  - first:
+      74: 7400018
+    second: RCattack1
+  - first:
+      74: 7400020
+    second: RCattack2
+  - first:
+      74: 7400022
+    second: RCattack3
+  - first:
+      74: 7400024
+    second: RChit
+  - first:
+      74: 7400026
+    second: RCdead
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      137: 13700000
+    second: mesh
+  externalObjects: {}
+  materials:
+    materialImportMode: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: RCidle
+      takeName: C4D Animation Take
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 88
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: constraint_R
+        weight: 1
+      - path: constraintL
+        weight: 1
+      - path: rc12
+        weight: 1
+      - path: rc12/hipcontrol
+        weight: 1
+      - path: rc12/hipcontrol/bellycontrol
+        weight: 1
+      - path: rc12/hipcontrol/chestcontrol
+        weight: 1
+      - path: rc12/hipcontrol/chestcontrol/head_Goal
+        weight: 1
+      - path: rc12/hipcontrol/chestcontrol/L_wrist_Goal
+        weight: 1
+      - path: rc12/hipcontrol/chestcontrol/R_wrist_Goal
+        weight: 1
+      - path: rc12/L_arm_Pole
+        weight: 1
+      - path: rc12/L_FOOT
+        weight: 1
+      - path: rc12/L_FOOT/L_ankle_Goal
+        weight: 1
+      - path: rc12/L_FOOT/L_foot_Goal
+        weight: 1
+      - path: rc12/L_leg_Pole
+        weight: 1
+      - path: rc12/mesh
+        weight: 1
+      - path: rc12/mesh/Skin
+        weight: 1
+      - path: rc12/R_arm_Pole
+        weight: 1
+      - path: rc12/R_FOOT
+        weight: 1
+      - path: rc12/R_FOOT/R_ankle_Goal
+        weight: 1
+      - path: rc12/R_FOOT/R_foot_Goal
+        weight: 1
+      - path: rc12/R_leg_Pole
+        weight: 1
+      - path: rc12/Root
+        weight: 1
+      - path: rc12/Root/hips
+        weight: 1
+      - path: rc12/Root/hips/belly
+        weight: 1
+      - path: rc12/Root/hips/belly/chest
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_fingers
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_fingers/L_fingers2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_fingers/L_fingers2/L_fingerstip
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_thumb
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_thumb/L_thumb2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_thumb/L_thumb2/L_thumbtip
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/neck
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/neck/neck2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/neck/neck2/head
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_fingers
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_fingers/R_fingers2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_fingers/R_fingers2/R_fingerstip
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_thumb
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_thumb/R_thumb2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_thumb/R_thumb2/R_thumbtip
+        weight: 1
+      - path: rc12/Root/hips/L_leg
+        weight: 1
+      - path: rc12/Root/hips/L_leg/L_knee
+        weight: 1
+      - path: rc12/Root/hips/L_leg/L_knee/L_ankle
+        weight: 1
+      - path: rc12/Root/hips/L_leg/L_knee/L_ankle/L_foot
+        weight: 1
+      - path: rc12/Root/hips/R_leg
+        weight: 1
+      - path: rc12/Root/hips/R_leg/R_knee
+        weight: 1
+      - path: rc12/Root/hips/R_leg/R_knee/R_ankle
+        weight: 1
+      - path: rc12/Root/hips/R_leg/R_knee/R_ankle/R_foot
+        weight: 1
+      - path: rc12/Root/spinespline
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: RCwalkfroward
+      takeName: C4D Animation Take
+      internalID: 0
+      firstFrame: 90
+      lastFrame: 129
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: constraint_R
+        weight: 1
+      - path: constraintL
+        weight: 1
+      - path: rc12
+        weight: 1
+      - path: rc12/hipcontrol
+        weight: 1
+      - path: rc12/hipcontrol/bellycontrol
+        weight: 1
+      - path: rc12/hipcontrol/chestcontrol
+        weight: 1
+      - path: rc12/hipcontrol/chestcontrol/head_Goal
+        weight: 1
+      - path: rc12/hipcontrol/chestcontrol/L_wrist_Goal
+        weight: 1
+      - path: rc12/hipcontrol/chestcontrol/R_wrist_Goal
+        weight: 1
+      - path: rc12/L_arm_Pole
+        weight: 1
+      - path: rc12/L_FOOT
+        weight: 1
+      - path: rc12/L_FOOT/L_ankle_Goal
+        weight: 1
+      - path: rc12/L_FOOT/L_foot_Goal
+        weight: 1
+      - path: rc12/L_leg_Pole
+        weight: 1
+      - path: rc12/mesh
+        weight: 1
+      - path: rc12/mesh/Skin
+        weight: 1
+      - path: rc12/R_arm_Pole
+        weight: 1
+      - path: rc12/R_FOOT
+        weight: 1
+      - path: rc12/R_FOOT/R_ankle_Goal
+        weight: 1
+      - path: rc12/R_FOOT/R_foot_Goal
+        weight: 1
+      - path: rc12/R_leg_Pole
+        weight: 1
+      - path: rc12/Root
+        weight: 1
+      - path: rc12/Root/hips
+        weight: 1
+      - path: rc12/Root/hips/belly
+        weight: 1
+      - path: rc12/Root/hips/belly/chest
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_fingers
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_fingers/L_fingers2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_fingers/L_fingers2/L_fingerstip
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_thumb
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_thumb/L_thumb2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_thumb/L_thumb2/L_thumbtip
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/neck
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/neck/neck2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/neck/neck2/head
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_fingers
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_fingers/R_fingers2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_fingers/R_fingers2/R_fingerstip
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_thumb
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_thumb/R_thumb2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_thumb/R_thumb2/R_thumbtip
+        weight: 1
+      - path: rc12/Root/hips/L_leg
+        weight: 1
+      - path: rc12/Root/hips/L_leg/L_knee
+        weight: 1
+      - path: rc12/Root/hips/L_leg/L_knee/L_ankle
+        weight: 1
+      - path: rc12/Root/hips/L_leg/L_knee/L_ankle/L_foot
+        weight: 1
+      - path: rc12/Root/hips/R_leg
+        weight: 1
+      - path: rc12/Root/hips/R_leg/R_knee
+        weight: 1
+      - path: rc12/Root/hips/R_leg/R_knee/R_ankle
+        weight: 1
+      - path: rc12/Root/hips/R_leg/R_knee/R_ankle/R_foot
+        weight: 1
+      - path: rc12/Root/spinespline
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: RCwalkright
+      takeName: C4D Animation Take
+      internalID: 0
+      firstFrame: 131
+      lastFrame: 169
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: constraint_R
+        weight: 1
+      - path: constraintL
+        weight: 1
+      - path: rc12
+        weight: 1
+      - path: rc12/hipcontrol
+        weight: 1
+      - path: rc12/hipcontrol/bellycontrol
+        weight: 1
+      - path: rc12/hipcontrol/chestcontrol
+        weight: 1
+      - path: rc12/hipcontrol/chestcontrol/head_Goal
+        weight: 1
+      - path: rc12/hipcontrol/chestcontrol/L_wrist_Goal
+        weight: 1
+      - path: rc12/hipcontrol/chestcontrol/R_wrist_Goal
+        weight: 1
+      - path: rc12/L_arm_Pole
+        weight: 1
+      - path: rc12/L_FOOT
+        weight: 1
+      - path: rc12/L_FOOT/L_ankle_Goal
+        weight: 1
+      - path: rc12/L_FOOT/L_foot_Goal
+        weight: 1
+      - path: rc12/L_leg_Pole
+        weight: 1
+      - path: rc12/mesh
+        weight: 1
+      - path: rc12/mesh/Skin
+        weight: 1
+      - path: rc12/R_arm_Pole
+        weight: 1
+      - path: rc12/R_FOOT
+        weight: 1
+      - path: rc12/R_FOOT/R_ankle_Goal
+        weight: 1
+      - path: rc12/R_FOOT/R_foot_Goal
+        weight: 1
+      - path: rc12/R_leg_Pole
+        weight: 1
+      - path: rc12/Root
+        weight: 1
+      - path: rc12/Root/hips
+        weight: 1
+      - path: rc12/Root/hips/belly
+        weight: 1
+      - path: rc12/Root/hips/belly/chest
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_fingers
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_fingers/L_fingers2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_fingers/L_fingers2/L_fingerstip
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_thumb
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_thumb/L_thumb2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_thumb/L_thumb2/L_thumbtip
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/neck
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/neck/neck2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/neck/neck2/head
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_fingers
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_fingers/R_fingers2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_fingers/R_fingers2/R_fingerstip
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_thumb
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_thumb/R_thumb2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_thumb/R_thumb2/R_thumbtip
+        weight: 1
+      - path: rc12/Root/hips/L_leg
+        weight: 1
+      - path: rc12/Root/hips/L_leg/L_knee
+        weight: 1
+      - path: rc12/Root/hips/L_leg/L_knee/L_ankle
+        weight: 1
+      - path: rc12/Root/hips/L_leg/L_knee/L_ankle/L_foot
+        weight: 1
+      - path: rc12/Root/hips/R_leg
+        weight: 1
+      - path: rc12/Root/hips/R_leg/R_knee
+        weight: 1
+      - path: rc12/Root/hips/R_leg/R_knee/R_ankle
+        weight: 1
+      - path: rc12/Root/hips/R_leg/R_knee/R_ankle/R_foot
+        weight: 1
+      - path: rc12/Root/spinespline
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: RCwalkleft
+      takeName: C4D Animation Take
+      internalID: 0
+      firstFrame: 171
+      lastFrame: 209
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: constraint_R
+        weight: 1
+      - path: constraintL
+        weight: 1
+      - path: rc12
+        weight: 1
+      - path: rc12/hipcontrol
+        weight: 1
+      - path: rc12/hipcontrol/bellycontrol
+        weight: 1
+      - path: rc12/hipcontrol/chestcontrol
+        weight: 1
+      - path: rc12/hipcontrol/chestcontrol/head_Goal
+        weight: 1
+      - path: rc12/hipcontrol/chestcontrol/L_wrist_Goal
+        weight: 1
+      - path: rc12/hipcontrol/chestcontrol/R_wrist_Goal
+        weight: 1
+      - path: rc12/L_arm_Pole
+        weight: 1
+      - path: rc12/L_FOOT
+        weight: 1
+      - path: rc12/L_FOOT/L_ankle_Goal
+        weight: 1
+      - path: rc12/L_FOOT/L_foot_Goal
+        weight: 1
+      - path: rc12/L_leg_Pole
+        weight: 1
+      - path: rc12/mesh
+        weight: 1
+      - path: rc12/mesh/Skin
+        weight: 1
+      - path: rc12/R_arm_Pole
+        weight: 1
+      - path: rc12/R_FOOT
+        weight: 1
+      - path: rc12/R_FOOT/R_ankle_Goal
+        weight: 1
+      - path: rc12/R_FOOT/R_foot_Goal
+        weight: 1
+      - path: rc12/R_leg_Pole
+        weight: 1
+      - path: rc12/Root
+        weight: 1
+      - path: rc12/Root/hips
+        weight: 1
+      - path: rc12/Root/hips/belly
+        weight: 1
+      - path: rc12/Root/hips/belly/chest
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_fingers
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_fingers/L_fingers2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_fingers/L_fingers2/L_fingerstip
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_thumb
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_thumb/L_thumb2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_thumb/L_thumb2/L_thumbtip
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/neck
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/neck/neck2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/neck/neck2/head
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_fingers
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_fingers/R_fingers2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_fingers/R_fingers2/R_fingerstip
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_thumb
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_thumb/R_thumb2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_thumb/R_thumb2/R_thumbtip
+        weight: 1
+      - path: rc12/Root/hips/L_leg
+        weight: 1
+      - path: rc12/Root/hips/L_leg/L_knee
+        weight: 1
+      - path: rc12/Root/hips/L_leg/L_knee/L_ankle
+        weight: 1
+      - path: rc12/Root/hips/L_leg/L_knee/L_ankle/L_foot
+        weight: 1
+      - path: rc12/Root/hips/R_leg
+        weight: 1
+      - path: rc12/Root/hips/R_leg/R_knee
+        weight: 1
+      - path: rc12/Root/hips/R_leg/R_knee/R_ankle
+        weight: 1
+      - path: rc12/Root/hips/R_leg/R_knee/R_ankle/R_foot
+        weight: 1
+      - path: rc12/Root/spinespline
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: RCwalkback
+      takeName: C4D Animation Take
+      internalID: 0
+      firstFrame: 211
+      lastFrame: 250
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: constraint_R
+        weight: 1
+      - path: constraintL
+        weight: 1
+      - path: rc12
+        weight: 1
+      - path: rc12/hipcontrol
+        weight: 1
+      - path: rc12/hipcontrol/bellycontrol
+        weight: 1
+      - path: rc12/hipcontrol/chestcontrol
+        weight: 1
+      - path: rc12/hipcontrol/chestcontrol/head_Goal
+        weight: 1
+      - path: rc12/hipcontrol/chestcontrol/L_wrist_Goal
+        weight: 1
+      - path: rc12/hipcontrol/chestcontrol/R_wrist_Goal
+        weight: 1
+      - path: rc12/L_arm_Pole
+        weight: 1
+      - path: rc12/L_FOOT
+        weight: 1
+      - path: rc12/L_FOOT/L_ankle_Goal
+        weight: 1
+      - path: rc12/L_FOOT/L_foot_Goal
+        weight: 1
+      - path: rc12/L_leg_Pole
+        weight: 1
+      - path: rc12/mesh
+        weight: 1
+      - path: rc12/mesh/Skin
+        weight: 1
+      - path: rc12/R_arm_Pole
+        weight: 1
+      - path: rc12/R_FOOT
+        weight: 1
+      - path: rc12/R_FOOT/R_ankle_Goal
+        weight: 1
+      - path: rc12/R_FOOT/R_foot_Goal
+        weight: 1
+      - path: rc12/R_leg_Pole
+        weight: 1
+      - path: rc12/Root
+        weight: 1
+      - path: rc12/Root/hips
+        weight: 1
+      - path: rc12/Root/hips/belly
+        weight: 1
+      - path: rc12/Root/hips/belly/chest
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_fingers
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_fingers/L_fingers2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_fingers/L_fingers2/L_fingerstip
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_thumb
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_thumb/L_thumb2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_thumb/L_thumb2/L_thumbtip
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/neck
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/neck/neck2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/neck/neck2/head
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_fingers
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_fingers/R_fingers2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_fingers/R_fingers2/R_fingerstip
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_thumb
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_thumb/R_thumb2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_thumb/R_thumb2/R_thumbtip
+        weight: 1
+      - path: rc12/Root/hips/L_leg
+        weight: 1
+      - path: rc12/Root/hips/L_leg/L_knee
+        weight: 1
+      - path: rc12/Root/hips/L_leg/L_knee/L_ankle
+        weight: 1
+      - path: rc12/Root/hips/L_leg/L_knee/L_ankle/L_foot
+        weight: 1
+      - path: rc12/Root/hips/R_leg
+        weight: 1
+      - path: rc12/Root/hips/R_leg/R_knee
+        weight: 1
+      - path: rc12/Root/hips/R_leg/R_knee/R_ankle
+        weight: 1
+      - path: rc12/Root/hips/R_leg/R_knee/R_ankle/R_foot
+        weight: 1
+      - path: rc12/Root/spinespline
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: RCrun
+      takeName: C4D Animation Take
+      internalID: 0
+      firstFrame: 252
+      lastFrame: 279
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: constraint_R
+        weight: 1
+      - path: constraintL
+        weight: 1
+      - path: rc12
+        weight: 1
+      - path: rc12/hipcontrol
+        weight: 1
+      - path: rc12/hipcontrol/bellycontrol
+        weight: 1
+      - path: rc12/hipcontrol/chestcontrol
+        weight: 1
+      - path: rc12/hipcontrol/chestcontrol/head_Goal
+        weight: 1
+      - path: rc12/hipcontrol/chestcontrol/L_wrist_Goal
+        weight: 1
+      - path: rc12/hipcontrol/chestcontrol/R_wrist_Goal
+        weight: 1
+      - path: rc12/L_arm_Pole
+        weight: 1
+      - path: rc12/L_FOOT
+        weight: 1
+      - path: rc12/L_FOOT/L_ankle_Goal
+        weight: 1
+      - path: rc12/L_FOOT/L_foot_Goal
+        weight: 1
+      - path: rc12/L_leg_Pole
+        weight: 1
+      - path: rc12/mesh
+        weight: 1
+      - path: rc12/mesh/Skin
+        weight: 1
+      - path: rc12/R_arm_Pole
+        weight: 1
+      - path: rc12/R_FOOT
+        weight: 1
+      - path: rc12/R_FOOT/R_ankle_Goal
+        weight: 1
+      - path: rc12/R_FOOT/R_foot_Goal
+        weight: 1
+      - path: rc12/R_leg_Pole
+        weight: 1
+      - path: rc12/Root
+        weight: 1
+      - path: rc12/Root/hips
+        weight: 1
+      - path: rc12/Root/hips/belly
+        weight: 1
+      - path: rc12/Root/hips/belly/chest
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_fingers
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_fingers/L_fingers2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_fingers/L_fingers2/L_fingerstip
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_thumb
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_thumb/L_thumb2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_thumb/L_thumb2/L_thumbtip
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/neck
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/neck/neck2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/neck/neck2/head
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_fingers
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_fingers/R_fingers2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_fingers/R_fingers2/R_fingerstip
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_thumb
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_thumb/R_thumb2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_thumb/R_thumb2/R_thumbtip
+        weight: 1
+      - path: rc12/Root/hips/L_leg
+        weight: 1
+      - path: rc12/Root/hips/L_leg/L_knee
+        weight: 1
+      - path: rc12/Root/hips/L_leg/L_knee/L_ankle
+        weight: 1
+      - path: rc12/Root/hips/L_leg/L_knee/L_ankle/L_foot
+        weight: 1
+      - path: rc12/Root/hips/R_leg
+        weight: 1
+      - path: rc12/Root/hips/R_leg/R_knee
+        weight: 1
+      - path: rc12/Root/hips/R_leg/R_knee/R_ankle
+        weight: 1
+      - path: rc12/Root/hips/R_leg/R_knee/R_ankle/R_foot
+        weight: 1
+      - path: rc12/Root/spinespline
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: RCjump
+      takeName: C4D Animation Take
+      internalID: 0
+      firstFrame: 281
+      lastFrame: 290
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: constraint_R
+        weight: 1
+      - path: constraintL
+        weight: 1
+      - path: rc12
+        weight: 1
+      - path: rc12/hipcontrol
+        weight: 1
+      - path: rc12/hipcontrol/bellycontrol
+        weight: 1
+      - path: rc12/hipcontrol/chestcontrol
+        weight: 1
+      - path: rc12/hipcontrol/chestcontrol/head_Goal
+        weight: 1
+      - path: rc12/hipcontrol/chestcontrol/L_wrist_Goal
+        weight: 1
+      - path: rc12/hipcontrol/chestcontrol/R_wrist_Goal
+        weight: 1
+      - path: rc12/L_arm_Pole
+        weight: 1
+      - path: rc12/L_FOOT
+        weight: 1
+      - path: rc12/L_FOOT/L_ankle_Goal
+        weight: 1
+      - path: rc12/L_FOOT/L_foot_Goal
+        weight: 1
+      - path: rc12/L_leg_Pole
+        weight: 1
+      - path: rc12/mesh
+        weight: 1
+      - path: rc12/mesh/Skin
+        weight: 1
+      - path: rc12/R_arm_Pole
+        weight: 1
+      - path: rc12/R_FOOT
+        weight: 1
+      - path: rc12/R_FOOT/R_ankle_Goal
+        weight: 1
+      - path: rc12/R_FOOT/R_foot_Goal
+        weight: 1
+      - path: rc12/R_leg_Pole
+        weight: 1
+      - path: rc12/Root
+        weight: 1
+      - path: rc12/Root/hips
+        weight: 1
+      - path: rc12/Root/hips/belly
+        weight: 1
+      - path: rc12/Root/hips/belly/chest
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_fingers
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_fingers/L_fingers2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_fingers/L_fingers2/L_fingerstip
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_thumb
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_thumb/L_thumb2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_thumb/L_thumb2/L_thumbtip
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/neck
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/neck/neck2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/neck/neck2/head
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_fingers
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_fingers/R_fingers2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_fingers/R_fingers2/R_fingerstip
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_thumb
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_thumb/R_thumb2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_thumb/R_thumb2/R_thumbtip
+        weight: 1
+      - path: rc12/Root/hips/L_leg
+        weight: 1
+      - path: rc12/Root/hips/L_leg/L_knee
+        weight: 1
+      - path: rc12/Root/hips/L_leg/L_knee/L_ankle
+        weight: 1
+      - path: rc12/Root/hips/L_leg/L_knee/L_ankle/L_foot
+        weight: 1
+      - path: rc12/Root/hips/R_leg
+        weight: 1
+      - path: rc12/Root/hips/R_leg/R_knee
+        weight: 1
+      - path: rc12/Root/hips/R_leg/R_knee/R_ankle
+        weight: 1
+      - path: rc12/Root/hips/R_leg/R_knee/R_ankle/R_foot
+        weight: 1
+      - path: rc12/Root/spinespline
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: RCair
+      takeName: C4D Animation Take
+      internalID: 0
+      firstFrame: 290
+      lastFrame: 309
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: constraint_R
+        weight: 1
+      - path: constraintL
+        weight: 1
+      - path: rc12
+        weight: 1
+      - path: rc12/hipcontrol
+        weight: 1
+      - path: rc12/hipcontrol/bellycontrol
+        weight: 1
+      - path: rc12/hipcontrol/chestcontrol
+        weight: 1
+      - path: rc12/hipcontrol/chestcontrol/head_Goal
+        weight: 1
+      - path: rc12/hipcontrol/chestcontrol/L_wrist_Goal
+        weight: 1
+      - path: rc12/hipcontrol/chestcontrol/R_wrist_Goal
+        weight: 1
+      - path: rc12/L_arm_Pole
+        weight: 1
+      - path: rc12/L_FOOT
+        weight: 1
+      - path: rc12/L_FOOT/L_ankle_Goal
+        weight: 1
+      - path: rc12/L_FOOT/L_foot_Goal
+        weight: 1
+      - path: rc12/L_leg_Pole
+        weight: 1
+      - path: rc12/mesh
+        weight: 1
+      - path: rc12/mesh/Skin
+        weight: 1
+      - path: rc12/R_arm_Pole
+        weight: 1
+      - path: rc12/R_FOOT
+        weight: 1
+      - path: rc12/R_FOOT/R_ankle_Goal
+        weight: 1
+      - path: rc12/R_FOOT/R_foot_Goal
+        weight: 1
+      - path: rc12/R_leg_Pole
+        weight: 1
+      - path: rc12/Root
+        weight: 1
+      - path: rc12/Root/hips
+        weight: 1
+      - path: rc12/Root/hips/belly
+        weight: 1
+      - path: rc12/Root/hips/belly/chest
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_fingers
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_fingers/L_fingers2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_fingers/L_fingers2/L_fingerstip
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_thumb
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_thumb/L_thumb2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_thumb/L_thumb2/L_thumbtip
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/neck
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/neck/neck2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/neck/neck2/head
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_fingers
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_fingers/R_fingers2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_fingers/R_fingers2/R_fingerstip
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_thumb
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_thumb/R_thumb2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_thumb/R_thumb2/R_thumbtip
+        weight: 1
+      - path: rc12/Root/hips/L_leg
+        weight: 1
+      - path: rc12/Root/hips/L_leg/L_knee
+        weight: 1
+      - path: rc12/Root/hips/L_leg/L_knee/L_ankle
+        weight: 1
+      - path: rc12/Root/hips/L_leg/L_knee/L_ankle/L_foot
+        weight: 1
+      - path: rc12/Root/hips/R_leg
+        weight: 1
+      - path: rc12/Root/hips/R_leg/R_knee
+        weight: 1
+      - path: rc12/Root/hips/R_leg/R_knee/R_ankle
+        weight: 1
+      - path: rc12/Root/hips/R_leg/R_knee/R_ankle/R_foot
+        weight: 1
+      - path: rc12/Root/spinespline
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: RCland
+      takeName: C4D Animation Take
+      internalID: 0
+      firstFrame: 311
+      lastFrame: 322
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: constraint_R
+        weight: 1
+      - path: constraintL
+        weight: 1
+      - path: rc12
+        weight: 1
+      - path: rc12/hipcontrol
+        weight: 1
+      - path: rc12/hipcontrol/bellycontrol
+        weight: 1
+      - path: rc12/hipcontrol/chestcontrol
+        weight: 1
+      - path: rc12/hipcontrol/chestcontrol/head_Goal
+        weight: 1
+      - path: rc12/hipcontrol/chestcontrol/L_wrist_Goal
+        weight: 1
+      - path: rc12/hipcontrol/chestcontrol/R_wrist_Goal
+        weight: 1
+      - path: rc12/L_arm_Pole
+        weight: 1
+      - path: rc12/L_FOOT
+        weight: 1
+      - path: rc12/L_FOOT/L_ankle_Goal
+        weight: 1
+      - path: rc12/L_FOOT/L_foot_Goal
+        weight: 1
+      - path: rc12/L_leg_Pole
+        weight: 1
+      - path: rc12/mesh
+        weight: 1
+      - path: rc12/mesh/Skin
+        weight: 1
+      - path: rc12/R_arm_Pole
+        weight: 1
+      - path: rc12/R_FOOT
+        weight: 1
+      - path: rc12/R_FOOT/R_ankle_Goal
+        weight: 1
+      - path: rc12/R_FOOT/R_foot_Goal
+        weight: 1
+      - path: rc12/R_leg_Pole
+        weight: 1
+      - path: rc12/Root
+        weight: 1
+      - path: rc12/Root/hips
+        weight: 1
+      - path: rc12/Root/hips/belly
+        weight: 1
+      - path: rc12/Root/hips/belly/chest
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_fingers
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_fingers/L_fingers2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_fingers/L_fingers2/L_fingerstip
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_thumb
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_thumb/L_thumb2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_thumb/L_thumb2/L_thumbtip
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/neck
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/neck/neck2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/neck/neck2/head
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_fingers
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_fingers/R_fingers2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_fingers/R_fingers2/R_fingerstip
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_thumb
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_thumb/R_thumb2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_thumb/R_thumb2/R_thumbtip
+        weight: 1
+      - path: rc12/Root/hips/L_leg
+        weight: 1
+      - path: rc12/Root/hips/L_leg/L_knee
+        weight: 1
+      - path: rc12/Root/hips/L_leg/L_knee/L_ankle
+        weight: 1
+      - path: rc12/Root/hips/L_leg/L_knee/L_ankle/L_foot
+        weight: 1
+      - path: rc12/Root/hips/R_leg
+        weight: 1
+      - path: rc12/Root/hips/R_leg/R_knee
+        weight: 1
+      - path: rc12/Root/hips/R_leg/R_knee/R_ankle
+        weight: 1
+      - path: rc12/Root/hips/R_leg/R_knee/R_ankle/R_foot
+        weight: 1
+      - path: rc12/Root/spinespline
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: RCattack1
+      takeName: C4D Animation Take
+      internalID: 0
+      firstFrame: 324
+      lastFrame: 350
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: constraint_R
+        weight: 1
+      - path: constraintL
+        weight: 1
+      - path: rc12
+        weight: 1
+      - path: rc12/hipcontrol
+        weight: 1
+      - path: rc12/hipcontrol/bellycontrol
+        weight: 1
+      - path: rc12/hipcontrol/chestcontrol
+        weight: 1
+      - path: rc12/hipcontrol/chestcontrol/head_Goal
+        weight: 1
+      - path: rc12/hipcontrol/chestcontrol/L_wrist_Goal
+        weight: 1
+      - path: rc12/hipcontrol/chestcontrol/R_wrist_Goal
+        weight: 1
+      - path: rc12/L_arm_Pole
+        weight: 1
+      - path: rc12/L_FOOT
+        weight: 1
+      - path: rc12/L_FOOT/L_ankle_Goal
+        weight: 1
+      - path: rc12/L_FOOT/L_foot_Goal
+        weight: 1
+      - path: rc12/L_leg_Pole
+        weight: 1
+      - path: rc12/mesh
+        weight: 1
+      - path: rc12/mesh/Skin
+        weight: 1
+      - path: rc12/R_arm_Pole
+        weight: 1
+      - path: rc12/R_FOOT
+        weight: 1
+      - path: rc12/R_FOOT/R_ankle_Goal
+        weight: 1
+      - path: rc12/R_FOOT/R_foot_Goal
+        weight: 1
+      - path: rc12/R_leg_Pole
+        weight: 1
+      - path: rc12/Root
+        weight: 1
+      - path: rc12/Root/hips
+        weight: 1
+      - path: rc12/Root/hips/belly
+        weight: 1
+      - path: rc12/Root/hips/belly/chest
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_fingers
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_fingers/L_fingers2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_fingers/L_fingers2/L_fingerstip
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_thumb
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_thumb/L_thumb2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_thumb/L_thumb2/L_thumbtip
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/neck
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/neck/neck2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/neck/neck2/head
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_fingers
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_fingers/R_fingers2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_fingers/R_fingers2/R_fingerstip
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_thumb
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_thumb/R_thumb2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_thumb/R_thumb2/R_thumbtip
+        weight: 1
+      - path: rc12/Root/hips/L_leg
+        weight: 1
+      - path: rc12/Root/hips/L_leg/L_knee
+        weight: 1
+      - path: rc12/Root/hips/L_leg/L_knee/L_ankle
+        weight: 1
+      - path: rc12/Root/hips/L_leg/L_knee/L_ankle/L_foot
+        weight: 1
+      - path: rc12/Root/hips/R_leg
+        weight: 1
+      - path: rc12/Root/hips/R_leg/R_knee
+        weight: 1
+      - path: rc12/Root/hips/R_leg/R_knee/R_ankle
+        weight: 1
+      - path: rc12/Root/hips/R_leg/R_knee/R_ankle/R_foot
+        weight: 1
+      - path: rc12/Root/spinespline
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: RCattack2
+      takeName: C4D Animation Take
+      internalID: 0
+      firstFrame: 350
+      lastFrame: 390
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: constraint_R
+        weight: 1
+      - path: constraintL
+        weight: 1
+      - path: rc12
+        weight: 1
+      - path: rc12/hipcontrol
+        weight: 1
+      - path: rc12/hipcontrol/bellycontrol
+        weight: 1
+      - path: rc12/hipcontrol/chestcontrol
+        weight: 1
+      - path: rc12/hipcontrol/chestcontrol/head_Goal
+        weight: 1
+      - path: rc12/hipcontrol/chestcontrol/L_wrist_Goal
+        weight: 1
+      - path: rc12/hipcontrol/chestcontrol/R_wrist_Goal
+        weight: 1
+      - path: rc12/L_arm_Pole
+        weight: 1
+      - path: rc12/L_FOOT
+        weight: 1
+      - path: rc12/L_FOOT/L_ankle_Goal
+        weight: 1
+      - path: rc12/L_FOOT/L_foot_Goal
+        weight: 1
+      - path: rc12/L_leg_Pole
+        weight: 1
+      - path: rc12/mesh
+        weight: 1
+      - path: rc12/mesh/Skin
+        weight: 1
+      - path: rc12/R_arm_Pole
+        weight: 1
+      - path: rc12/R_FOOT
+        weight: 1
+      - path: rc12/R_FOOT/R_ankle_Goal
+        weight: 1
+      - path: rc12/R_FOOT/R_foot_Goal
+        weight: 1
+      - path: rc12/R_leg_Pole
+        weight: 1
+      - path: rc12/Root
+        weight: 1
+      - path: rc12/Root/hips
+        weight: 1
+      - path: rc12/Root/hips/belly
+        weight: 1
+      - path: rc12/Root/hips/belly/chest
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_fingers
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_fingers/L_fingers2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_fingers/L_fingers2/L_fingerstip
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_thumb
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_thumb/L_thumb2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_thumb/L_thumb2/L_thumbtip
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/neck
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/neck/neck2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/neck/neck2/head
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_fingers
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_fingers/R_fingers2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_fingers/R_fingers2/R_fingerstip
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_thumb
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_thumb/R_thumb2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_thumb/R_thumb2/R_thumbtip
+        weight: 1
+      - path: rc12/Root/hips/L_leg
+        weight: 1
+      - path: rc12/Root/hips/L_leg/L_knee
+        weight: 1
+      - path: rc12/Root/hips/L_leg/L_knee/L_ankle
+        weight: 1
+      - path: rc12/Root/hips/L_leg/L_knee/L_ankle/L_foot
+        weight: 1
+      - path: rc12/Root/hips/R_leg
+        weight: 1
+      - path: rc12/Root/hips/R_leg/R_knee
+        weight: 1
+      - path: rc12/Root/hips/R_leg/R_knee/R_ankle
+        weight: 1
+      - path: rc12/Root/hips/R_leg/R_knee/R_ankle/R_foot
+        weight: 1
+      - path: rc12/Root/spinespline
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: RCattack3
+      takeName: C4D Animation Take
+      internalID: 0
+      firstFrame: 390
+      lastFrame: 435
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: constraint_R
+        weight: 1
+      - path: constraintL
+        weight: 1
+      - path: rc12
+        weight: 1
+      - path: rc12/hipcontrol
+        weight: 1
+      - path: rc12/hipcontrol/bellycontrol
+        weight: 1
+      - path: rc12/hipcontrol/chestcontrol
+        weight: 1
+      - path: rc12/hipcontrol/chestcontrol/head_Goal
+        weight: 1
+      - path: rc12/hipcontrol/chestcontrol/L_wrist_Goal
+        weight: 1
+      - path: rc12/hipcontrol/chestcontrol/R_wrist_Goal
+        weight: 1
+      - path: rc12/L_arm_Pole
+        weight: 1
+      - path: rc12/L_FOOT
+        weight: 1
+      - path: rc12/L_FOOT/L_ankle_Goal
+        weight: 1
+      - path: rc12/L_FOOT/L_foot_Goal
+        weight: 1
+      - path: rc12/L_leg_Pole
+        weight: 1
+      - path: rc12/mesh
+        weight: 1
+      - path: rc12/mesh/Skin
+        weight: 1
+      - path: rc12/R_arm_Pole
+        weight: 1
+      - path: rc12/R_FOOT
+        weight: 1
+      - path: rc12/R_FOOT/R_ankle_Goal
+        weight: 1
+      - path: rc12/R_FOOT/R_foot_Goal
+        weight: 1
+      - path: rc12/R_leg_Pole
+        weight: 1
+      - path: rc12/Root
+        weight: 1
+      - path: rc12/Root/hips
+        weight: 1
+      - path: rc12/Root/hips/belly
+        weight: 1
+      - path: rc12/Root/hips/belly/chest
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_fingers
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_fingers/L_fingers2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_fingers/L_fingers2/L_fingerstip
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_thumb
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_thumb/L_thumb2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_thumb/L_thumb2/L_thumbtip
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/neck
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/neck/neck2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/neck/neck2/head
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_fingers
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_fingers/R_fingers2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_fingers/R_fingers2/R_fingerstip
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_thumb
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_thumb/R_thumb2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_thumb/R_thumb2/R_thumbtip
+        weight: 1
+      - path: rc12/Root/hips/L_leg
+        weight: 1
+      - path: rc12/Root/hips/L_leg/L_knee
+        weight: 1
+      - path: rc12/Root/hips/L_leg/L_knee/L_ankle
+        weight: 1
+      - path: rc12/Root/hips/L_leg/L_knee/L_ankle/L_foot
+        weight: 1
+      - path: rc12/Root/hips/R_leg
+        weight: 1
+      - path: rc12/Root/hips/R_leg/R_knee
+        weight: 1
+      - path: rc12/Root/hips/R_leg/R_knee/R_ankle
+        weight: 1
+      - path: rc12/Root/hips/R_leg/R_knee/R_ankle/R_foot
+        weight: 1
+      - path: rc12/Root/spinespline
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: RChit
+      takeName: C4D Animation Take
+      internalID: 0
+      firstFrame: 435
+      lastFrame: 445
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: constraint_R
+        weight: 1
+      - path: constraintL
+        weight: 1
+      - path: rc12
+        weight: 1
+      - path: rc12/hipcontrol
+        weight: 1
+      - path: rc12/hipcontrol/bellycontrol
+        weight: 1
+      - path: rc12/hipcontrol/chestcontrol
+        weight: 1
+      - path: rc12/hipcontrol/chestcontrol/head_Goal
+        weight: 1
+      - path: rc12/hipcontrol/chestcontrol/L_wrist_Goal
+        weight: 1
+      - path: rc12/hipcontrol/chestcontrol/R_wrist_Goal
+        weight: 1
+      - path: rc12/L_arm_Pole
+        weight: 1
+      - path: rc12/L_FOOT
+        weight: 1
+      - path: rc12/L_FOOT/L_ankle_Goal
+        weight: 1
+      - path: rc12/L_FOOT/L_foot_Goal
+        weight: 1
+      - path: rc12/L_leg_Pole
+        weight: 1
+      - path: rc12/mesh
+        weight: 1
+      - path: rc12/mesh/Skin
+        weight: 1
+      - path: rc12/R_arm_Pole
+        weight: 1
+      - path: rc12/R_FOOT
+        weight: 1
+      - path: rc12/R_FOOT/R_ankle_Goal
+        weight: 1
+      - path: rc12/R_FOOT/R_foot_Goal
+        weight: 1
+      - path: rc12/R_leg_Pole
+        weight: 1
+      - path: rc12/Root
+        weight: 1
+      - path: rc12/Root/hips
+        weight: 1
+      - path: rc12/Root/hips/belly
+        weight: 1
+      - path: rc12/Root/hips/belly/chest
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_fingers
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_fingers/L_fingers2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_fingers/L_fingers2/L_fingerstip
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_thumb
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_thumb/L_thumb2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_thumb/L_thumb2/L_thumbtip
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/neck
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/neck/neck2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/neck/neck2/head
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_fingers
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_fingers/R_fingers2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_fingers/R_fingers2/R_fingerstip
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_thumb
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_thumb/R_thumb2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_thumb/R_thumb2/R_thumbtip
+        weight: 1
+      - path: rc12/Root/hips/L_leg
+        weight: 1
+      - path: rc12/Root/hips/L_leg/L_knee
+        weight: 1
+      - path: rc12/Root/hips/L_leg/L_knee/L_ankle
+        weight: 1
+      - path: rc12/Root/hips/L_leg/L_knee/L_ankle/L_foot
+        weight: 1
+      - path: rc12/Root/hips/R_leg
+        weight: 1
+      - path: rc12/Root/hips/R_leg/R_knee
+        weight: 1
+      - path: rc12/Root/hips/R_leg/R_knee/R_ankle
+        weight: 1
+      - path: rc12/Root/hips/R_leg/R_knee/R_ankle/R_foot
+        weight: 1
+      - path: rc12/Root/spinespline
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: RCdead
+      takeName: C4D Animation Take
+      internalID: 0
+      firstFrame: 445
+      lastFrame: 467
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: constraint_R
+        weight: 1
+      - path: constraintL
+        weight: 1
+      - path: rc12
+        weight: 1
+      - path: rc12/hipcontrol
+        weight: 1
+      - path: rc12/hipcontrol/bellycontrol
+        weight: 1
+      - path: rc12/hipcontrol/chestcontrol
+        weight: 1
+      - path: rc12/hipcontrol/chestcontrol/head_Goal
+        weight: 1
+      - path: rc12/hipcontrol/chestcontrol/L_wrist_Goal
+        weight: 1
+      - path: rc12/hipcontrol/chestcontrol/R_wrist_Goal
+        weight: 1
+      - path: rc12/L_arm_Pole
+        weight: 1
+      - path: rc12/L_FOOT
+        weight: 1
+      - path: rc12/L_FOOT/L_ankle_Goal
+        weight: 1
+      - path: rc12/L_FOOT/L_foot_Goal
+        weight: 1
+      - path: rc12/L_leg_Pole
+        weight: 1
+      - path: rc12/mesh
+        weight: 1
+      - path: rc12/mesh/Skin
+        weight: 1
+      - path: rc12/R_arm_Pole
+        weight: 1
+      - path: rc12/R_FOOT
+        weight: 1
+      - path: rc12/R_FOOT/R_ankle_Goal
+        weight: 1
+      - path: rc12/R_FOOT/R_foot_Goal
+        weight: 1
+      - path: rc12/R_leg_Pole
+        weight: 1
+      - path: rc12/Root
+        weight: 1
+      - path: rc12/Root/hips
+        weight: 1
+      - path: rc12/Root/hips/belly
+        weight: 1
+      - path: rc12/Root/hips/belly/chest
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_fingers
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_fingers/L_fingers2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_fingers/L_fingers2/L_fingerstip
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_thumb
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_thumb/L_thumb2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/L_arm/L_arm2/L_arm3/L_elbow/L_wrist/L_thumb/L_thumb2/L_thumbtip
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/neck
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/neck/neck2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/neck/neck2/head
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_fingers
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_fingers/R_fingers2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_fingers/R_fingers2/R_fingerstip
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_thumb
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_thumb/R_thumb2
+        weight: 1
+      - path: rc12/Root/hips/belly/chest/R_arm/R_arm2/R_arm3/R_elbow/R_wrist/R_thumb/R_thumb2/R_thumbtip
+        weight: 1
+      - path: rc12/Root/hips/L_leg
+        weight: 1
+      - path: rc12/Root/hips/L_leg/L_knee
+        weight: 1
+      - path: rc12/Root/hips/L_leg/L_knee/L_ankle
+        weight: 1
+      - path: rc12/Root/hips/L_leg/L_knee/L_ankle/L_foot
+        weight: 1
+      - path: rc12/Root/hips/R_leg
+        weight: 1
+      - path: rc12/Root/hips/R_leg/R_knee
+        weight: 1
+      - path: rc12/Root/hips/R_leg/R_knee/R_ankle
+        weight: 1
+      - path: rc12/Root/hips/R_leg/R_knee/R_ankle/R_foot
+        weight: 1
+      - path: rc12/Root/spinespline
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.01
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 0
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    fileIdsGeneration: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 4
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 0.01
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
