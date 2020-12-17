@@ -5572,6 +5572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3630f7260f196d46ae8e0a87fb6e1a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 2477275729633178279}
   navMesh: {fileID: 221797871409233060}
   health: 3
   attackingRange: 0.5

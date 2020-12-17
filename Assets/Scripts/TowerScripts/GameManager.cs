@@ -331,7 +331,6 @@ public class GameManager : MonoBehaviour
             se = Search(towerShapes, enemy);
             enemy.navMesh.SetDestination(se.point);
             enemy.anim.SetInteger("CommonEnemy", 1);
-            enemy.anim.Play("CommonEnemy", 1);
             if (se.hasPool == 2)
             {
                 SearchAndGo(enemy);

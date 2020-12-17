@@ -100,7 +100,6 @@ public class Enemy : MonoBehaviour
         {
             GameManager.gm.SearchAndGo(this);
             anim.SetInteger("CommonEnemy", 1);
-            anim.Play("CommonEnemy", 1);
         }
     }
 
@@ -111,14 +110,12 @@ public class Enemy : MonoBehaviour
         if (startAttack)
         {
             anim.SetInteger("CommonEnemy", 2);
-            anim.Play("CommonEnemy", 2);
             t.GetComponent<TowerEntity>().TakeDamage(attack);
             startAttack = false;
         }
         else if (!startAttack)
         {
             anim.SetInteger("CommonEnemy", 0);
-            anim.Play("CommonEnemy", 0);
             attackTime += Time.deltaTime;
             if (attackTime >= 1f)
             {
@@ -134,7 +131,6 @@ public class Enemy : MonoBehaviour
         {
             isLock = false;
             anim.SetInteger("CommonEnemy", 0);
-            anim.Play("CommonEnemy", 0);
         }
 
         if (isLock == false)
@@ -142,7 +138,6 @@ public class Enemy : MonoBehaviour
             isLock = true;
             navMesh.SetDestination(defenceTowerEntity.transform.localPosition);
             anim.SetInteger("CommonEnemy", 1);
-            anim.Play("CommonEnemy", 1);
         }
 
     }
