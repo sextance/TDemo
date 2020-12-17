@@ -193,6 +193,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   navEnemy: {fileID: 830439980964298044}
   cube: {fileID: 3121501767113740065}
+  point: {x: 0, y: 0, z: 0}
+  navMesh: {fileID: 830439980964298044}
   health: 10
   attack: 6
   attackingRange: 0.5

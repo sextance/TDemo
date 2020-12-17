@@ -16,11 +16,11 @@ public class Enemy : MonoBehaviour
 
     public Vector3 point;
 
+    public NavMeshAgent navMesh = default;
+
     public float health,
         attack, attackingRange,
         tauntRange, searchRange;
-
-
 
     public EnemyFactory OriginFactory
     {
@@ -41,6 +41,7 @@ public class Enemy : MonoBehaviour
         }
         return true;
     }
+
 
     public void ApplyDamge(float damge)
     {
