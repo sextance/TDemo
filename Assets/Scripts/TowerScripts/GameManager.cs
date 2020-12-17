@@ -194,6 +194,7 @@ public class GameManager : MonoBehaviour
             int lastIndex = towerShapes.Count - 1;
             towerShapes[index] = towerShapes[lastIndex];
             towerShapes.RemoveAt(lastIndex);
+
             //Disable selected outline
             highLightObj.gameObject.SetActive(false);
             selectedObject.GetComponent<MeshRenderer>().material = previousMaterial;
@@ -331,11 +332,10 @@ public class GameManager : MonoBehaviour
             se = Search(towerShapes, enemy);
             enemy.navMesh.SetDestination(se.point);
             enemy.anim.SetInteger("CommonEnemy", 1);
-            if (se.hasPool == 2)
+            if (se.num < 0)
             {
-                SearchAndGo(enemy);
+                return;
             }
-            
         }
     }
 
@@ -406,9 +406,10 @@ public class GameManager : MonoBehaviour
     public VectorAndNum Search(List<TowerShape> pool, Enemy enemy)
     {
         VectorAndNum r = new VectorAndNum();
-        if (pool == null)
+        if (pool.Count == 0)
         {
             r.hasPool = 2;
+            r.num = -1;
             return r;
         }
         float min = 199000;

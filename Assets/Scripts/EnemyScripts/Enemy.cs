@@ -91,16 +91,22 @@ public class Enemy : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         s = GameManager.gm.Search(GameManager.gm.towerShapes, this);
-        TowerShape t = GameManager.gm.towerShapes[s.num];
-        if (t == other.gameObject.GetComponent<TowerShape>())
+        if(s.num < 0)
         {
-            Attack();
+            return;
+        } else {
+            TowerShape t = GameManager.gm.towerShapes[s.num];
+            if (t == other.gameObject.GetComponent<TowerShape>())
+            {
+                Attack();
+            }
+            else if (GameManager.gm.towerShapes[s.num] == null)
+            {
+                GameManager.gm.SearchAndGo(this);
+                anim.SetInteger("CommonEnemy", 1);
+            }
         }
-        else if (GameManager.gm.towerShapes[s.num] == null)
-        {
-            GameManager.gm.SearchAndGo(this);
-            anim.SetInteger("CommonEnemy", 1);
-        }
+        
     }
 
     void Attack()
@@ -133,7 +139,7 @@ public class Enemy : MonoBehaviour
             anim.SetInteger("CommonEnemy", 0);
         }
 
-        if (isLock == false)
+        else if (isLock == false)
         {
             isLock = true;
             navMesh.SetDestination(defenceTowerEntity.transform.localPosition);
