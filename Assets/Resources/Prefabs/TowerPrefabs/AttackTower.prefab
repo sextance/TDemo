@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8274962542276239200}
   - component: {fileID: 774992918120996173}
   - component: {fileID: 687859252437741715}
+  - component: {fileID: -5778851226940964652}
   m_Layer: 8
   m_Name: AttackTower
   m_TagString: Tower
@@ -106,3 +107,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24b0c0671462c0d4890feda2bc0348b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coordinates:
+    x: 0
+    y: 0
+--- !u!114 &-5778851226940964652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6590411380071760560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 235c97d07269c1d4aa2bfa1040a89e36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
+  attackRange: 15
+  projectile: {fileID: 4944574622300218806, guid: a25f7e56bd0c2d743a3d62a0c078ded4,
+    type: 3}

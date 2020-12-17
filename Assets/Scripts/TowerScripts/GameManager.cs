@@ -55,6 +55,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         /* Reserve for Sence logic*/
+        gm = this;
         towerShapes = new List<TowerShape>();
         enemies = new List<Enemy>();
         pickTower = null;

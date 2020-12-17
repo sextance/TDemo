@@ -158,7 +158,6 @@ MonoBehaviour:
   solidificateTower: 115
   destroyTower: 100
   newGameKey: 110
-  point: {x: 0, y: 0, z: 0}
   enemyFactory: {fileID: 11400000, guid: 4019e847249948c4f8f60fea35c2cbfa, type: 2}
   spawnSpeed: 1
   time: 0
