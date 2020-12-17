@@ -8,11 +8,19 @@ public class Enemy : MonoBehaviour
 
     EnemyFactory originFactory;
 
-    public NavMeshAgent navMesh = default;
+    [SerializeField]
+    NavMeshAgent navEnemy = default;
+
+    [SerializeField]
+    Transform cube = default;
+
+    public Vector3 point;
 
     public float health,
         attack, attackingRange,
         tauntRange, searchRange;
+
+
 
     public EnemyFactory OriginFactory
     {
@@ -34,18 +42,14 @@ public class Enemy : MonoBehaviour
         return true;
     }
 
-
-
     public void ApplyDamge(float damge)
     {
-        
-        health -= damge;
-        Debug.Assert(damge > 0, "Wrong Damage!");
         if (health <= 0f)
         {
             OriginFactory.Reclaim(this);
             return;
         }
+        health -= damge;
     }
 
    /* public void SearchTower()
@@ -66,7 +70,27 @@ public class Enemy : MonoBehaviour
        
     }*/
 
-    
+   /* public TowerShape Search(List<TowerShape>[] pools)
+    {
+        TowerShape instance = null;
+        float min = 19900000;
+        float distance = 1000000;
+        for (int i=0; i<=pools.Length; i++)
+        {
+            List<TowerShape> pool = pools[i];
+            for(int j=0; j<=pool.Count; j++)
+            {
+                distance = Vector3.Distance(pool[j].transform.localPosition, this.transform.localPosition);
+                if (distance < min)
+                {
+                    min = distance;
+                    instance = pool[j];
+                }
+
+            }
+        }
+        return instance;
+    }*/
 }
 public enum EnemyType
 {

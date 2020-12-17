@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.AI;
 
 public class GameManager : MonoBehaviour
 {
@@ -31,28 +30,7 @@ public class GameManager : MonoBehaviour
     Material previousMaterial;
     Material selectedMaterial;
 
-    public Vector3 point = default;
-
-    [SerializeField]
-    EnemyFactory enemyFactory = default;
-
-    [SerializeField]
-    float spawnSpeed = 1f;
-
-    [SerializeField]
-    float time = 0f;
-
-    [SerializeField]
-    float enemySpawnSpeed1 = 0f;
-
-    [SerializeField]
-    float enemySpawnSpeed2 = 0f;
-
-    [SerializeField]
-    float timeLimit = 0f;
-
-    EnemyCollections enemies = new EnemyCollections();
-
+    Enemy enemy;
 
     /*Reserve for other objects*/
     void Start()
@@ -80,6 +58,7 @@ public class GameManager : MonoBehaviour
             {
                 CreateTowerShape(0, pickRegion);
                 selectTypeHandler = 0;
+                enemy.Search(TowerShapeFactory.tsf.pools);
             }
             else
                 Debug.Log("No building region selected.");
@@ -90,6 +69,7 @@ public class GameManager : MonoBehaviour
             {
                 CreateTowerShape(1, pickRegion);
                 selectTypeHandler = 0;
+                enemy.Search(TowerShapeFactory.tsf.pools);
             } 
             else
                 Debug.Log("No building region selected.");
@@ -100,6 +80,7 @@ public class GameManager : MonoBehaviour
             {
                 CreateTowerShape(2, pickRegion);
                 selectTypeHandler = 0;
+                enemy.Search(TowerShapeFactory.tsf.pools);
             }
             else
                 Debug.Log("No building region selected.");
@@ -110,6 +91,7 @@ public class GameManager : MonoBehaviour
             {
                 SolidificateTowerShape(pickTower);
                 //selectTypeHandler = 0;
+                enemy.Search(TowerShapeFactory.tsf.pools);
             }
             else
                 Debug.Log("No tower selected.");
@@ -120,6 +102,7 @@ public class GameManager : MonoBehaviour
             {
                 DestroyTowerShape(pickTower);
                 selectTypeHandler = 0;
+                enemy.Search(TowerShapeFactory.tsf.pools);
             }
             else
                 Debug.Log("No tower selected.");
@@ -127,16 +110,6 @@ public class GameManager : MonoBehaviour
         //if ( (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         if (Input.GetMouseButton(0))
             MobilePick();
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            SpawnDpsEnemy();
-        }
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            SpawnTEnemy();
-        }
-        TimeToSpawn();
-        enemies.GameUpdate();
     }
 
     void CreateTowerShape(int towerId, HexCell buildRegion)
@@ -258,112 +231,5 @@ public class GameManager : MonoBehaviour
                 selectedObject = null;
             }
         }
-    }
-
-    void SpawnCommonEnemy(float enemySpawnSpeed)//生成敌人
-    {
-        spawnSpeed += spawnSpeed * Time.deltaTime;
-        while (spawnSpeed >= enemySpawnSpeed)
-        {
-            spawnSpeed -= enemySpawnSpeed;
-            Enemy enemy = enemyFactory.GetEnemy();
-            enemies.Add(enemy);
-            SearchAndGo(enemy);
-            Attack(enemy);
-            
-
-        }
-    }
-
-    void SpawnTEnemy()
-    {
-        TEnemy tEnemy = enemyFactory.GetTEnemy();
-        enemies.Add(tEnemy);
-        SearchAndGo(tEnemy);
-        Attack(tEnemy);
-    }
-
-    void SpawnDpsEnemy()
-    {
-        DpsEnemy dpsEnemy = enemyFactory.GetDpsEnemy();
-        enemies.Add(dpsEnemy);
-        SearchAndGo(dpsEnemy);
-        Attack(dpsEnemy);
-    }
-
-    void SearchAndGo(Enemy enemy)
-    {
-        int count = 0;
-        Search(towerShapes, enemy);
-        while (point == Vector3.zero || point == null)
-        {
-            float searchSpeed = 0f;
-            searchSpeed += searchSpeed * Time.deltaTime;
-            while (searchSpeed >= 1f)
-            {
-                searchSpeed -= 1f;
-                Search(towerShapes, enemy);
-            }
-            if (point != null && point != Vector3.zero ) 
-            {
-                enemy.navMesh.SetDestination(point);
-                return;
-            }
-            count++;
-            if (count >= 5)
-            {
-                return;
-            }
-        }
-        enemy.navMesh.SetDestination(point);
-    }
-
-    void Attack(Enemy enemy)
-    {
-        if (Vector3.Distance(enemy.transform.localPosition, point) < 0.5f)
-        {
-            float attack = 1f;
-            attack += attack * Time.deltaTime;
-            while (attack >= 1f)
-            {
-                attack -= 1f;
-                //Tower血量减少调用；
-                //播放攻击动画
-            }
-        }
-    }
-
-    void TimeToSpawn()//随时间限制改变怪物生成速度
-    {
-        time += Time.deltaTime;
-        SpawnCommonEnemy(enemySpawnSpeed1);
-        if (time > timeLimit)
-        {
-            SpawnCommonEnemy(enemySpawnSpeed2);
-        }
-    }
-
-    void TimeToSpawnAround()//获取边缘地图坐标，批量生成
-    {
-
-    }
-
-    public Vector3 Search(List<TowerShape> pool, Enemy enemy)
-    {
-        float min = 199000;
-        float distance = 1000;
-        Vector3 v3 = new Vector3();
-        for (int i = 0; i < pool.Count; i++)
-        {
-            distance = Vector3.Distance(pool[i].transform.localPosition, enemy.transform.localPosition);
-            if (distance < min)
-            {
-                min = distance;
-                v3 = pool[i].transform.localPosition;
-            }
-
-        }
-        point = v3;
-        return point;
     }
 }
