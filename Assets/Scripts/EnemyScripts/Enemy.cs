@@ -8,13 +8,6 @@ public class Enemy : MonoBehaviour
 
     EnemyFactory originFactory;
 
-    [SerializeField]
-    NavMeshAgent navEnemy = default;
-
-    [SerializeField]
-    Transform cube = default;
-
-    public Vector3 point;
 
     public NavMeshAgent navMesh = default;
 
@@ -45,12 +38,12 @@ public class Enemy : MonoBehaviour
 
     public void ApplyDamge(float damge)
     {
+        health -= damge;
         if (health <= 0f)
         {
             OriginFactory.Reclaim(this);
             return;
         }
-        health -= damge;
     }
 
    /* public void SearchTower()

@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public KeyCode newGameKey = KeyCode.N;
 
     List<TowerShape> towerShapes;
+    List<Enemy> enemies;
 
     int selectTypeHandler; // 0 - non, 1 - tower...
     TowerShape pickTower;
@@ -29,9 +30,6 @@ public class GameManager : MonoBehaviour
     Transform highLightObj;
     Material previousMaterial;
     Material selectedMaterial;
-
-
-    public Vector3 point = default;
 
     [SerializeField]
     EnemyFactory enemyFactory = default;
@@ -51,13 +49,14 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     float timeLimit = 0f;
 
-    EnemyCollections enemies = new EnemyCollections();
+    
 
     /*Reserve for other objects*/
     void Start()
     {
         /* Reserve for Sence logic*/
         towerShapes = new List<TowerShape>();
+        enemies = new List<Enemy>();
         pickTower = null;
         pickRegion = null;
         selectTypeHandler = 0;
@@ -119,6 +118,11 @@ public class GameManager : MonoBehaviour
             {
                 DestroyTowerShape(pickTower);
                 selectTypeHandler = 0;
+                for(int i = 0; i < enemies.Count; i++)
+                {
+                    SearchAndGo(enemies[i]);
+                }
+                
             }
             else
                 Debug.Log("No tower selected.");
@@ -136,14 +140,14 @@ public class GameManager : MonoBehaviour
             SpawnTEnemy();
         }
         TimeToSpawn();
-        enemies.GameUpdate();
+        GameUpdate();
     }
 
     void CreateTowerShape(int towerId, HexCell buildRegion)
     {
         TowerShape instance = towerShapeFactory.Get(towerId, towerId);
         Transform t = instance.transform;
-        Vector3 buildPosition = HexCoordinates.FromCooradiante(buildRegion.coordinates);
+        Vector3 buildPosition = HexCoordinates.FromCoordinate(buildRegion.coordinates);
 
         //Move the root of prefabs to ground
         instance.coordinates = buildRegion.coordinates;
@@ -153,6 +157,7 @@ public class GameManager : MonoBehaviour
 
         buildRegion.available = false;
         towerShapes.Add(instance);
+
     }
 
     void DestroyTowerShape(TowerShape pickTower)
@@ -225,7 +230,7 @@ public class GameManager : MonoBehaviour
                 pickRegion = hit.collider.GetComponent<HexCell>();
                 if (pickRegion.available == true)
                 {
-                    //buildPosition = HexCoordinates.FromCooradiante(instance.coordinates);
+                    //buildPosition = HexCoordinates.FromCoordinate(instance.coordinates);
                     Debug.Log("hit: map");
                     selectTypeHandler = 2;
                     if(!selectedObject || selectedObject.name != hit.transform.name)
@@ -293,32 +298,16 @@ public class GameManager : MonoBehaviour
 
     void SearchAndGo(Enemy enemy)
     {
-        int count = 0;
-        Search(towerShapes, enemy);
-        while (point == Vector3.zero || point == null)
-        {
-            float searchSpeed = 0f;
-            searchSpeed += searchSpeed * Time.deltaTime;
-            while (searchSpeed >= 1f)
-            {
-                searchSpeed -= 1f;
-                Search(towerShapes, enemy);
-            }
-            if (point != null && point != Vector3.zero)
-            {
-                break;
-            }
-            count++;
-            if (count >= 5)
-            {
-                return;
-            }
-        }
+        Vector3 point;
+        point = Search(towerShapes, enemy);
         enemy.navMesh.SetDestination(point);
+        Debug.Assert(point != null, "Without point");
     }
 
     void Attack(Enemy enemy)
     {
+        Vector3 point;
+        point = Search(towerShapes,enemy);
         if (Vector3.Distance(enemy.transform.localPosition, point) < 0.5f)
         {
             float attack = 1f;
@@ -326,7 +315,7 @@ public class GameManager : MonoBehaviour
             while (attack >= 1f)
             {
                 attack -= 1f;
-                //Tower血量减少调用；
+                //TakeDamage(enemy.attack);
                 //播放攻击动画
             }
         }
@@ -344,11 +333,44 @@ public class GameManager : MonoBehaviour
 
     void TimeToSpawnAround()//获取边缘地图坐标，批量生成
     {
-
+        
     }
+
+    /*void OnceToCreateAround()
+    {
+        HexCoordinates[] edge;
+        edge = new HexCoordinates[36];
+        int count = 0;
+        for (int i = 0; i < 12; i++)
+        {
+            for (int j = 0; j < 8; j++)
+            {
+                if (i == 0 || i == 11)
+                {
+                    edge[count++] = new HexCoordinates(i, j);
+                }
+                else if (j == 0 || j == 7)
+                {
+                    edge[count++] = new HexCoordinates(i, j);
+                }
+            }
+        }
+
+        HexCoordinates spawnCoordinates;
+        for (int i = 0; i < 36; i++)
+        {
+            spawnCoordinates = edge[i];
+            Vector3 spawnPosition = HexCoordinates.FromCoordinate(spawnCoordinates);
+            Enemy enemy = enemyFactory.GetEnemy();
+            enemies.Add(enemy);
+            SearchAndGo(enemy);
+            Attack(enemy);
+        }
+    }*/
 
     public Vector3 Search(List<TowerShape> pool, Enemy enemy)
     {
+        Vector3 point;
         float min = 199000;
         float distance = 1000;
         Vector3 v3 = new Vector3();
@@ -360,9 +382,27 @@ public class GameManager : MonoBehaviour
                 min = distance;
                 v3 = pool[i].transform.localPosition;
             }
-
         }
         point = v3;
         return point;
+    }
+
+    public void Add(Enemy enemy)
+    {
+        enemies.Add(enemy);
+    }
+
+    public void GameUpdate()
+    {
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            if (!enemies[i].GameUpdate())
+            {
+                int last = enemies.Count - 1;
+                enemies[i] = enemies[last];
+                enemies.RemoveAt(last);
+                i -= 1;
+            }
+        }
     }
 }

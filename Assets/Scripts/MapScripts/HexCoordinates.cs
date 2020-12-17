@@ -61,7 +61,7 @@ public struct HexCoordinates
 		return new HexCoordinates(iX, iY);
 	}
 
-	public static Vector3 FromCooradiante(HexCoordinates coordinates)
+	public static Vector3 FromCoordinate(HexCoordinates coordinates)
 	{
 		Vector3 position;
 		position.x = (coordinates.x + coordinates.y * 0.5f - coordinates.y / 2) * (HexMetrics.innerRadius * 2f);
@@ -70,4 +70,5 @@ public struct HexCoordinates
 
 		return position;
 	}
+
 }
