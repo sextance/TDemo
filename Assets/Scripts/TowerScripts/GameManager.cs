@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
     //private Animator anim;
 
     /*Game Datas*/
-    int money;
+    public int money;
 
     /*Reserve for other objects*/
     void Start()

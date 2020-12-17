@@ -9,15 +9,17 @@ public class AttackTowerEntity : TowerEntity
 
     public Projectile projectile;
 
+    int damage;
     float coolDownTime;
     bool isCoolDownTime;
     bool isEnemyLocked;
 
     Enemy lockTarget;
 
-    // Start is called before the first frame update
     void OnEnable()
     {
+        base.OnEnable();
+        damage = 1;
         health = 10;
         isCoolDownTime = false;
         isEnemyLocked = false;
@@ -25,15 +27,25 @@ public class AttackTowerEntity : TowerEntity
         lockTarget = null;
     }
 
+    void FixedUpdate()
+    {
+        base.FixedUpdate();
+        if (!isEnemyLocked)
+            AcquireTargetEnemy();
+        else
+            CheckLockEnemyState();
+    }
+
     // Update is called once per frame
     void Update()
     {
+        base.Update();
         if (isEnemyLocked)
         {
             if (!isCoolDownTime)
             {
                 Projectile instance = ProjectileFactory.pf.Get();
-                //Projectile instance = Instantiate(projectile);
+                instance.damage = this.damage;
                 instance.targetEnemy = lockTarget;
                 Transform t = instance.transform;
                 t.localPosition = this.transform.localPosition + Vector3.up * 10.0f;
@@ -49,21 +61,25 @@ public class AttackTowerEntity : TowerEntity
         }
     }
 
-    void FixedUpdate()
-    {
-        if (!isEnemyLocked)
-            AcquireTargetEnemy();
-        else
-            CheckLockEnemyState();
-    }
-
     // Seek Enemy
     void AcquireTargetEnemy()
     {
         Collider[] targets = Physics.OverlapSphere(transform.localPosition, attackRange, LayerMask.GetMask("Enemy"));
         if(targets.Length > 0)
         {
-            lockTarget = targets[0].GetComponentInParent<Enemy>();
+            float minDistance = float.MaxValue;
+            float distance = 0;
+            foreach(Collider collider in targets)
+            {
+                distance = Vector3.Distance(this.transform.localPosition, collider.gameObject.transform.localPosition);
+                if ( distance <= minDistance)
+                {
+                    minDistance = distance;
+                    lockTarget = collider.GetComponentInParent<Enemy>();
+                }
+            }
+
+            //lockTarget = targets[0].GetComponentInParent<Enemy>();
             if (lockTarget == null)
                 Debug.LogError("Error locking!");
             isEnemyLocked = true;
@@ -78,12 +94,29 @@ public class AttackTowerEntity : TowerEntity
         {
             isEnemyLocked = false;
             lockTarget = null;
-        } 
+        }
+    }
+
+    public override bool Solidification()
+    {
+        bool allowance = base.Solidification();
+        if (allowance)
+        {
+            if (GameManager.gm.money < 10)
+            {
+                allowance = false;
+                Debug.Log("Not enought money!");
+            } else {
+                damage = damage * 3;
+                attackRange = attackRange * 4;
+            }
+        }
+        return allowance;
     }
 
     void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.yellow;
+        Gizmos.color = Color.red;
         Vector3 position = transform.localPosition;
         position.y += 0.1f;
         Gizmos.DrawWireSphere(position, attackRange);

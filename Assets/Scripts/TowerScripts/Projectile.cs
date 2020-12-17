@@ -6,7 +6,7 @@ public class Projectile : MonoBehaviour
 {
     public Enemy targetEnemy;
 
-    int damage = 1;
+    public int damage = 1;
 
     int shapeId = int.MinValue; //Default value
     public int ShapeId
