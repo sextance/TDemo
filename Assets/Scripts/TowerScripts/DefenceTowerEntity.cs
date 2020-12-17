@@ -30,6 +30,18 @@ public class DefenceTowerEntity : TowerEntity
     void OnTriggerEnter(Collider other)
     {
         Collider[] targets = Physics.OverlapSphere(transform.localPosition, tauntRange, LayerMask.GetMask("Enemy"));
+        if (targets.Length > 0)
+        {
+            Enemy t;
+            foreach (Collider collider in targets)
+            {
+                t = collider.gameObject.GetComponent<Enemy>();
+                if (t == null)
+                    break;
+                else
+                { /*t.ForceAttack(this); */}
+            }
+         }
     }
     void TauntEnemy()
     {

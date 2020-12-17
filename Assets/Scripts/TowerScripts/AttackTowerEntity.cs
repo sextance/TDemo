@@ -5,12 +5,14 @@ using UnityEngine;
 public class AttackTowerEntity : TowerEntity
 {
     //ATK range = 3
-    public float attackRange = 10.0f;
+    public float attackRange = 20.0f;
 
     public Projectile projectile;
 
     int damage;
+  
     float coolDownTime;
+    bool isTauted;
     bool isCoolDownTime;
     bool isEnemyLocked;
 
@@ -21,6 +23,7 @@ public class AttackTowerEntity : TowerEntity
         base.OnEnable();
         damage = 1;
         health = 10;
+        isTauted = false;
         isCoolDownTime = false;
         isEnemyLocked = false;
         coolDownTime = 1.0f;
@@ -94,6 +97,8 @@ public class AttackTowerEntity : TowerEntity
         {
             isEnemyLocked = false;
             lockTarget = null;
+            if (isTauted == true)
+                isTauted = false;
         }
     }
 
@@ -108,12 +113,22 @@ public class AttackTowerEntity : TowerEntity
                 Debug.Log("Not enought money!");
             } else {
                 damage = damage * 3;
-                attackRange = attackRange * 4;
+                attackRange = attackRange * 2;
             }
         }
         return allowance;
     }
 
+    public void BeTaunted(TEnemy enemy)
+    {
+        if(isTauted == false)
+        {
+            isTauted = true;
+            isEnemyLocked = true;
+            lockTarget = enemy;
+        }
+        
+    }
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;

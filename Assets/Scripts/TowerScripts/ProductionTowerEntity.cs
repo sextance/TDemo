@@ -5,6 +5,7 @@ using UnityEngine;
 public class ProductionTowerEntity : TowerEntity
 {
     int production;
+    float powerRange = 10.0f;
 
     float coolDownTime;
     bool isCoolDownTime;
@@ -39,7 +40,8 @@ public class ProductionTowerEntity : TowerEntity
     public override bool Solidification()
     {
         bool allowance = base.Solidification();
-        if (allowance) {
+        if (allowance) 
+        {
             if(GameManager.gm.money < 10)
             {
                 allowance = false;
@@ -50,6 +52,14 @@ public class ProductionTowerEntity : TowerEntity
             }
         }
         return allowance;
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Vector3 position = transform.localPosition;
+        position.y += 0.1f;
+        Gizmos.DrawWireSphere(position, powerRange);
     }
 
 }
