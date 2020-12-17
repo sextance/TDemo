@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e55432a496d0b4f4884b1b634952e1b7, type: 3}
   m_Name: Enemy Factory
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 6617757351931125104, guid: f53271185c204da4e881e3fe482fd229,
+  enemyPrefab: {fileID: 915368727127017279, guid: fcf631c409e6552469d21b102f5c5dfb,
     type: 3}
   tEnemyPrefab: {fileID: 6056445321265174001, guid: da1c1ae815cafad4fb393b4ec0f313bc,
     type: 3}

@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Projectile Factory
   m_EditorClassIdentifier: 
   prefabs:
-  - {fileID: 4944574622300218806, guid: 6b74e41ed20260c4986ec3b7e950cb8c, type: 3}
+  - {fileID: 4944574622300218806, guid: a25f7e56bd0c2d743a3d62a0c078ded4, type: 3}
+  recycle: 1

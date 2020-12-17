@@ -32,8 +32,8 @@ public class AttackTowerEntity : TowerEntity
         {
             if (!isCoolDownTime)
             {
-                //Projectile instance = ProjectileFactory.pf.Get();
-                Projectile instance = Instantiate(projectile);
+                Projectile instance = ProjectileFactory.pf.Get();
+                //Projectile instance = Instantiate(projectile);
                 instance.targetEnemy = lockTarget;
                 Transform t = instance.transform;
                 t.localPosition = this.transform.localPosition + Vector3.up * 10.0f;
@@ -73,8 +73,8 @@ public class AttackTowerEntity : TowerEntity
     void CheckLockEnemyState()
     {
         //Enemy move out of range or died (set as inactive)
-        if (Vector3.Distance(lockTarget.transform.localPosition, this.transform.localPosition) >= attackRange 
-            || lockTarget.gameObject.activeSelf == false )
+        if (lockTarget == null || 
+            Vector3.Distance(lockTarget.transform.localPosition, this.transform.localPosition) >= attackRange )
         {
             isEnemyLocked = false;
             lockTarget = null;

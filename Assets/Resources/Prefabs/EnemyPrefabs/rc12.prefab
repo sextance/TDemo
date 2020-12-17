@@ -5517,6 +5517,7 @@ GameObject:
   - component: {fileID: 2477275729633178279}
   - component: {fileID: 915368727127017279}
   - component: {fileID: 221797871409233060}
+  - component: {fileID: 4171345541049237866}
   m_Layer: 9
   m_Name: rc12
   m_TagString: Enemy
@@ -5531,14 +5532,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2477275729640423731}
-  m_LocalRotation: {x: 0.0644452, y: -0.82361937, z: -0.5561228, w: 0.09069427}
-  m_LocalPosition: {x: 103.04, y: 128.31, z: 42.79}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 2477275729640660245}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -64.740005, y: -148.798, z: -29.022001}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &2477275729633178279
 Animator:
   serializedVersion: 3
@@ -5598,6 +5599,20 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 0
+--- !u!136 &4171345541049237866
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2477275729640423731}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 3.4
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.7, z: 0}
 --- !u!1 &2477275729640423733
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,9 +13,9 @@ public class ProjectileFactory : ScriptableObject
     bool recycle;
     List<Projectile>[] pools;
 
-    int serialNumber;
+     static int serialNumber;
 
-    void Awake()
+    void OnEnable()
     {
         pf = this;
         recycle = true;

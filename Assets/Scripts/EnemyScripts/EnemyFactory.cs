@@ -40,7 +40,7 @@ public class EnemyFactory : ScriptableObject
 
     public void Reclaim(Enemy enemy)
     {
-        Debug.Assert(enemy == this, "Wrong Factory Reclaimed!");
+        //Debug.Assert(enemy == this, "Wrong Factory Reclaimed!");
         Destroy(enemy.gameObject);
     }
 

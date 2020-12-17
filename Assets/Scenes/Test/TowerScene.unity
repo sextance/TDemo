@@ -152,13 +152,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapManager: {fileID: 2126979422}
   towerShapeFactory: {fileID: 11400000, guid: c4642ff5ed8c423408f81d46f7751b6a, type: 2}
+  projectileFactory: {fileID: 11400000, guid: 27f83782d606502478a7b1677e4ba41d, type: 2}
+  enemyFactory: {fileID: 11400000, guid: 4019e847249948c4f8f60fea35c2cbfa, type: 2}
   createAttackTower: 122
   createDefenseTower: 120
   createProductionTower: 99
   solidificateTower: 115
   destroyTower: 100
   newGameKey: 110
-  enemyFactory: {fileID: 11400000, guid: 4019e847249948c4f8f60fea35c2cbfa, type: 2}
   spawnSpeed: 1
   time: 0
   enemySpawnSpeed1: 10

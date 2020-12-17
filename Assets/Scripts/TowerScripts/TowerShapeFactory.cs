@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu]
 public class TowerShapeFactory : ScriptableObject
 {
-    public static TowerShapeFactory tsf;
+    static TowerShapeFactory tsf;
 
     [SerializeField]
     TowerShape[] prefabs;
@@ -20,7 +20,7 @@ public class TowerShapeFactory : ScriptableObject
 
     public List<TowerShape>[] pools;
 
-    int serialNumber;
+    static int serialNumber;
 
    // Scene poolScene;
 

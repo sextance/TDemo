@@ -45,10 +45,10 @@ public class Projectile : MonoBehaviour
         targetEnemy = null;
         shapeId = 0;
         delayDeadTime = 0.5f;
-        speed = 10.0f;
+        speed = 20.0f;
         startTimer = false;
         reachTarget = false;
-        collider = GetComponent<Collider>();
+        collider = GetComponent<SphereCollider>();
     }
     // Start is called before the first frame update
     void Start()

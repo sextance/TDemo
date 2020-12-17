@@ -6,10 +6,13 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     static public GameManager gm; //Only one game manager instance is allowance
-    public MapManager mapManager;
 
     /*public ServerMsg... serverMsg.....*/
+    /*Object Factory*/
+    public MapManager mapManager;
     public TowerShapeFactory towerShapeFactory;
+    public ProjectileFactory projectileFactory;
+    public EnemyFactory enemyFactory = default;
 
     //KeyCode to call event
     public KeyCode createAttackTower = KeyCode.Z;
@@ -31,8 +34,6 @@ public class GameManager : MonoBehaviour
     Material previousMaterial;
     Material selectedMaterial;
 
-    [SerializeField]
-    EnemyFactory enemyFactory = default;
 
     [SerializeField]
     float spawnSpeed = 1f;
@@ -49,7 +50,10 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     float timeLimit = 0f;
 
-    private Animator anim;
+    //private Animator anim;
+
+    /*Game Datas*/
+    int money;
 
     /*Reserve for other objects*/
     void Start()
@@ -69,7 +73,8 @@ public class GameManager : MonoBehaviour
         highLightObj.gameObject.SetActive(false);
         selectedMaterial = Resources.Load<Material>("Materials/MapMaterials/Glow");
 
-        anim = GetComponent<Animator>();
+        /*Game Data*/
+        money = 15; //start money for player
     }
 
     // Update is called once per frame
@@ -322,25 +327,6 @@ public class GameManager : MonoBehaviour
         Vector3 point;
         point = Search(towerShapes, enemy);
         enemy.navMesh.SetDestination(point);
-        WalkAndAttackAnim(enemy);
-        Debug.Assert(point != null, "Without point");
-    }
-
-    void WalkAndAttackAnim(Enemy enemy)
-    {
-        float distance = Vector3.Distance(Search(towerShapes, enemy),enemy.transform.localPosition);
-        if (distance > 1f)
-        {
-            anim.SetInteger("state", 1);
-        }
-        if(distance > 0f && distance <= 1f)
-        {
-            anim.SetInteger("state", 2);
-        }
-        if(distance <= 0f)
-        {
-            anim.SetInteger("state", 0);
-        }
     }
 
     void Attack(Enemy enemy)
