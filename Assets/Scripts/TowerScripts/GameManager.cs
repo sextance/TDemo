@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     float timeLimit = 0f;
 
-    
+    private Animator anim;
 
     /*Reserve for other objects*/
     void Start()
@@ -67,6 +67,8 @@ public class GameManager : MonoBehaviour
         highLightObj.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Materials/MapMaterials/Silhouette");
         highLightObj.gameObject.SetActive(false);
         selectedMaterial = Resources.Load<Material>("Materials/MapMaterials/Glow");
+
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -78,6 +80,10 @@ public class GameManager : MonoBehaviour
             {
                 CreateTowerShape(0, pickRegion);
                 selectTypeHandler = 0;
+                for (int i = 0; i < enemies.Count; i++)
+                {
+                    SearchAndGo(enemies[i]);
+                }
             }
             else
                 Debug.Log("No building region selected.");
@@ -88,6 +94,10 @@ public class GameManager : MonoBehaviour
             {
                 CreateTowerShape(1, pickRegion);
                 selectTypeHandler = 0;
+                for (int i = 0; i < enemies.Count; i++)
+                {
+                    SearchAndGo(enemies[i]);
+                }
             } 
             else
                 Debug.Log("No building region selected.");
@@ -98,6 +108,10 @@ public class GameManager : MonoBehaviour
             {
                 CreateTowerShape(2, pickRegion);
                 selectTypeHandler = 0;
+                for (int i = 0; i < enemies.Count; i++)
+                {
+                    SearchAndGo(enemies[i]);
+                }
             }
             else
                 Debug.Log("No building region selected.");
@@ -301,7 +315,25 @@ public class GameManager : MonoBehaviour
         Vector3 point;
         point = Search(towerShapes, enemy);
         enemy.navMesh.SetDestination(point);
+        WalkAndAttackAnim(enemy);
         Debug.Assert(point != null, "Without point");
+    }
+
+    void WalkAndAttackAnim(Enemy enemy)
+    {
+        float distance = Vector3.Distance(Search(towerShapes, enemy),enemy.transform.localPosition);
+        if (distance > 1f)
+        {
+            anim.SetInteger("state", 1);
+        }
+        if(distance > 0f && distance <= 1f)
+        {
+            anim.SetInteger("state", 2);
+        }
+        if(distance <= 0f)
+        {
+            anim.SetInteger("state", 0);
+        }
     }
 
     void Attack(Enemy enemy)
@@ -310,13 +342,13 @@ public class GameManager : MonoBehaviour
         point = Search(towerShapes,enemy);
         if (Vector3.Distance(enemy.transform.localPosition, point) < 0.5f)
         {
+            enemy.gameObject.GetComponent<Animator>().SetBool("walk", false);
             float attack = 1f;
             attack += attack * Time.deltaTime;
             while (attack >= 1f)
             {
                 attack -= 1f;
                 //TakeDamage(enemy.attack);
-                //播放攻击动画
             }
         }
     }
@@ -333,10 +365,21 @@ public class GameManager : MonoBehaviour
 
     void TimeToSpawnAround()//获取边缘地图坐标，批量生成
     {
-        
+        if(time > 120f)
+        {
+            OnceToCreateAround();
+        }
+        else if(time > 300f)
+        {
+            OnceToCreateAround();
+        }
+        else if(time > 480f)
+        {
+            OnceToCreateAround();
+        }
     }
 
-    /*void OnceToCreateAround()
+    void OnceToCreateAround()
     {
         HexCoordinates[] edge;
         edge = new HexCoordinates[36];
@@ -366,7 +409,7 @@ public class GameManager : MonoBehaviour
             SearchAndGo(enemy);
             Attack(enemy);
         }
-    }*/
+    }
 
     public Vector3 Search(List<TowerShape> pool, Enemy enemy)
     {

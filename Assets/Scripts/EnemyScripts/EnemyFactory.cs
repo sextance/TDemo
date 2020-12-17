@@ -16,7 +16,7 @@ public class EnemyFactory : ScriptableObject
 
     public Enemy GetEnemy()
     {
-        Vector3 Position = new Vector3(Random.Range(-2f, 2f), 0f, Random.Range(-2f, 2f));
+        Vector3 Position = new Vector3(Random.Range(-20f, 20f), 0f, Random.Range(-20f, 20f));
         Enemy instance = Instantiate(enemyPrefab,Position,Quaternion.identity);
         instance.OriginFactory = this;
         return instance;
@@ -24,7 +24,7 @@ public class EnemyFactory : ScriptableObject
 
     public TEnemy GetTEnemy()
     {
-        Vector3 Position = new Vector3(Random.Range(-2f, 2f), 0f, Random.Range(-2f, 2f));
+        Vector3 Position = new Vector3(Random.Range(-20f, 20f), 0f, Random.Range(-20f, 20f));
         TEnemy instance = Instantiate(tEnemyPrefab, Position, Quaternion.identity);
         instance.OriginFactory = this;
         return instance;
@@ -32,7 +32,7 @@ public class EnemyFactory : ScriptableObject
 
     public DpsEnemy GetDpsEnemy()
     {
-        Vector3 Position = new Vector3(Random.Range(-2f, 2f), 0f, Random.Range(-2f, 2f));
+        Vector3 Position = new Vector3(Random.Range(-20f, 20f), 0f, Random.Range(-20f, 20f));
         DpsEnemy instance = Instantiate(dpsEnemyPrefab, Position, Quaternion.identity);
         instance.OriginFactory = this;
         return instance;
