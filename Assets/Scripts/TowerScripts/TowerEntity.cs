@@ -48,7 +48,7 @@ public class TowerEntity : MonoBehaviour
             {
                 /*Reserve for animation*/
             }
-            GameManager.gm.towerShapeFactory.Reclaim(this.gameObject.GetComponent<TowerShape>());
+            GameManager.gm.DestroyTowerShape(this.gameObject.GetComponent<TowerShape>());
             for (int i = 0; i < GameManager.gm.enemies.Count; i++)
             {
                 GameManager.gm.SearchAndGo(GameManager.gm.enemies[i]);

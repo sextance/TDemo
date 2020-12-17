@@ -181,7 +181,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    void DestroyTowerShape(TowerShape pickTower)
+    public void DestroyTowerShape(TowerShape pickTower)
     {
         if (towerShapes.Count > 0)
         {
