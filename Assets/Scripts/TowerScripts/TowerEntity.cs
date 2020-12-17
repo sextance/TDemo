@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TowerEntity : TowerShape
+public class TowerEntity : MonoBehaviour
 {
     public int health;
 
-    public int state; // 0 alive, 1 solidificate, 2 dismantle, 3 shatter
+    int state; // 0 alive, 1 solidificate, 2 dismantle, 3 shatter
     // Start is called before the first frame update
     void Start()
     {
@@ -18,12 +18,16 @@ public class TowerEntity : TowerShape
     {
         if( health <= 0)
         {
-            if (state == 2)
+            if (state == 2) // be dismantled by player
+            {
                 /*Reserve for animation*/
-                GameManager.gm.towerShapeFactory.Reclaim(this);
-            if (state == 3)
+            }
+            if (state == 3) // be shattered by enemy
+            {
                 /*Reserve for animation*/
-                GameManager.gm.towerShapeFactory.Reclaim(this);
+            }
+            GameManager.gm.towerShapeFactory.Reclaim(this.gameObject.GetComponent<TowerShape>());
+           
         }
     }
 
@@ -37,12 +41,11 @@ public class TowerEntity : TowerShape
         }
     }
 
-    public void ShatterTower(int damage)
+    public void DismantleTower(int damage)
     {
         health = 0;
         state = 3;
         /*Reseve for audio*/
-
     }
 
 }

@@ -7,6 +7,7 @@ using UnityEngine;
 public class TowerShapeFactory : ScriptableObject
 {
     public static TowerShapeFactory tsf;
+
     [SerializeField]
     TowerShape[] prefabs;
 
@@ -85,6 +86,7 @@ public class TowerShapeFactory : ScriptableObject
     // Start is called before the first frame update
     void Awake()
     {
+        tsf = this;
         recycle = true;
         serialNumber = 0;
     }

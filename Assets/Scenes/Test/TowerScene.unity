@@ -158,7 +158,6 @@ MonoBehaviour:
   solidificateTower: 115
   destroyTower: 100
   newGameKey: 110
-  point: {x: 0, y: 0, z: 0}
   enemyFactory: {fileID: 11400000, guid: 4019e847249948c4f8f60fea35c2cbfa, type: 2}
   spawnSpeed: 1
   time: 0
@@ -481,6 +480,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4783371021245947214, guid: 9a365ee7448252343910e3a4b54f4887,
+        type: 3}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8274002131920225339, guid: 9a365ee7448252343910e3a4b54f4887,
+        type: 3}
+      propertyPath: cellPrefab
+      value: 
+      objectReference: {fileID: 1218531839394514218, guid: b2ec387ecaeca9943b1d4687e1df299b,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a365ee7448252343910e3a4b54f4887, type: 3}
 --- !u!114 &1195674566 stripped
@@ -571,13 +581,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1832072656}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 103.03562, y: 134.9, z: 43.7}
+  m_LocalRotation: {x: 0.60876137, y: 0, z: 0, w: 0.7933534}
+  m_LocalPosition: {x: 100, y: 150, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 75, y: 0, z: 0}
 --- !u!114 &2126979422 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5049550485582752292, guid: 6b73ebc6ab29b9d48b2413e6d88ae0a9,
