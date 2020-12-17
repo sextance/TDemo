@@ -37,7 +37,8 @@ namespace BaseFramework.Network
             ucl = NetClient.GetInstance("logic");
             if (ucl.Login(ServerIP, ServerPort, LoginInputAccount.text))
             {
-                switchScene("GameNode");
+                //switchScene("GameNode");
+                switchScene("StartScene");
             }
             else
             {

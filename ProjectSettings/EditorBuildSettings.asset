@@ -23,4 +23,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Test/TowerScene.unity
     guid: 91155c4496771d64f8a9f67ddf4a56bc
+  - enabled: 1
+    path: Assets/Scenes/Test/EndScene.unity
+    guid: ce0a045b4a83efe4fb55d9cde0ba066c
+  - enabled: 1
+    path: Assets/Scenes/Test/BattleScene.unity
+    guid: 292cc2256535e42489d587f2f7b6600e
   m_configObjects: {}
