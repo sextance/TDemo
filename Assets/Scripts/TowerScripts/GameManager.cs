@@ -161,6 +161,7 @@ public class GameManager : MonoBehaviour
         }
         TimeToSpawn();
         GameUpdate();
+        TimeToSpawnAround();
     }
 
     void CreateTowerShape(int towerId, HexCell buildRegion)

@@ -127,9 +127,9 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    /*public void ForceAttack(DefenceTowerEnity defenceTowerEnity)
+    public void ForceAttack(DefenceTowerEntity defenceTowerEntity)
     {
-        if(target == null)
+        if(defenceTowerEntity == null)
         {
             isLock = false;
         }
@@ -137,10 +137,10 @@ public class Enemy : MonoBehaviour
         if(isLock == false)
         {
             isLock = true;
-            navMesh.SetDestination(target.transform.localPosition);
+            navMesh.SetDestination(defenceTowerEntity.transform.localPosition);
         }
 
-    }*/
+    }
 }
 public enum EnemyType
 {
