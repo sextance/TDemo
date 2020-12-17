@@ -7,7 +7,6 @@ public class EnemyFactory : ScriptableObject
 {
     [SerializeField]
     public Enemy enemyPrefab = default;
-<<<<<<< Updated upstream
 
     [SerializeField]
     public TEnemy tEnemyPrefab = default;
@@ -16,11 +15,6 @@ public class EnemyFactory : ScriptableObject
     public DpsEnemy dpsEnemyPrefab = default;
 
     public Enemy GetEnemy()
-=======
-    
-
-    public Enemy Get()
->>>>>>> Stashed changes
     {
         Vector3 Position = new Vector3(Random.Range(-2f, 2f), 0f, Random.Range(-2f, 2f));
         Enemy instance = Instantiate(enemyPrefab,Position,Quaternion.identity);
@@ -28,7 +22,6 @@ public class EnemyFactory : ScriptableObject
         return instance;
     }
 
-<<<<<<< Updated upstream
     public TEnemy GetTEnemy()
     {
         Vector3 Position = new Vector3(Random.Range(-2f, 2f), 0f, Random.Range(-2f, 2f));
@@ -45,14 +38,11 @@ public class EnemyFactory : ScriptableObject
         return instance;
     }
 
-=======
->>>>>>> Stashed changes
     public void Reclaim(Enemy enemy)
     {
         Debug.Assert(enemy == this, "Wrong Factory Reclaimed!");
         Destroy(enemy.gameObject);
     }
-<<<<<<< Updated upstream
 
     public void Reclaim(TEnemy tEnemy)
     {
@@ -65,6 +55,4 @@ public class EnemyFactory : ScriptableObject
         Debug.Assert(dpsEnemy == this, "Wrong Factory Reclaimed!");
         Destroy(dpsEnemy.gameObject);
     }
-=======
->>>>>>> Stashed changes
 }
