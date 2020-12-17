@@ -318,6 +318,7 @@ public class GameManager : MonoBehaviour
         SearchAndGo(dpsEnemy);
     }
 
+
     public void SearchAndGo(Enemy enemy)
     {
         if (enemy.isLock)
@@ -329,6 +330,11 @@ public class GameManager : MonoBehaviour
             VectorAndNum se = new VectorAndNum();
             se = Search(towerShapes, enemy);
             enemy.navMesh.SetDestination(se.point);
+            if(se.hasPool == 2)
+            {
+                SearchAndGo(enemy);
+            }
+            
         }
     }
 
@@ -336,6 +342,7 @@ public class GameManager : MonoBehaviour
     {
         public Vector3 point;
         public int num;
+        public int hasPool;
     }
 
     void TimeToSpawn()//随时间限制改变怪物生成速度
@@ -397,10 +404,12 @@ public class GameManager : MonoBehaviour
 
     public VectorAndNum Search(List<TowerShape> pool, Enemy enemy)
     {
+        VectorAndNum r = new VectorAndNum();
         if (pool == null)
         {
+            r.hasPool = 2;
+            return r;
         }
-        VectorAndNum r = new VectorAndNum();
         float min = 199000;
         float distance = 1000;
         r.num = 0;
@@ -413,7 +422,6 @@ public class GameManager : MonoBehaviour
                 min = distance;
                 v3 = pool[i].transform.localPosition;
                 r.num = i;
-                //if(pool[i].)
             }
         }
         r.point = v3;

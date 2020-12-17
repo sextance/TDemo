@@ -49,7 +49,7 @@ public class Enemy : MonoBehaviour
 
     protected void Update()
     {
-        if(health <= 0f)
+        if (health <= 0f)
         {
             OriginFactory.Reclaim(this);
         }
@@ -92,15 +92,11 @@ public class Enemy : MonoBehaviour
     {
         s = GameManager.gm.Search(GameManager.gm.towerShapes, this);
         TowerShape t = GameManager.gm.towerShapes[s.num];
-        if (isLock)
-        {
-            return;
-        }
         if (t == other.gameObject.GetComponent<TowerShape>())
         {
             Attack();
         }
-        if(other == null)
+        else if (GameManager.gm.towerShapes[s.num] == null)
         {
             GameManager.gm.SearchAndGo(this);
         }
@@ -118,6 +114,7 @@ public class Enemy : MonoBehaviour
         }
         else if (!startAttack)
         {
+            anim.SetInteger("CommonEnemy", 0);
             attackTime += Time.deltaTime;
             if (attackTime >= 1f)
             {
@@ -129,12 +126,12 @@ public class Enemy : MonoBehaviour
 
     public void ForceAttack(DefenceTowerEntity defenceTowerEntity)
     {
-        if(defenceTowerEntity == null)
+        if (defenceTowerEntity == null)
         {
             isLock = false;
         }
 
-        if(isLock == false)
+        if (isLock == false)
         {
             isLock = true;
             navMesh.SetDestination(defenceTowerEntity.transform.localPosition);
