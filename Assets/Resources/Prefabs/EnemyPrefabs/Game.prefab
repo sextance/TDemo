@@ -103,16 +103,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyFactory: {fileID: 11400000, guid: 4019e847249948c4f8f60fea35c2cbfa, type: 2}
+<<<<<<< HEAD
 <<<<<<< Updated upstream
   towerFactory: {fileID: 11400000, guid: c4642ff5ed8c423408f81d46f7751b6a, type: 2}
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> parent of ea1aad4... 1123
   spawnSpeed: 1
   time: 0
   enemySpawnSpeed1: 10
   enemySpawnSpeed2: 5
   timeLimit: 300
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
 >>>>>>> Stashed changes:Assets/Resources/Prefabs/EnemyPrefabs/Game.prefab
 >>>>>>> Stashed changes
+=======
+  cube: {fileID: 4704406828582473895, guid: 96443a3988f811b449d31e531378e4dd, type: 3}
+>>>>>>> parent of ea1aad4... 1123

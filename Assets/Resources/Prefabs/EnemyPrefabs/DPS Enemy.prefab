@@ -191,7 +191,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c48f53d2c83ff5949953742b2c6bcca3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  navMesh: {fileID: 830439980964298044}
+  navEnemy: {fileID: 830439980964298044}
+  cube: {fileID: 3121501767113740065}
   health: 10
   attack: 6
   attackingRange: 0.5

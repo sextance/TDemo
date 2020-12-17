@@ -5,11 +5,21 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
+<<<<<<< HEAD
 <<<<<<< Updated upstream
+=======
+    public static Enemy enemy;
+>>>>>>> parent of ea1aad4... 1123
 
     EnemyFactory originFactory;
 
-    public NavMeshAgent navMesh = default;
+    [SerializeField]
+    NavMeshAgent navEnemy = default;
+
+    [SerializeField]
+    Transform cube = default;
+
+    public Vector3 point;
 
     public float health,
         attack, attackingRange,
@@ -37,6 +47,15 @@ public class Enemy : MonoBehaviour
 
     public EnemyType enemyType => EnemyType.common;
 >>>>>>> Stashed changes
+
+
+    private void Update()
+    {
+        FindAndGo();
+        Attack();
+    }
+
+
 
     public EnemyFactory OriginFactory
     {
@@ -72,19 +91,36 @@ public class Enemy : MonoBehaviour
         return true;
     }
 
+<<<<<<< HEAD
 <<<<<<< Updated upstream
+=======
+    bool FindAndGo()
+    {
+        if (point != null)
+        {
+            navEnemy.SetDestination(point);
+            return true;
+        }
+        return false;
+    }
+>>>>>>> parent of ea1aad4... 1123
 
+    void Attack()
+    {
+        if (Vector3.Distance(navEnemy.transform.position, point) <= 0.5f)
+        {
+            Debug.Log("Attack Tower");
+        }
+    }
 
     public void ApplyDamge(float damge)
     {
-        
-        health -= damge;
-        Debug.Assert(damge > 0, "Wrong Damage!");
         if (health <= 0f)
         {
             OriginFactory.Reclaim(this);
             return;
         }
+        health -= damge;
     }
 
    /* public void SearchTower()
@@ -105,7 +141,27 @@ public class Enemy : MonoBehaviour
        
     }*/
 
-    
+    public TowerShape Search(List<TowerShape>[] pools)
+    {
+        TowerShape instance = null;
+        float min = 19900000;
+        float distance = 1000000;
+        for (int i=0; i<=pools.Length; i++)
+        {
+            List<TowerShape> pool = pools[i];
+            for(int j=0; j<=pool.Count; j++)
+            {
+                distance = Vector3.Distance(pool[j].transform.localPosition, this.transform.localPosition);
+                if (distance < min)
+                {
+                    min = distance;
+                    instance = pool[j];
+                }
+
+            }
+        }
+        return instance;
+    }
 }
 public enum EnemyType
 {
