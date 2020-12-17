@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu]
 public class TowerShapeFactory : ScriptableObject
 {
-    public static TowerShapeFactory tsf;
+    static public TowerShapeFactory tsf;
     [SerializeField]
     TowerShape[] prefabs;
 
@@ -49,6 +49,7 @@ public class TowerShapeFactory : ScriptableObject
                 instance = Instantiate(prefabs[shapeId]);
                 instance.ShapeId = shapeId;
                 instance.SerialId = serialNumber++;
+                pool.Add(instance);
                 //SceneManager.MoveGameObjectToScene(instance.gameObject, poolScene);
             }
         } else {
