@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6187367172543117439}
   - component: {fileID: 69625937037673882}
   - component: {fileID: 1021587648610815973}
+  - component: {fileID: 8862093987118393540}
   m_Layer: 8
   m_Name: DefenceTower
   m_TagString: Tower
@@ -107,3 +108,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24b0c0671462c0d4890feda2bc0348b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coordinates:
+    x: 0
+    y: 0
+--- !u!114 &8862093987118393540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7945388324655040040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfdd982cd091f904b91a8e72a6f0cf95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  state: 0
+  powerRange: 35
+  tauntRange: 35

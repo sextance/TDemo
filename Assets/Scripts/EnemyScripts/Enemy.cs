@@ -113,7 +113,7 @@ public class Enemy : MonoBehaviour
         if (startAttack)
         {
             anim.SetInteger("CommonEnemy", 2);
-            t.GetComponent<AttackTowerEntity>().TakeDamage(attack);
+            t.GetComponent<TowerEntity>().TakeDamage(attack);
             startAttack = false;
         }
         else if (!startAttack)

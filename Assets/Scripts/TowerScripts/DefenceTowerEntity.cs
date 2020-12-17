@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class DefenceTowerEntity : TowerEntity
 {
-    public float powerRange = 10.0f;
-    public float tauntRange = 10.0f;
+    public float powerRange = 35.0f;
+    public float tauntRange = 35.0f;
 
     void OnEnable()
     {
@@ -27,7 +27,7 @@ public class DefenceTowerEntity : TowerEntity
         TauntEnemy();
     }
 
-    void OnTriggerEnter(Collider other)
+    void TauntEnemy()
     {
         Collider[] targets = Physics.OverlapSphere(transform.localPosition, tauntRange, LayerMask.GetMask("Enemy"));
         if (targets.Length > 0)
@@ -39,13 +39,11 @@ public class DefenceTowerEntity : TowerEntity
                 if (t == null)
                     break;
                 else
-                { /*t.ForceAttack(this); */}
+                {
+                    t.ForceAttack(this);
+                }
             }
-         }
-    }
-    void TauntEnemy()
-    {
-
+        }
     }
 
     public override bool Solidification()

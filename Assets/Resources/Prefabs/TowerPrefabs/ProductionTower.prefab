@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2697357681461772942}
   - component: {fileID: 2365954150175504700}
   - component: {fileID: 3436900577997913494}
+  - component: {fileID: 2028285030567462861}
   m_Layer: 8
   m_Name: ProductionTower
   m_TagString: Tower
@@ -109,3 +110,17 @@ MonoBehaviour:
   coordinates:
     x: 0
     y: 0
+--- !u!114 &2028285030567462861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6931063493421714417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e91f78fc80371fe4db92091ccf7c17ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  state: 0
