@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8875103266900085195}
   - component: {fileID: 4804718429341349668}
   - component: {fileID: 6104289082426110616}
+  - component: {fileID: 6938772817842650156}
   m_Layer: 0
   m_Name: DefenseTower_1
   m_TagString: Untagged
@@ -111,6 +112,22 @@ MonoBehaviour:
   isConvertingCoolDown: 0
   powerRange: 35
   tauntRange: 35
+--- !u!208 &6938772817842650156
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 586081917851839968}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 1.41, y: 1, z: 1.41}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 1.89, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &2157835227859171498
 GameObject:
   m_ObjectHideFlags: 0
@@ -392,9 +409,10 @@ GameObject:
   - component: {fileID: 6790004826071166944}
   - component: {fileID: 6792100401488768772}
   - component: {fileID: 6802486340554098304}
+  - component: {fileID: 4307734520597904183}
   m_Layer: 0
   m_Name: tower_main
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -460,3 +478,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!135 &4307734520597904183
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6787300174291465922}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.2241167
+  m_Center: {x: 0, y: 0.2145884, z: 0}

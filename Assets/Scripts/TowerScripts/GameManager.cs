@@ -344,6 +344,7 @@ public class GameManager : MonoBehaviour
             else if (hit.transform.tag == "Map")
             {
                 pickRegion = hit.collider.GetComponent<HexCell>();
+                Debug.Log("hit:" + hit.collider.gameObject.name);
                 if (pickRegion.available == true)
                 {
                     //buildPosition = HexCoordinates.FromCoordinate(instance.coordinates);

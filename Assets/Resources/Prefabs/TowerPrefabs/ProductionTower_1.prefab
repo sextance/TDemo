@@ -90,9 +90,10 @@ GameObject:
   - component: {fileID: 3016335021340180676}
   - component: {fileID: 3001116844013439110}
   - component: {fileID: 2992624903848687244}
+  - component: {fileID: 1993741707101228923}
   m_Layer: 0
   m_Name: 1_9
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -158,6 +159,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!135 &1993741707101228923
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3014386412994151428}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.53
+  m_Center: {x: 0, y: 0.42644972, z: 0}
 --- !u!1 &3014641461787610252
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,6 +184,7 @@ GameObject:
   - component: {fileID: 6386703730966547802}
   - component: {fileID: -8656583701896824424}
   - component: {fileID: -6318718410475724211}
+  - component: {fileID: 8054017765707634755}
   m_Layer: 0
   m_Name: ProductionTower_1
   m_TagString: Untagged
@@ -267,3 +282,19 @@ MonoBehaviour:
   isConverting: 0
   isConvertingFinished: 0
   isConvertingCoolDown: 0
+--- !u!208 &8054017765707634755
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3014641461787610252}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 1.41, y: 1, z: 1.41}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 1.89, z: 0}
+  m_TimeToStationary: 0.5
