@@ -5535,7 +5535,7 @@ Transform:
   m_GameObject: {fileID: 2477275729640423731}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2477275729640660245}
   m_Father: {fileID: 0}
@@ -5575,8 +5575,8 @@ MonoBehaviour:
   anim: {fileID: 2477275729633178279}
   navMesh: {fileID: 221797871409233060}
   health: 3
-  attackingRange: 0.5
   searchRange: 100
+  enemyselfRange: 0
   attack: 1
   isLock: 0
 --- !u!195 &221797871409233060

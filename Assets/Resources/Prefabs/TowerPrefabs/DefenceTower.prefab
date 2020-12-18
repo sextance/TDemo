@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 69625937037673882}
   - component: {fileID: 1021587648610815973}
   - component: {fileID: 8862093987118393540}
+  - component: {fileID: -6857915284099662142}
   m_Layer: 8
   m_Name: DefenceTower
   m_TagString: Tower
@@ -92,8 +93,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 1
-  m_Height: 4
+  m_Radius: 0.8
+  m_Height: 3
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!114 &1021587648610815973
@@ -127,3 +128,19 @@ MonoBehaviour:
   state: 0
   powerRange: 35
   tauntRange: 35
+--- !u!208 &-6857915284099662142
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7945388324655040040}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 1, z: 0.5}
+  m_MoveThreshold: 0
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 10000

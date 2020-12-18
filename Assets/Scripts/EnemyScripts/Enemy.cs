@@ -14,8 +14,9 @@ public class Enemy : MonoBehaviour
 
     public NavMeshAgent navMesh = default;
 
-    public float health, attackingRange,
-         searchRange;
+    public float health;
+    public float searchRange;
+    public float enemyselfRange;
 
     public int attack;
 
@@ -91,6 +92,7 @@ public class Enemy : MonoBehaviour
             TowerShape t = GameManager.gm.towerShapes[s.num];
             if (t == other.gameObject.GetComponent<TowerShape>())
             {
+                transform.LookAt(t.transform);
                 Attack();
             }
         }

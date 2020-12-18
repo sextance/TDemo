@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 774992918120996173}
   - component: {fileID: 687859252437741715}
   - component: {fileID: -5778851226940964652}
+  - component: {fileID: -5816213134896307474}
   m_Layer: 8
   m_Name: AttackTower
   m_TagString: Tower
@@ -127,3 +128,19 @@ MonoBehaviour:
   attackRange: 20
   projectile: {fileID: 4944574622300218806, guid: a25f7e56bd0c2d743a3d62a0c078ded4,
     type: 3}
+--- !u!208 &-5816213134896307474
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6590411380071760560}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
