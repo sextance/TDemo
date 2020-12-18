@@ -29,7 +29,9 @@ public class GameManager : MonoBehaviour
     public List<TowerShape> towerShapes;
     public List<Enemy> enemies;
     public Text costText;
-    public GameObject mapMenu;
+    public GameObject mapButton;
+    public GameObject towerButton1;
+    public GameObject towerButton2;
 
     int selectTypeHandler; // 0 - non, 1 - tower...
     TowerShape pickTower;
@@ -82,18 +84,17 @@ public class GameManager : MonoBehaviour
         highLightObj.gameObject.SetActive(false);
         selectedMaterial = Resources.Load<Material>("Materials/MapMaterials/Glow");
 
-        mapMenu.SetActive(false);
+        mapButton.SetActive(false);
+        towerButton1.SetActive(false);
+        towerButton2.SetActive(false);
+        
         /*Game Data*/
         money = data.startMoney; //start money for player
-        
     }
 
-    // Update is called once per frame
-    void Update()
+    public void CAT()
     {
-        if (Input.GetKeyDown(createAttackTower))
-        {
-            if (selectTypeHandler == 2)
+        if (selectTypeHandler == 2)
             {
                 if(money >= data.buildCost)
                 {
@@ -108,10 +109,11 @@ public class GameManager : MonoBehaviour
             }
             else
                 Debug.Log("No building region selected.");
-        }
-        else if (Input.GetKeyDown(createDefenseTower))
-        {
-            if (selectTypeHandler == 2)
+    }
+
+    public void CDT()
+    {
+        if (selectTypeHandler == 2)
             {
                 if (money >= data.buildCost)
                 {
@@ -126,76 +128,111 @@ public class GameManager : MonoBehaviour
             } 
             else
                 Debug.Log("No building region selected.");
+    }
+
+    public void CPT()
+    {
+        if (selectTypeHandler == 2)
+        {
+            if (money >= data.buildCost)
+            {
+                CreateTowerShape(2, pickRegion, Vector3.zero, 0);
+                selectTypeHandler = 0;
+                this.money -= data.buildCost;
+            } else 
+                Debug.Log("Not enough money to build!");
+        }
+        else
+            Debug.Log("No building region selected.");
+    }
+
+    public void SAT()
+    {
+        if (selectTypeHandler == 1 && pickTower != null)
+        {
+            SolidificateTowerShape(pickTower);
+            //selectTypeHandler = 0;
+        }
+        else
+            Debug.Log("No tower selected.");
+    }
+
+    public void DT(){
+        if (selectTypeHandler == 1 && pickTower != null)
+        {
+            if (this.money > data.solidificateCost)
+            {
+                DestroyTowerShape(pickTower);
+                selectTypeHandler = 0;
+                this.money -= data.deconstructionCost;
+            }
+            else
+                Debug.Log("Not enough money to deconstruct!");
+        }
+        else
+            Debug.Log("No tower selected.");
+    }
+
+    public void ACC(){
+        if (selectTypeHandler == 1 && pickTower != null)
+        {
+            TowerEntity pickTowerEntity = pickTower.gameObject.GetComponent<TowerEntity>();
+            Convert(pickTowerEntity, 1);
+            //bool allwance = Convert(pickTowerEntity, 1);
+            //if (allwance)
+            //    selectTypeHandler = 0;
+        } else
+            Debug.Log("No tower selected.");
+    }
+
+    public void CC(){
+        if (selectTypeHandler == 1 && pickTower != null)
+        {
+            TowerEntity pickTowerEntity = pickTower.gameObject.GetComponent<TowerEntity>();
+            Convert(pickTowerEntity, 2);
+            //bool allwance = Convert(pickTowerEntity, 2);
+            //if (allwance)
+            //    selectTypeHandler = 0;
+        } else
+            Debug.Log("No tower selected.");
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetKeyDown(createAttackTower))
+        {
+            CAT();
+        }
+        else if (Input.GetKeyDown(createDefenseTower))
+        {
+            CDT();
         }
         else if (Input.GetKeyDown(createProductionTower))
         {
-            if (selectTypeHandler == 2)
-            {
-                if (money >= data.buildCost)
-                {
-                    CreateTowerShape(2, pickRegion, Vector3.zero, 0);
-                    selectTypeHandler = 0;
-                    this.money -= data.buildCost;
-                } else 
-                    Debug.Log("Not enough money to build!");
-            }
-            else
-                Debug.Log("No building region selected.");
+            CPT();
         }
         else if (Input.GetKeyDown(solidificateTower))
         {
-            if (selectTypeHandler == 1 && pickTower != null)
-            {
-                SolidificateTowerShape(pickTower);
-                //selectTypeHandler = 0;
-            }
-            else
-                Debug.Log("No tower selected.");
+            SAT();
         }
         else if (Input.GetKeyDown(destroyTower))
         {
-            if (selectTypeHandler == 1 && pickTower != null)
-            {
-                if (this.money > data.solidificateCost)
-                {
-                    DestroyTowerShape(pickTower);
-                    selectTypeHandler = 0;
-                    this.money -= data.deconstructionCost;
-                }
-                else
-                    Debug.Log("Not enough money to deconstruct!");
-            }
-            else
-                Debug.Log("No tower selected.");
+            DT();
         }
         else if (Input.GetKeyDown(antiClockwiseConvert))
         {
-            if (selectTypeHandler == 1 && pickTower != null)
-            {
-                TowerEntity pickTowerEntity = pickTower.gameObject.GetComponent<TowerEntity>();
-                Convert(pickTowerEntity, 1);
-                //bool allwance = Convert(pickTowerEntity, 1);
-                //if (allwance)
-                //    selectTypeHandler = 0;
-            } else
-                Debug.Log("No tower selected.");
+            ACC();
         }
         else if (Input.GetKeyDown(clockwiseConvert))
         {
-            if (selectTypeHandler == 1 && pickTower != null)
-            {
-                TowerEntity pickTowerEntity = pickTower.gameObject.GetComponent<TowerEntity>();
-                Convert(pickTowerEntity, 2);
-                //bool allwance = Convert(pickTowerEntity, 2);
-                //if (allwance)
-                //    selectTypeHandler = 0;
-            } else
-                Debug.Log("No tower selected.");
+            CC();
         }
 
         //if ( (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         if (Input.GetMouseButton(0))
-            MobilePick();
+            if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+                MobilePick();
 
         if (Input.GetKeyDown(KeyCode.H))
         {
@@ -306,7 +343,7 @@ public class GameManager : MonoBehaviour
                 this.money -= data.solidificateCost;
         }
         else
-            Debug.Log("Tower already solidificated");
+            Debug.Log("Tower already solidificreateAttackTowered");
     }
 
     void MobilePick()
@@ -314,7 +351,9 @@ public class GameManager : MonoBehaviour
         RaycastHit hit;
         //Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
+        mapButton.SetActive(false);
+        towerButton1.SetActive(false);
+        towerButton2.SetActive(false);
         if (Physics.Raycast(ray, out hit))
         {
             if (hit.transform.tag == "Untagged") //any non-interactive objects
@@ -342,6 +381,8 @@ public class GameManager : MonoBehaviour
                     highLightObj.GetComponent<MeshFilter>().mesh = hit.collider.GetComponent<MeshFilter>().mesh;
                     highLightObj.gameObject.SetActive(true);
                 }
+                towerButton1.SetActive(true);
+                towerButton2.SetActive(false);
             }
             else if (hit.transform.tag == "Map")
             {
@@ -367,7 +408,7 @@ public class GameManager : MonoBehaviour
                         highLightObj.GetComponent<MeshFilter>().mesh = hit.collider.GetComponent<MeshFilter>().mesh;
                         highLightObj.gameObject.SetActive(true);
                     }
-                    mapMenu.SetActive(true);
+                    mapButton.SetActive(true);
                 }
                 else
                     Debug.Log("Region already accupied by a tower!");
@@ -623,4 +664,5 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
 }
