@@ -15,7 +15,7 @@ public class TEnemy : Enemy
     private void Update()
     {
         base.Update();
-        //tauntTower();
+        tauntTower();
     }
 
     void tauntTower()
@@ -23,12 +23,12 @@ public class TEnemy : Enemy
         Collider[] colliders = Physics.OverlapSphere(this.transform.localPosition, tauntRange, LayerMask.GetMask("Tower"));
         foreach (Collider collider in colliders)
         {
-            DefenceTowerEntity t = collider.gameObject.GetComponent<DefenceTowerEntity>();
+            AttackTowerEntity t = collider.gameObject.GetComponent<AttackTowerEntity>();
             if (t == null)
                 break;
             else
             {
-                // t.嘲讽函数(this);
+                t.BeTaunted(this);
             }
         }
     }
