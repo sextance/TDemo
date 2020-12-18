@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
 
     public List<TowerShape> towerShapes;
     public List<Enemy> enemies;
+    public Text costText;
 
     int selectTypeHandler; // 0 - non, 1 - tower...
     TowerShape pickTower;
@@ -36,7 +37,6 @@ public class GameManager : MonoBehaviour
     Transform highLightObj;
     Material previousMaterial;
     Material selectedMaterial;
-
 
     [SerializeField]
     float spawnSpeed = 1f;
@@ -205,7 +205,7 @@ public class GameManager : MonoBehaviour
         TimeToSpawnAround();
         TimeToSpawn();
         GameUpdate();
-
+        costText.text = "COST: " + money.ToString();
 
     }
 

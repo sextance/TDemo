@@ -53,6 +53,7 @@ public class SceneLoader : MonoBehaviour
         // 开始过场
         currentTransition.StartTrans();
 
+        
         // 等待一帧
         // 理由再下面有解释，但其实这里本来不需要，因为检查动画前还夹着一个检查加载的过程。基本不会在一帧内就加载完
         // 但是保险起见还是在播放动画后延迟一帧
