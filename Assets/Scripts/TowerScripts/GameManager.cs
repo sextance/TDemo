@@ -321,7 +321,7 @@ public class GameManager : MonoBehaviour
             }
             else if (hit.transform.tag == "Tower")
             {
-                pickTower = hit.collider.GetComponent<TowerShape>();
+                pickTower = hit.transform.parent.GetComponent<TowerShape>();
                 Debug.Log("hit:" + hit.collider.gameObject.name);
                 selectTypeHandler = 1;
                 //Selected effect
