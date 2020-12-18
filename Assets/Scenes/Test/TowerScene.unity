@@ -366,7 +366,7 @@ MonoBehaviour:
   attackRange: 20
   factorAtkRange: 2
   damage: 3
-  factorDamage: 3
+  factorDamage: 2
   attackCoolDownTime: 1
   projectileSpeed: 20
   projectileDelayTime: 0.5
@@ -377,8 +377,8 @@ MonoBehaviour:
   powerRange: 1
   factorPowerRange: 3
   production: 1
-  factorProduction: 3
-  productionCoolDownTime: 1
+  factorProduction: 2
+  productionCoolDownTime: 4
 --- !u!4 &65195216
 Transform:
   m_ObjectHideFlags: 0
