@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Tower Shape Factory
   m_EditorClassIdentifier: 
   prefabs:
-  - {fileID: 687859252437741715, guid: 3eca2d30d0d1363438c6171fed0c2a65, type: 3}
-  - {fileID: 1021587648610815973, guid: 64a2cd1c9dd925f468276dc70dd7cce2, type: 3}
-  - {fileID: 3436900577997913494, guid: 37181af0338ebf44586b97d4bf2f0b6d, type: 3}
+  - {fileID: 317645896332929559, guid: a69a7c53d39378742ac2b97c5c724464, type: 3}
+  - {fileID: 4804718429341349668, guid: cbad2a59db79e2247b24254bc65122e7, type: 3}
+  - {fileID: -8656583701896824424, guid: edfef23a7c86c18469f43dce99e21d8b, type: 3}
   materials:
   - {fileID: 2100000, guid: 24d90301f35489d49b905abe6c2b231a, type: 2}
   - {fileID: 2100000, guid: 083da80658771d248a83e6b04af57dcf, type: 2}
