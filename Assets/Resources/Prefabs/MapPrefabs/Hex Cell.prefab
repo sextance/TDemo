@@ -107,8 +107,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 712d9d8de0b807d4eb605dc98c758ca8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerLinks: []
   coordinates:
     x: 0
     y: 0
   color: {r: 0, g: 0, b: 0, a: 0}
   available: 0
+  powered: 0

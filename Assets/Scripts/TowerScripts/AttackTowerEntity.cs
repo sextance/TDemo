@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AttackTowerEntity : TowerEntity
 {
-    Data data = Data.GlobalData;
+    //Data data = Data.GlobalData;
     //ATK range = 3
     public float attackRange;
 
@@ -13,6 +13,7 @@ public class AttackTowerEntity : TowerEntity
     int damage;
 
     float coolDownTime;
+    bool isActive;
     bool isTauted;
     bool isCoolDownTime;
     bool isEnemyLocked;
@@ -35,12 +36,16 @@ public class AttackTowerEntity : TowerEntity
     void FixedUpdate()
     {
         base.FixedUpdate();
-        if(state == 1 || state == 4)
+        isActive = cell.powered;
+        if (isActive || state == 4) // will function after solidificated even not powered
         {
-            if (!isEnemyLocked)
-                AcquireTargetEnemy();
-            else
-                CheckLockEnemyState();
+            if (state == 1 || state == 4)
+            {
+                if (!isEnemyLocked)
+                    AcquireTargetEnemy();
+                else
+                    CheckLockEnemyState();
+            }
         }
 
     }
@@ -51,32 +56,36 @@ public class AttackTowerEntity : TowerEntity
         base.Update();
         if (state == 1 || state == 4 ) // only enabled when normal or normal updated
         {
-            if (isEnemyLocked)
+            if (isActive || state == 4)
             {
-                if (!isCoolDownTime)
+                if (isEnemyLocked)
                 {
-                    Projectile instance = ProjectileFactory.pf.Get();
-                    instance.damage = this.damage;
-                    instance.targetEnemy = lockTarget;
-                    Transform t = instance.transform;
-                    t.localPosition = this.transform.localPosition + Vector3.up * 10.0f;
-                    isCoolDownTime = true;
-                } else {
-                    coolDownTime -= Time.deltaTime;
-                    if (coolDownTime <= 0f)
+                    if (!isCoolDownTime)
                     {
-                        coolDownTime = data.attackCoolDownTime;
-                        isCoolDownTime = false;
+                        Projectile instance = ProjectileFactory.pf.Get();
+                        instance.damage = this.damage;
+                        instance.targetEnemy = lockTarget;
+                        Transform t = instance.transform;
+                        t.localPosition = this.transform.localPosition + Vector3.up * 10.0f;
+                        isCoolDownTime = true;
+                    }
+                    else
+                    {
+                        coolDownTime -= Time.deltaTime;
+                        if (coolDownTime <= 0f)
+                        {
+                            coolDownTime = data.attackCoolDownTime;
+                            isCoolDownTime = false;
+                        }
                     }
                 }
+            } else if (state == 3)//finish converting
+            {
+                if (convertDirection == 0) { state = 1; isConvertingCoolDown = true; }
+                else if (convertDirection == 1) { ConvertAntiClockwise(); }
+                else if (convertDirection == 2) { ConvertClockwise(); }
             }
-        } else if (state == 3)//finish converting
-        {
-            if (convertDirection == 0) { state = 1; isConvertingCoolDown = true; }
-            else if (convertDirection == 1) { ConvertAntiClockwise(); }
-            else if (convertDirection == 2) { ConvertClockwise(); }
         }
-
     }
 
     // Seek Enemy

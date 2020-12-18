@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 
-[System.Serializable]
 public class Data : MonoBehaviour
 {
     /*-------------------------------------------------------------------------------------------------------------*/
@@ -9,11 +8,12 @@ public class Data : MonoBehaviour
     public int buildCost = 5;                                                         //建造花费
     public int solidificateCost = 10;                                              //固化花费
     public int deconstructionCost = 5;                                         //自爆花费
+    public float cellLength = 17.32051f;                                       //两个相邻六边形中心点距离，可以视为游戏的1 unit
 
     //All Tower
     public float constructTime = 2.0f;                                          //建造时间
     public float convertingTime = 2.0f;                                        //转化时间
-    public float  convertingCoolDonwnTime = 5.0f;                            //转化后冷却时间
+    public float  convertingCoolDonwnTime = 5.0f;                    //转化后冷却时间
     public float factorScale = 1.5f;                                               //固化后塔体积扩大倍数
     public int factorHealth = 2;                                                    //固化后生命值扩大倍数
 
@@ -34,7 +34,7 @@ public class Data : MonoBehaviour
 
     //Production Tower
     public int productionTowerMaxHealth = 20;                         //固化前最大生命值
-    public int powerRange = 1;                                                    //固化前充能范围             ->          此功能还未实现
+    public float powerRange = 1;                                                //固化前充能范围             ->          实际会转化为 x * cellLength
     public int factorPowerRange = 3;                                          //固化后充能范围扩大倍数
     public int production = 1;                                                      //固化前每次生产量
     public int factorProduction = 2;                                             //固化后生产量扩大倍数
@@ -51,6 +51,8 @@ public class Data : MonoBehaviour
     {
         get
         {
+            if (_instance == null)
+                _instance = new Data();
             return _instance;
         }
     }

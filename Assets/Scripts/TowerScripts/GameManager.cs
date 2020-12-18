@@ -105,8 +105,6 @@ public class GameManager : MonoBehaviour
                     CreateTowerShape(0, pickRegion, Vector3.zero, 0);
                     selectTypeHandler = 0;
                     this.money -= data.buildCost;
-                    for (int i = 0; i < enemies.Count; i++)
-                        SearchAndGo(enemies[i]);
                 }  else {
                     Debug.Log("Not enough money.");
                 }
@@ -164,14 +162,18 @@ public class GameManager : MonoBehaviour
     public void DT(){
         if (selectTypeHandler == 1 && pickTower != null)
         {
-            if (this.money > data.solidificateCost)
+            TowerEntity t = pickTower.gameObject.GetComponent<TowerEntity>();
+            if( t.SelfDestruction() == true)
             {
-                DestroyTowerShape(pickTower);
-                selectTypeHandler = 0;
-                this.money -= data.deconstructionCost;
-            }
-            else
-                Debug.Log("Not enough money to deconstruct!");
+                if (this.money > data.deconstructionCost)
+                {
+                    DestroyTowerShape(pickTower);
+                    selectTypeHandler = 0;
+                    this.money -= data.deconstructionCost;
+                } else
+                    Debug.Log("Not enough money to deconstruct!");
+            } else
+                Debug.Log("Not allowed to deconstruct!");
         }
         else
             Debug.Log("No tower selected.");
@@ -287,9 +289,9 @@ public class GameManager : MonoBehaviour
             t.localScale /= data.factorScale;
 
         //Create link if production tower
-        if(towerId == 2)
-            mapManager.hexGrid.CreatePowerLinkToCell(
-                instance.gameObject.GetComponent<ProductionTowerEntity>());
+        //if(towerId == 2)
+        //      mapManager.hexGrid.CreatePowerLinkToCell(
+        //       instance.gameObject.GetComponent<ProductionTowerEntity>());
         
         towerShapes.Add(instance);
 

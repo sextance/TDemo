@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class DefenceTowerEntity : TowerEntity
 {
-    Data data = Data.GlobalData;
+    //Data data = Data.GlobalData;
     public float tauntRange;
+
+    bool isActive;
 
     void OnEnable()
     {
@@ -14,6 +16,16 @@ public class DefenceTowerEntity : TowerEntity
         maxHealth = health = data.defenceTowerMaxHealth;
     }
 
+    void FixedUpdate()
+    {
+        base.FixedUpdate();
+        isActive = cell.powered;
+        if (isActive || state == 4)
+        {
+            if (state != 0 && state != 2)
+                TauntEnemy();
+        }
+    }
 
     // Update is called once per frame
     void Update()
@@ -25,13 +37,6 @@ public class DefenceTowerEntity : TowerEntity
             else if (convertDirection == 1) { ConvertAntiClockwise(); }
             else if (convertDirection == 2) { ConvertClockwise(); }
         }
-    }
-
-    void FixedUpdate()
-    {
-        base.FixedUpdate();
-        if(state != 0 && state !=2)
-            TauntEnemy();
     }
 
     void TauntEnemy()
