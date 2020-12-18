@@ -6,6 +6,8 @@ public class MapManager : MonoBehaviour
 {	
 	public HexGrid hexGrid;
 
+	public HexGrid enemyHexGrid;
+
 	void Awake()
     {
 	}

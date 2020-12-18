@@ -32,6 +32,9 @@ public class GameManager : MonoBehaviour
     public GameObject mapButton;
     public GameObject towerButton1;
     public GameObject towerButton2;
+    public GameObject camera;
+    bool inEnemyScene;
+    float enemySceneTimer;
 
     int selectTypeHandler; // 0 - non, 1 - tower...
     TowerShape pickTower;
@@ -90,6 +93,7 @@ public class GameManager : MonoBehaviour
         
         /*Game Data*/
         money = data.startMoney; //start money for player
+        enemySceneTimer = 0f;
     }
 
     public void CAT()
@@ -246,6 +250,15 @@ public class GameManager : MonoBehaviour
         TimeToSpawn();
         GameUpdate();
         costText.text = "COST: " + money.ToString();
+        if(inEnemyScene){
+            camera.transform.position = new Vector3(1300,150,10);
+            enemySceneTimer += Time.deltaTime;
+            if(enemySceneTimer >= 2f){
+                camera.transform.position = new Vector3(100,150,10);
+                inEnemyScene = false;
+                enemySceneTimer = 0f;
+            }
+        }
 
     }
 
@@ -664,5 +677,11 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
+    public void SeeEnemy()
+    {   
+        inEnemyScene = true;
+    }
+
 
 }
