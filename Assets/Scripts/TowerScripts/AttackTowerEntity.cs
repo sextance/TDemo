@@ -10,7 +10,7 @@ public class AttackTowerEntity : TowerEntity
     public Projectile projectile;
 
     int damage;
-  
+
     float coolDownTime;
     bool isTauted;
     bool isCoolDownTime;
@@ -21,8 +21,8 @@ public class AttackTowerEntity : TowerEntity
     void OnEnable()
     {
         base.OnEnable();
-        damage = 1;
-        health = 10;
+        damage = 3;
+        maxHealth = health = 10;
         isTauted = false;
         isCoolDownTime = false;
         isEnemyLocked = false;
@@ -33,20 +33,21 @@ public class AttackTowerEntity : TowerEntity
     void FixedUpdate()
     {
         base.FixedUpdate();
-        if(state != 0 && state != 2)
+        if(state == 1 || state == 4)
         {
             if (!isEnemyLocked)
                 AcquireTargetEnemy();
             else
                 CheckLockEnemyState();
         }
+
     }
 
     // Update is called once per frame
     void Update()
     {
         base.Update();
-        if (state != 0 && state != 2) // when constructing or converting disable
+        if (state == 1 || state == 4 ) // only enabled when normal or normal updated
         {
             if (isEnemyLocked)
             {
@@ -58,9 +59,7 @@ public class AttackTowerEntity : TowerEntity
                     Transform t = instance.transform;
                     t.localPosition = this.transform.localPosition + Vector3.up * 10.0f;
                     isCoolDownTime = true;
-                }
-                else
-                {
+                } else {
                     coolDownTime -= Time.deltaTime;
                     if (coolDownTime <= 0f)
                     {
@@ -69,7 +68,13 @@ public class AttackTowerEntity : TowerEntity
                     }
                 }
             }
+        } else if (state == 3)//finish converting
+        {
+            if (convertDirection == 0) { state = 1; isConvertingCoolDown = true; }
+            else if (convertDirection == 1) { ConvertAntiClockwise(); }
+            else if (convertDirection == 2) { ConvertClockwise(); }
         }
+
     }
 
     // Seek Enemy
@@ -115,14 +120,8 @@ public class AttackTowerEntity : TowerEntity
         bool allowance = base.Solidification();
         if (allowance)
         {
-            if (GameManager.gm.money < 10)
-            {
-                allowance = false;
-                Debug.Log("Not enought money!");
-            } else {
-                damage = damage * 3;
-                attackRange = attackRange * 2;
-            }
+            damage = damage * 3;
+            attackRange = attackRange * 2;
         }
         return allowance;
     }
@@ -135,8 +134,20 @@ public class AttackTowerEntity : TowerEntity
             isEnemyLocked = true;
             lockTarget = enemy;
         }
-        
     }
+
+    public void ConvertAntiClockwise() // left arrow
+    {
+        if (isConvertingFinished)
+            GameManager.gm.ConvertTo(this.gameObject.GetComponent<TowerShape>() ,"ProductionTower", healthFactor);
+    }
+
+    public void ConvertClockwise() // right arrow
+    {
+        if (isConvertingFinished)
+            GameManager.gm.ConvertTo(this.gameObject.GetComponent<TowerShape>(), "DefenceTower", healthFactor);
+    }
+
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;

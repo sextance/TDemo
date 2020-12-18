@@ -14,7 +14,7 @@ public class ProductionTowerEntity : TowerEntity
     void OnEnable()
     {
         base.OnEnable();
-        health = 20;
+        maxHealth = health = 20;
         production = 1;
         coolDownTime = 1.0f;
         isCoolDownTime = true;
@@ -23,11 +23,12 @@ public class ProductionTowerEntity : TowerEntity
     void FixedUpdate()
     {
         base.FixedUpdate();
-        if( state !=0 && state != 2)
+        if (state == 1 || state == 4)
         {
             if (!isCoolDownTime)
             {
                 GameManager.gm.money += production;
+                Debug.Log("Money: "+ GameManager.gm.money);
                 isCoolDownTime = true;
             }
             else
@@ -39,6 +40,11 @@ public class ProductionTowerEntity : TowerEntity
                     isCoolDownTime = false;
                 }
             }
+        } else if (state == 3) //finish converting
+        {
+            if (convertDirection == 0) { state = 1; isConvertingCoolDown = true; }
+            else if (convertDirection == 1) { ConvertAntiClockwise(); }
+            else if (convertDirection == 2) { ConvertClockwise(); }
         }
     }
 
@@ -47,16 +53,22 @@ public class ProductionTowerEntity : TowerEntity
         bool allowance = base.Solidification();
         if (allowance) 
         {
-            if(GameManager.gm.money < 10)
-            {
-                allowance = false;
-                Debug.Log("Not enought money!");
-            } else {
-                allowance = true;
-                production = production * 3;
-            }
+            allowance = true;
+            production = production * 3;
         }
         return allowance;
+    }
+
+    public void ConvertAntiClockwise()
+    {
+        if (isConvertingFinished)
+            GameManager.gm.ConvertTo(this.gameObject.GetComponent<TowerShape>(), "DefenceTower", healthFactor);
+    }
+
+    public void ConvertClockwise()
+    {
+        if (isConvertingFinished)
+            GameManager.gm.ConvertTo(this.gameObject.GetComponent<TowerShape>(), "AttackTower", healthFactor);
     }
 
     void OnDrawGizmosSelected()

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class GameManager : MonoBehaviour
     public KeyCode solidificateTower = KeyCode.S;
     public KeyCode destroyTower = KeyCode.D;
     public KeyCode newGameKey = KeyCode.N;
+    public KeyCode antiClockwiseConvert = KeyCode.LeftArrow;
+    public KeyCode clockwiseConvert = KeyCode.RightArrow;
 
     public List<TowerShape> towerShapes;
     public List<Enemy> enemies;
@@ -87,11 +90,15 @@ public class GameManager : MonoBehaviour
         {
             if (selectTypeHandler == 2)
             {
-                CreateTowerShape(0, pickRegion);
-                selectTypeHandler = 0;
-                for (int i = 0; i < enemies.Count; i++)
+                if(money >= 5)
                 {
-                    SearchAndGo(enemies[i]);
+                    this.money -= 5;
+                    CreateTowerShape(0, pickRegion, Vector3.zero, 0);
+                    selectTypeHandler = 0;
+                    for (int i = 0; i < enemies.Count; i++)
+                        SearchAndGo(enemies[i]);
+                }  else {
+                    Debug.Log("Not enough money.");
                 }
             }
             else
@@ -101,11 +108,14 @@ public class GameManager : MonoBehaviour
         {
             if (selectTypeHandler == 2)
             {
-                CreateTowerShape(1, pickRegion);
-                selectTypeHandler = 0;
-                for (int i = 0; i < enemies.Count; i++)
+                if (money >= 5)
                 {
-                    SearchAndGo(enemies[i]);
+                    CreateTowerShape(1, pickRegion, Vector3.zero, 0);
+                    selectTypeHandler = 0;
+                    for (int i = 0; i < enemies.Count; i++)
+                        SearchAndGo(enemies[i]);
+                }  else {
+                    Debug.Log("Not enough money.");
                 }
             } 
             else
@@ -115,11 +125,13 @@ public class GameManager : MonoBehaviour
         {
             if (selectTypeHandler == 2)
             {
-                CreateTowerShape(2, pickRegion);
-                selectTypeHandler = 0;
-                for (int i = 0; i < enemies.Count; i++)
+                if (money >= 5)
                 {
-                    SearchAndGo(enemies[i]);
+                    CreateTowerShape(2, pickRegion, Vector3.zero, 0);
+                    selectTypeHandler = 0;
+
+                } else {
+                    Debug.Log("Not enough money.");
                 }
             }
             else
@@ -142,15 +154,35 @@ public class GameManager : MonoBehaviour
                 DestroyTowerShape(pickTower);
 
                 selectTypeHandler = 0;
-                for(int i = 0; i < enemies.Count; i++)
-                {
-                    SearchAndGo(enemies[i]);
-                }
-                
             }
             else
                 Debug.Log("No tower selected.");
         }
+        else if (Input.GetKeyDown(antiClockwiseConvert))
+        {
+            if (selectTypeHandler == 1 && pickTower != null)
+            {
+                TowerEntity pickTowerEntity = pickTower.gameObject.GetComponent<TowerEntity>();
+                Convert(pickTowerEntity, 1);
+                //bool allwance = Convert(pickTowerEntity, 1);
+                //if (allwance)
+                //    selectTypeHandler = 0;
+            } else
+                Debug.Log("No tower selected.");
+        }
+        else if (Input.GetKeyDown(clockwiseConvert))
+        {
+            if (selectTypeHandler == 1 && pickTower != null)
+            {
+                TowerEntity pickTowerEntity = pickTower.gameObject.GetComponent<TowerEntity>();
+                Convert(pickTowerEntity, 2);
+                //bool allwance = Convert(pickTowerEntity, 2);
+                //if (allwance)
+                //    selectTypeHandler = 0;
+            } else
+                Debug.Log("No tower selected.");
+        }
+
         //if ( (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         if (Input.GetMouseButton(0))
             MobilePick();
@@ -168,21 +200,37 @@ public class GameManager : MonoBehaviour
         TimeToSpawnAround();
     }
 
-    void CreateTowerShape(int towerId, HexCell buildRegion)
+    void CreateTowerShape(int towerId, HexCell buildRegion, Vector3 localPostion, int initState, float healthFactor = 1)
     {
+        Vector3 buildPosition;
         TowerShape instance = towerShapeFactory.Get(towerId, towerId);
         Transform t = instance.transform;
-        Vector3 buildPosition = HexCoordinates.FromCoordinate(buildRegion.coordinates);
+        TowerEntity e = instance.gameObject.GetComponent<TowerEntity>();
+        e.health = (int)(e.maxHealth * healthFactor);
 
+        if (buildRegion == null)
+        {
+            buildPosition = localPostion;
+            buildPosition.y = 0;
+        } else {
+            buildPosition = HexCoordinates.FromCoordinate(buildRegion.coordinates);
+            instance.coordinates = buildRegion.coordinates;
+            buildRegion.available = false;
+        }
         //Move the root of prefabs to ground
-        instance.coordinates = buildRegion.coordinates;
-        t.localPosition = buildPosition + Vector3.up * instance.transform.localScale.y / 2;
-        if (t.localScale.x >= 10.0f)
+
+        t.localPosition = buildPosition + Vector3.up * instance.transform.localScale.y;
+        if (t.localScale.y >= 15.0f)
             t.localScale /= 1.5f;
 
-        buildRegion.available = false;
+        
         towerShapes.Add(instance);
+        this.money -= 5;
 
+        instance.GetComponent<TowerEntity>().state = initState;
+
+        for (int i = 0; i < enemies.Count; i++)
+            SearchAndGo(enemies[i]);
     }
 
     public void DestroyTowerShape(TowerShape pickTower)
@@ -208,12 +256,13 @@ public class GameManager : MonoBehaviour
             towerShapes.RemoveAt(lastIndex);
 
             //Disable selected outline
+            //highLightObj.gameObject.SetActive(false);
+            //selectedObject.GetComponent<MeshRenderer>().material = previousMaterial;
+            //selectedObject = null;
             highLightObj.gameObject.SetActive(false);
-            selectedObject.GetComponent<MeshRenderer>().material = previousMaterial;
-            selectedObject = null;
-            for (int i = 0; i < GameManager.gm.enemies.Count; i++)
+            for (int i = 0; i < enemies.Count; i++)
             {
-                SearchAndGo(GameManager.gm.enemies[i]);
+                SearchAndGo(enemies[i]);
             }
         }
         else
@@ -226,9 +275,24 @@ public class GameManager : MonoBehaviour
     {
         if (pickTower != null && pickTower.IsSolidificated == false)
         {
+            bool allowance = false;
             pickTower.IsSolidificated = false;
-            Transform t = pickTower.transform;
-            t.localScale *= 1.5f;
+
+            if(pickTower.gameObject.GetComponent<AttackTowerEntity>() != null)
+            {
+                AttackTowerEntity tmp = pickTower.gameObject.GetComponent<AttackTowerEntity>();
+                allowance = tmp.Solidification();
+            }  else if (pickTower.gameObject.GetComponent<DefenceTowerEntity>() != null)
+            {
+                DefenceTowerEntity tmp = pickTower.gameObject.GetComponent<DefenceTowerEntity>();
+                allowance = tmp.Solidification();
+            } else if (pickTower.gameObject.GetComponent<ProductionTowerEntity>() != null)
+            {
+                ProductionTowerEntity tmp = pickTower.gameObject.GetComponent<ProductionTowerEntity>();
+                allowance = tmp.Solidification();
+            }
+            if (allowance)
+                this.money -= 10;
         }
         else
             Debug.Log("Tower already solidificated");
@@ -308,6 +372,58 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
+    //leftdirection = 1, right direction = 2;
+    bool Convert(TowerEntity pickTowerEntity, int direction)
+    {
+        //Get allowance
+        bool allowance = pickTowerEntity.ConvertJudge(); 
+        if (allowance)
+        {
+            if (pickTowerEntity.gameObject.GetComponent<AttackTowerEntity>() != null)
+            {
+                AttackTowerEntity t = pickTowerEntity.gameObject.GetComponent<AttackTowerEntity>();
+                t.convertDirection = direction;
+            } else if(pickTowerEntity.gameObject.GetComponent<DefenceTowerEntity>() != null)
+            {
+                DefenceTowerEntity t = pickTowerEntity.gameObject.GetComponent<DefenceTowerEntity>();
+                t.convertDirection = direction;
+            }
+            else if (pickTowerEntity.gameObject.GetComponent<ProductionTowerEntity>() != null)
+            {
+                ProductionTowerEntity t = pickTowerEntity.gameObject.GetComponent<ProductionTowerEntity>();
+                t.convertDirection = direction;
+            }
+        }
+        return allowance;
+    }
+
+    public void ConvertTo(TowerShape origin, string targetName, float healthFactor)
+    {
+        if (origin == null)
+            Debug.LogError("No Tower found to convert!");
+
+        Vector3 position = origin.transform.position;
+        DestroyTowerShape(origin);
+
+        if (targetName == "AttackTower")
+        {
+            CreateTowerShape(0, null, position, 3, healthFactor);
+            for (int i = 0; i < enemies.Count; i++)
+                SearchAndGo(enemies[i]);
+        } else if (targetName == "DefenceTower")
+        {
+            CreateTowerShape(1, null, position, 3, healthFactor);
+            for (int i = 0; i < enemies.Count; i++)
+                SearchAndGo(enemies[i]);
+        } else if (targetName == "ProductionTower")
+        {
+            CreateTowerShape(2, null, position, 3, healthFactor);
+            for (int i = 0; i < enemies.Count; i++)
+                SearchAndGo(enemies[i]);
+        }
+    }
+
 
     void SpawnCommonEnemy(float enemySpawnSpeed)//生成敌人
     {

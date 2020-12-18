@@ -5,16 +5,20 @@ using UnityEngine;
 public class TowerEntity : MonoBehaviour
 {
     public int health;
+    public int maxHealth;
     public int state; //0 constructing, 1 normal-alive, 
                       //2 converting, 3 just finish converting, 4 normal-solidificate, 
                       //5 shattered by enemy, 6 self destruction (self explosion)
+    public int convertDirection; // 0 - null, 1 - left, 2 - right
+    public float healthFactor;
 
     float constructTime;
     float convertingTime;
     float convertingCoolDonwnTime;
     bool isConstructing;
-    bool isConverting;
-    bool isConvertingCoolDown;
+    public bool isConverting;
+    public bool isConvertingFinished;
+    public bool isConvertingCoolDown;
 
     // float
     // bool isSolidificated;
@@ -22,17 +26,21 @@ public class TowerEntity : MonoBehaviour
     protected void OnEnable()
     {
         state = 0;
+        convertDirection = 0;
         constructTime = 2.0f;
         convertingTime = 2.0f;
         convertingCoolDonwnTime = 5.0f;
         isConstructing = true;
         isConverting = false;
         isConvertingCoolDown = false;
+        isConvertingFinished = false;
+        healthFactor = 1;
     }
 
     protected void FixedUpdate()
     {
         UpdateFunctionTime();
+        healthFactor = (float)this.health / this.maxHealth;
     }
 
     // Update is called once per frame
@@ -76,45 +84,24 @@ public class TowerEntity : MonoBehaviour
 
         if (isConverting) // if converting, in state 2
         {
-            convertingCoolDonwnTime -= Time.deltaTime;
-            if (convertingCoolDonwnTime <= 0)
+            convertingTime -= Time.deltaTime;
+            if (convertingTime <= 0)
             {
                 state = 3;
+                convertingTime = 2.0f;
                 isConverting = false;
-                //call GameMnager
+                isConvertingFinished = true;
             }
         }
 
         if (isConvertingCoolDown)
         {
-            convertingTime -= Time.deltaTime;
-            if (convertingTime <= 0)
+            convertingCoolDonwnTime -= Time.deltaTime;
+            if (convertingCoolDonwnTime <= 0)
             {
-                state = 3;
+                convertingCoolDonwnTime = 5.0f;
                 isConvertingCoolDown = false;
             }
-        }
-    }
-
-    void GetCommand(int commandHandle)
-    {
-
-        switch (commandHandle)
-        {
-            case 0:
-                break;
-            case 1:
-                ConvertLeft();
-                break;
-            case 2:
-                ConvertRight();
-                break;
-            case 3:
-                Solidification();
-                break;
-            case 4:
-                SelfDestruction();
-                break;
         }
     }
 
@@ -128,43 +115,20 @@ public class TowerEntity : MonoBehaviour
         }
     }
 
-    public virtual bool ConvertLeft()
+    public bool ConvertJudge()
     {
         bool allowance;
         if (state != 1)
         {
-            Debug.Log("Not allow to convert");
+            Debug.Log("Current State: "+ state + ", Not allow to convert");
             allowance = false;
-        } else if (!isConvertingCoolDown) {
+        } else if (isConvertingCoolDown) {
             Debug.Log("Conveting in cooling down time!");
             allowance = false;
-        } else if (GameManager.gm.money < 10)
-        {
-            allowance = false;
-            Debug.Log("Not enough Money");
         } else {
-            allowance = true;
-        }
-        return allowance;
-    }
-
-
-    public virtual bool ConvertRight()
-    {
-        bool allowance;
-        if (state != 1)
-        {
-            Debug.Log("Not allow to convert");
-            allowance = false;
-        } else if (!isConvertingCoolDown)
-        {
-            Debug.Log("Conveting in cooling down time!");
-            allowance = false;
-        } else if (GameManager.gm.money < 10)
-        {
-            allowance = false;
-            Debug.Log("Not enough Money");
-        } else {
+            // condition all satisfy, start converting
+            state = 2;
+            isConverting = true;
             allowance = true;
         }
         return allowance;
@@ -177,9 +141,20 @@ public class TowerEntity : MonoBehaviour
         {
             Debug.Log("Not allow to solidificate!");
             allowance = false;
-        } else {
+        } else if (GameManager.gm.money < 10)
+        {
+            allowance = false;
+            Debug.Log("Not enought money!");
+        }  else {
+            /*change state*/
             health = this.health * 3;
             state = 4;
+
+            /*change shape*/
+            Transform t = this.gameObject.transform;
+            t.localScale *= 1.5f;
+
+            /*return flag*/
             allowance = true;
         }
         /*Reseve for audio*/

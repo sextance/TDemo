@@ -10,7 +10,7 @@ public class DefenceTowerEntity : TowerEntity
     void OnEnable()
     {
         base.OnEnable();
-        health = 50;
+        maxHealth = health = 50;
         powerRange = 10.0f;
     }
 
@@ -19,6 +19,12 @@ public class DefenceTowerEntity : TowerEntity
     void Update()
     {
         base.Update();
+        if (state == 3)//finish converting
+        {
+            if (convertDirection == 0) { state = 1; isConvertingCoolDown = true; }
+            else if (convertDirection == 1) { ConvertAntiClockwise(); }
+            else if (convertDirection == 2) { ConvertClockwise(); }
+        }
     }
 
     void FixedUpdate()
@@ -52,18 +58,25 @@ public class DefenceTowerEntity : TowerEntity
         bool allowance = base.Solidification();
         if (allowance)
         {
-            if (GameManager.gm.money < 10)
-            {
-                allowance = false;
-                Debug.Log("Not enought money!");
-            } else {
-                allowance = true;
-                tauntRange = tauntRange * 2;
-                powerRange = powerRange * 3;
-            }
+            allowance = true;
+            tauntRange = tauntRange * 2;
+            powerRange = powerRange * 3;
         }
         return allowance;
     }
+
+    public void ConvertAntiClockwise()
+    {
+        if (isConvertingFinished)
+            GameManager.gm.ConvertTo(this.gameObject.GetComponent<TowerShape>(), "AttackTower", healthFactor);
+    }
+
+    public void ConvertClockwise()
+    {
+        if (isConvertingFinished)
+            GameManager.gm.ConvertTo(this.gameObject.GetComponent<TowerShape>(), "ProductionTower", healthFactor);
+    }
+
 
     void OnDrawGizmosSelected()
     {
