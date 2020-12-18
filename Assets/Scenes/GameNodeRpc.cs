@@ -18,28 +18,28 @@ namespace BaseFramework.Network
 
         private void OnEnable()
         {
-            SerializeButton = GameObject.Find("SerilizeRpc").GetComponent<Button>();
-            SerializeButtonText = SerializeButton.transform.Find("Text").GetComponent<Text>();
+            //SerializeButton = GameObject.Find("SerilizeRpc").GetComponent<Button>();
+            //SerializeButtonText = SerializeButton.transform.Find("Text").GetComponent<Text>();
 
-            NotificationButton = GameObject.Find("NotificationRpc").GetComponent<Button>();
-            NotificationButtonText = NotificationButton.transform.Find("Text").GetComponent<Text>();
+            NotificationButton = GameObject.Find("PVPButton").GetComponent<Button>();
+            //NotificationButtonText = NotificationButton.transform.Find("Text").GetComponent<Text>();
 
-            SerializedPlayername = GameObject.Find("playername").GetComponent<Text>();
-            SerializedUid = GameObject.Find("uid").GetComponent<Text>();
-            NotificationMsg = GameObject.Find("NoficationMsg").GetComponent<Text>();
+           // SerializedPlayername = GameObject.Find("playername").GetComponent<Text>();
+           // SerializedUid = GameObject.Find("uid").GetComponent<Text>();
+            //NotificationMsg = GameObject.Find("NoficationMsg").GetComponent<Text>();
 
 
-            SerializeButtonText.text = "序列化";
-            NotificationButtonText.text = "Notify";
+            //SerializeButtonText.text = "序列化";
+            //NotificationButtonText.text = "Notify";
 
-            SerializedPlayername.color = Color.white;
+            /*SerializedPlayername.color = Color.white;
             SerializedPlayername.text = "用户名";
             SerializedUid.color = Color.white;
             SerializedUid.text = "UID";
             NotificationMsg.color = Color.white;
-            NotificationMsg.text = "Notify 消息";
+            NotificationMsg.text = "Notify 消息";*/
 
-            SerializeButton.onClick.AddListener(SerializeRpc);
+            //SerializeButton.onClick.AddListener(SerializeRpc);
             NotificationButton.onClick.AddListener(StartNotify);
         }
 
@@ -51,7 +51,18 @@ namespace BaseFramework.Network
 
         void StartNotify()
         {
-            LoginRequist.ucl.rpcCall("notifytester.rpc_start_notify", "3", null);
+            LoginRequist.ucl.rpcCall("combat.start_match", null, (byte[] data) =>
+            {
+                var msg = BaseFramework.Network.UserClient.ProtobufDecoder(data);
+
+                if (msg.Response.RpcRsp != null)
+                {
+                    var result = UserClient.MessagePackDecoder<object>(msg.Response.RpcRsp);
+
+                    DebugLogger.Debug("start_match callback: " + result);
+                    //NotificationMsg.text = result.ToString();
+                }
+            });
         }
     }
 }

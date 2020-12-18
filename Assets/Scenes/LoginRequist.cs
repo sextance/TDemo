@@ -9,7 +9,7 @@ namespace BaseFramework.Network
     public class LoginRequist : MonoBehaviour
     {
         private InputField LoginInputAccount;
-        private readonly string ServerIP = "47.114.188.59";
+        private readonly string ServerIP = "47.114.169.229";
         private readonly int ServerPort = 7001;
         Button LoginButton;
         Text LoginButtonText;

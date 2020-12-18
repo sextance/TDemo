@@ -29,6 +29,7 @@ namespace BaseFramework.Network
         private IProtocol netProtocol;
         private Login usrLogin;
         private NetClient netClient;
+        public static LoginRequist loginRequist;
         private int index;
         private Timer heartTimer;
         private Timer timeoutTimer;
@@ -40,6 +41,7 @@ namespace BaseFramework.Network
         private Dictionary<uint, DataPakage> sessionToCallback = new Dictionary<uint, DataPakage>();
         internal Thread SendThread;
         internal Thread ReceiveThread;
+        private Dictionary<string, Action<Message>> severMonitorCallback = new Dictionary<string, Action<Message>>();
 
         public UserClient(Login ulogin, int idx, NetClient ncli)
         {
@@ -48,7 +50,58 @@ namespace BaseFramework.Network
             usrLogin = ulogin;
             // 超时检测定时器
             timeoutTimer = new Timer(new TimerCallback(timeoutCheck), null, Timeout.Infinite, Timeout.Infinite);
+            regServerMonitor("isMatchSuccess", Match); 
+            regServerMonitor("other_player_coming", other_player_coming);
         }
+
+        private void other_player_coming(Message msg)
+        {
+            if (msg.OpCode == OPCODE.NotifyInfo)
+            {
+                var seq = msg.NotifyInfo.Sequence;
+                if (seq > 0)
+                {
+
+                    object retParam = MessagePackDecoder<object>(msg.NotifyInfo.RpcParams);
+
+                    DebugLogger.Debug(retParam.ToString());
+
+                    Debug.Log("server callback");
+                    // clientReceiveSeq = seq;
+                }
+
+            }
+        }
+
+        public void regServerMonitor(string funName, Action<Message> ac)
+        {
+            severMonitorCallback[funName] = ac;
+        }
+
+        private void Match(Message msg)
+        {
+            if(msg.NotifyInfo.RpcParams != "0")
+            {
+                var seq = msg.NotifyInfo.Sequence;
+                if(seq > 0)
+                {
+                    Boolean retParam = MessagePackDecoder<Boolean>(msg.NotifyInfo.RpcParams);
+                    if (retParam)
+                    {
+                        DebugLogger.Debug("匹配成功");
+                       // SceneManager.LoadScene("TowerScene");
+                    }
+                    else
+                    {
+                        DebugLogger.Debug("匹配失败");
+                    }
+
+                    Debug.Log("server callback");
+                    // clientReceiveSeq = seq;
+                }
+            }
+        }
+
 
         // 对发送给服务端的数据进行打包
         public void rpcCall(string funcname, string parameters = null, RpcCallBackDelegate callback = null)
@@ -108,39 +161,45 @@ namespace BaseFramework.Network
         {
             var msg = ProtobufDecoder(data);
 
-            DebugLogger.Debug(msg.OpCode.ToString());
+            DebugLogger.Debug(msg.OpCode.ToString());//NotifyInfo
 
             if (msg.OpCode == OPCODE.NotifyInfo)
             {
                 var seq = msg.NotifyInfo.Sequence;
-                if(seq > 0)
+                if (seq > 0)
                 {
-                    DebugLogger.Debug(seq.ToString());
-                    GameNodeRpc.NotificationMsg.text = seq.ToString() + "\n";
+                    DebugLogger.Debug(seq.ToString());//1
+                    //GameNodeRpc.NotificationMsg.text = seq.ToString() + "\n";
                     // clientReceiveSeq = seq;
                 }
 
                 var rpcFunc = msg.NotifyInfo.RpcFunc;
-                if(rpcFunc == null)
+                Debug.Log(rpcFunc.ToString());//isMatchSuccess
+                if (severMonitorCallback.ContainsKey(rpcFunc.ToString()))
+                {
+                    severMonitorCallback[rpcFunc.ToString()](msg);//执行注册的函数isMatchSuccess
+                }
+                if (rpcFunc == null)
                 {
                     DebugLogger.DebugError("RpcNotify wrong fucntion code");
                 }
                 else
                 {
-                    object retParam = MessagePackDecoder<object>(msg.NotifyInfo.RpcParams);
-                    int i = 0;
-                    GameNodeRpc.NotificationMsg.text += retParam.ToString();
+                    //object retParam = MessagePackDecoder<object>(msg.NotifyInfo.RpcParams);
+                    //int i = 0;
+                    //GameNodeRpc.NotificationMsg.text += retParam.ToString();
+                    //Debug.Log(retParam.ToString());
                 }
             }
         }
 
-        private Message ProtobufDecoder(byte[] data)
+        public static Message ProtobufDecoder(byte[] data)
         {
             Message msg = new Message();
             return Message.Parser.ParseFrom(data);
         }
 
-        private T MessagePackDecoder<T>(string param)
+        public static T MessagePackDecoder<T>(string param)
         {
             var msgPackDecoder = MessagePackSerializer.Get<T>();
             byte[] byteArray = Convert.FromBase64String(param);
