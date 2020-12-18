@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     public List<TowerShape> towerShapes;
     public List<Enemy> enemies;
     public Text costText;
+    public GameObject mapMenu;
 
     int selectTypeHandler; // 0 - non, 1 - tower...
     TowerShape pickTower;
@@ -81,6 +82,7 @@ public class GameManager : MonoBehaviour
         highLightObj.gameObject.SetActive(false);
         selectedMaterial = Resources.Load<Material>("Materials/MapMaterials/Glow");
 
+        mapMenu.SetActive(false);
         /*Game Data*/
         money = data.startMoney; //start money for player
         
@@ -363,6 +365,7 @@ public class GameManager : MonoBehaviour
                         highLightObj.GetComponent<MeshFilter>().mesh = hit.collider.GetComponent<MeshFilter>().mesh;
                         highLightObj.gameObject.SetActive(true);
                     }
+                    mapMenu.SetActive(true);
                 }
                 else
                     Debug.Log("Region already accupied by a tower!");
