@@ -131,6 +131,7 @@ GameObject:
   m_Component:
   - component: {fileID: 51244436}
   - component: {fileID: 51244435}
+  - component: {fileID: 51244437}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -160,6 +161,8 @@ MonoBehaviour:
   solidificateTower: 115
   destroyTower: 100
   newGameKey: 110
+  antiClockwiseConvert: 276
+  clockwiseConvert: 275
   towerShapes: []
   enemies: []
   spawnSpeed: 1
@@ -183,6 +186,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &51244437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 51244434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a319d18e5e131b2409397e4753def1c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allTime: 0
+  timelimit1: 5
+  timelimit2: 10
+  timelimit3: 20
+  timeToSpawn: 0
+  intAllTime: 0
 --- !u!1 &76463241
 GameObject:
   m_ObjectHideFlags: 0

@@ -56,10 +56,15 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     Enemy enemyprefab = default;
 
+    float s1 = 1f;
+    float s2 = 1f;
+    float s3 = 5f;
+    int count;
     //private Animator anim;
 
     /*Game Datas*/
     public int money;
+
 
     /*Reserve for other objects*/
     void Start()
@@ -81,6 +86,8 @@ public class GameManager : MonoBehaviour
 
         /*Game Data*/
         money = 15; //start money for player
+
+        
     }
 
     // Update is called once per frame
@@ -195,9 +202,11 @@ public class GameManager : MonoBehaviour
         {
             SpawnTEnemy();
         }
+        TimeToSpawnAround();
         TimeToSpawn();
         GameUpdate();
-        TimeToSpawnAround();
+
+
     }
 
     void CreateTowerShape(int towerId, HexCell buildRegion, Vector3 localPostion, int initState, float healthFactor = 1)
@@ -490,17 +499,47 @@ public class GameManager : MonoBehaviour
 
     void TimeToSpawnAround()//获取边缘地图坐标，批量生成
     {
-        if(time > 120f)
+        if(TimeManager.timeManager.intAllTime >= TimeManager.timeManager.timelimit1 && TimeManager.timeManager.intAllTime < TimeManager.timeManager.timelimit1+2)
         {
-            OnceToCreateAround();
+            s1 += Time.deltaTime;
+            count = 0;
+            while(count < 2 && s1 >= 1f)
+            {
+                for (int i = 0; i < 1; i++)
+                {
+                    OnceToCreateAround();
+                }
+                count++;
+                s1 -= 1f;
+            }
         }
-        else if(time > 300f)
+
+        if (TimeManager.timeManager.intAllTime >= TimeManager.timeManager.timelimit2 && TimeManager.timeManager.intAllTime < TimeManager.timeManager.timelimit2 + 5)
         {
-            OnceToCreateAround();
+            s2 += Time.deltaTime;
+            count = 0;
+            while (count < 5 && s2 >= 1f)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    OnceToCreateAround();
+                }
+                count++;
+                s2 -= 1f;
+            }
         }
-        else if(time > 480f)
+
+        if (TimeManager.timeManager.intAllTime >= TimeManager.timeManager.timelimit3)
         {
-            OnceToCreateAround();
+            s3 += Time.deltaTime;
+            while (s3 >= 5f)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    OnceToCreateAround();
+                }
+                s3 -= 5f;
+            }
         }
     }
 
