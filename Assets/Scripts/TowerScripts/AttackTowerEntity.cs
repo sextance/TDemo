@@ -33,32 +33,40 @@ public class AttackTowerEntity : TowerEntity
     void FixedUpdate()
     {
         base.FixedUpdate();
-        if (!isEnemyLocked)
-            AcquireTargetEnemy();
-        else
-            CheckLockEnemyState();
+        if(state != 0 && state != 2)
+        {
+            if (!isEnemyLocked)
+                AcquireTargetEnemy();
+            else
+                CheckLockEnemyState();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         base.Update();
-        if (isEnemyLocked)
+        if (state != 0 && state != 2) // when constructing or converting disable
         {
-            if (!isCoolDownTime)
+            if (isEnemyLocked)
             {
-                Projectile instance = ProjectileFactory.pf.Get();
-                instance.damage = this.damage;
-                instance.targetEnemy = lockTarget;
-                Transform t = instance.transform;
-                t.localPosition = this.transform.localPosition + Vector3.up * 10.0f;
-                isCoolDownTime = true;
-            } else {
-                coolDownTime -= Time.deltaTime;
-                if(coolDownTime <= 0f)
+                if (!isCoolDownTime)
                 {
-                    coolDownTime = 1.0f;
-                    isCoolDownTime = false;
+                    Projectile instance = ProjectileFactory.pf.Get();
+                    instance.damage = this.damage;
+                    instance.targetEnemy = lockTarget;
+                    Transform t = instance.transform;
+                    t.localPosition = this.transform.localPosition + Vector3.up * 10.0f;
+                    isCoolDownTime = true;
+                }
+                else
+                {
+                    coolDownTime -= Time.deltaTime;
+                    if (coolDownTime <= 0f)
+                    {
+                        coolDownTime = 1.0f;
+                        isCoolDownTime = false;
+                    }
                 }
             }
         }

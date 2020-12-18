@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu]
 public class TowerShapeFactory : ScriptableObject
 {
-    static TowerShapeFactory tsf;
+    public static TowerShapeFactory tsf;
 
     [SerializeField]
     TowerShape[] prefabs;

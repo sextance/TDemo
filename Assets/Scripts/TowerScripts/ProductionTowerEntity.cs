@@ -23,16 +23,21 @@ public class ProductionTowerEntity : TowerEntity
     void FixedUpdate()
     {
         base.FixedUpdate();
-        if (!isCoolDownTime)
+        if( state !=0 && state != 2)
         {
-            GameManager.gm.money += production;
-            isCoolDownTime = true;
-        } else {
-            coolDownTime -= Time.deltaTime;
-            if (coolDownTime <= 0f)
+            if (!isCoolDownTime)
             {
-                coolDownTime = 1.0f;
-                isCoolDownTime = false;
+                GameManager.gm.money += production;
+                isCoolDownTime = true;
+            }
+            else
+            {
+                coolDownTime -= Time.deltaTime;
+                if (coolDownTime <= 0f)
+                {
+                    coolDownTime = 1.0f;
+                    isCoolDownTime = false;
+                }
             }
         }
     }
