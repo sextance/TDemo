@@ -61,6 +61,7 @@ public class HexGrid : MonoBehaviour
         cell.coordinates = HexCoordinates.FromOffsetCoordinates(x, yInCoordinate, CoordinateOffset);
         cell.name = cell.coordinates.ToString();
         cell.available = true;
+        cell.powered = false;
 
         Text label = Instantiate<Text>(cellLabelPrefab);
         label.rectTransform.SetParent(gridCanvas.transform, false);
@@ -68,4 +69,72 @@ public class HexGrid : MonoBehaviour
         label.text = cell.coordinates.ToString();
 
     }
+
+    public void CreatePowerLinkToCell(ProductionTowerEntity productionTower)
+    {
+        HexCell cell = productionTower.cell;
+        int x = cell.coordinates.X;
+        int y = cell.coordinates.Y;
+        int range = productionTower.powerRange;
+        for (int i = x - range; i <= x + range; i++)
+        {
+            for (int j = y - range; j <= y + range; j++)
+            {
+                // check if the hexagonal boundary conditions is satisfied
+                if ((i + j) - (x + y) >= -range && (i + j) - (x + y) <= range)
+                    EnpowerCell(i, j, productionTower);
+            }
+        }
+    }
+
+    void EnpowerCell(int x, int y, ProductionTowerEntity productionTower)
+    {
+        int index = x + y * 12;
+        // check if the cells boundary condition is satisfied
+        if (index > 0 && index < height * width)
+        {
+            HexCell cell = cells[index];
+            // Avoid repeat addition
+            if (cell.powerLinks.Find(o => o.cell == productionTower.cell) == null) 
+            {
+                cell.powerLinks.Add(productionTower);
+            }
+        }
+    }
+
+    public void BreakPowerLinkToCell(ProductionTowerEntity productionTower)
+    {
+        HexCell cell = productionTower.cell;
+        int x = cell.coordinates.X;
+        int y = cell.coordinates.Y;
+        int range = productionTower.powerRange;
+        for (int i = x - range; i <= x + range; i++)
+        {
+            for (int j = y - range; j <= y + range; j++)
+            {
+                // check if the hexagonal boundary conditions is satisfied
+                if ((i + j) - (x + y) >= -range && (i + j) - (x + y) <= range)
+                    DisempowerCell(i, j, productionTower);
+            }
+        }
+    }
+
+    void DisempowerCell(int x, int y, ProductionTowerEntity productionTower)
+    {
+        int index = x + y * 12;
+        // check if the cells boundary condition is satisfied
+        if (index > 0 && index < height * width)
+        {
+            HexCell cell = cells[index];
+            // Avoid reamove null 
+            int findIndex = cell.powerLinks.FindIndex(o => o.cell == productionTower.cell);
+            if (findIndex != -1)
+            {
+                int last = cell.powerLinks.Count - 1;
+                cell.powerLinks[findIndex] = cell.powerLinks[last];
+                cell.powerLinks.RemoveAt(last);
+            }
+        }
+    }
+
 }

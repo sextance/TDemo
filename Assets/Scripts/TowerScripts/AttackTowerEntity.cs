@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class AttackTowerEntity : TowerEntity
 {
+    Data data = Data.GlobalData;
     //ATK range = 3
-    public float attackRange = 20.0f;
+    public float attackRange;
 
     public Projectile projectile;
 
@@ -21,12 +22,13 @@ public class AttackTowerEntity : TowerEntity
     void OnEnable()
     {
         base.OnEnable();
-        damage = 3;
-        maxHealth = health = 10;
+        damage = data.damage;
+        maxHealth = health = data.attackTowerMaxHealth;
+        attackRange = data.attackRange;
         isTauted = false;
         isCoolDownTime = false;
         isEnemyLocked = false;
-        coolDownTime = 1.0f;
+        coolDownTime = data.attackCoolDownTime;
         lockTarget = null;
     }
 
@@ -63,7 +65,7 @@ public class AttackTowerEntity : TowerEntity
                     coolDownTime -= Time.deltaTime;
                     if (coolDownTime <= 0f)
                     {
-                        coolDownTime = 1.0f;
+                        coolDownTime = data.attackCoolDownTime;
                         isCoolDownTime = false;
                     }
                 }
@@ -120,8 +122,8 @@ public class AttackTowerEntity : TowerEntity
         bool allowance = base.Solidification();
         if (allowance)
         {
-            damage = damage * 3;
-            attackRange = attackRange * 2;
+            damage = damage *  data.factorDamage;
+            attackRange = attackRange * data.factorAtkRange;
         }
         return allowance;
     }

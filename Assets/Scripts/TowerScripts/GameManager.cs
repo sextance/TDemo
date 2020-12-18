@@ -6,10 +6,11 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    static public GameManager gm; //Only one game manager instance is allowance
+    public static GameManager gm; //Only one game manager instance is allowance
 
     /*public ServerMsg... serverMsg.....*/
     /*Object Factory*/
+    public Data data;
     public MapManager mapManager;
     public TowerShapeFactory towerShapeFactory;
     public ProjectileFactory projectileFactory;
@@ -53,9 +54,6 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     float timeLimit = 0f;
 
-    [SerializeField]
-    Enemy enemyprefab = default;
-
     float s1 = 1f;
     float s2 = 1f;
     float s3 = 5f;
@@ -64,13 +62,12 @@ public class GameManager : MonoBehaviour
 
     /*Game Datas*/
     public int money;
-
-
     /*Reserve for other objects*/
     void Start()
     {
         /* Reserve for Sence logic*/
         gm = this;
+        data = Data.GlobalData;
         towerShapes = new List<TowerShape>();
         enemies = new List<Enemy>();
         pickTower = null;
@@ -85,8 +82,7 @@ public class GameManager : MonoBehaviour
         selectedMaterial = Resources.Load<Material>("Materials/MapMaterials/Glow");
 
         /*Game Data*/
-        money = 15; //start money for player
-
+        money = data.startMoney; //start money for player
         
     }
 
@@ -97,9 +93,8 @@ public class GameManager : MonoBehaviour
         {
             if (selectTypeHandler == 2)
             {
-                if(money >= 5)
+                if(money >= data.buildCost)
                 {
-                    this.money -= 5;
                     CreateTowerShape(0, pickRegion, Vector3.zero, 0);
                     selectTypeHandler = 0;
                     for (int i = 0; i < enemies.Count; i++)
@@ -115,7 +110,7 @@ public class GameManager : MonoBehaviour
         {
             if (selectTypeHandler == 2)
             {
-                if (money >= 5)
+                if (money >= data.buildCost)
                 {
                     CreateTowerShape(1, pickRegion, Vector3.zero, 0);
                     selectTypeHandler = 0;
@@ -132,14 +127,12 @@ public class GameManager : MonoBehaviour
         {
             if (selectTypeHandler == 2)
             {
-                if (money >= 5)
+                if (money >= data.buildCost)
                 {
                     CreateTowerShape(2, pickRegion, Vector3.zero, 0);
                     selectTypeHandler = 0;
-
-                } else {
-                    Debug.Log("Not enough money.");
-                }
+                } else 
+                    Debug.Log("Not enough money to build!");
             }
             else
                 Debug.Log("No building region selected.");
@@ -158,9 +151,14 @@ public class GameManager : MonoBehaviour
         {
             if (selectTypeHandler == 1 && pickTower != null)
             {
-                DestroyTowerShape(pickTower);
-
-                selectTypeHandler = 0;
+                if (this.money > data.solidificateCost)
+                {
+                    DestroyTowerShape(pickTower);
+                    selectTypeHandler = 0;
+                    this.money -= data.deconstructionCost;
+                }
+                else
+                    Debug.Log("Not enough money to deconstruct!");
             }
             else
                 Debug.Log("No tower selected.");
@@ -222,19 +220,24 @@ public class GameManager : MonoBehaviour
             buildPosition = localPostion;
             buildPosition.y = 0;
         } else {
+            e.cell = buildRegion;
             buildPosition = HexCoordinates.FromCoordinate(buildRegion.coordinates);
             instance.coordinates = buildRegion.coordinates;
             buildRegion.available = false;
         }
-        //Move the root of prefabs to ground
 
+        //Move the root of prefabs to ground
         t.localPosition = buildPosition + Vector3.up * instance.transform.localScale.y;
         if (t.localScale.y >= 15.0f)
-            t.localScale /= 1.5f;
+            t.localScale /= data.factorScale;
 
+        //Create link if production tower
+        if(towerId == 2)
+            mapManager.hexGrid.CreatePowerLinkToCell(
+                instance.gameObject.GetComponent<ProductionTowerEntity>());
         
         towerShapes.Add(instance);
-        this.money -= 5;
+        this.money -= data.buildCost;
 
         instance.GetComponent<TowerEntity>().state = initState;
 
@@ -270,14 +273,9 @@ public class GameManager : MonoBehaviour
             //selectedObject = null;
             highLightObj.gameObject.SetActive(false);
             for (int i = 0; i < enemies.Count; i++)
-            {
                 SearchAndGo(enemies[i]);
-            }
-        }
-        else
-        {
-            Debug.LogError("No tower in pools to destroy!");
-        }
+        } else
+            Debug.Log("No tower in pools to destroy!");
     }
 
     void SolidificateTowerShape(TowerShape pickTower)
@@ -301,7 +299,7 @@ public class GameManager : MonoBehaviour
                 allowance = tmp.Solidification();
             }
             if (allowance)
-                this.money -= 10;
+                this.money -= data.solidificateCost;
         }
         else
             Debug.Log("Tower already solidificated");

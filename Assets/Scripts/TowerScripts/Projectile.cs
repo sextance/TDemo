@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    Data data = Data.GlobalData;
     public Enemy targetEnemy;
-
-    public int damage = 1;
 
     int shapeId = int.MinValue; //Default value
     public int ShapeId
@@ -34,6 +33,7 @@ public class Projectile : MonoBehaviour
         }
     }
 
+    public int damage;
     float speed;
     float delayDeadTime;
     bool reachTarget;
@@ -43,10 +43,11 @@ public class Projectile : MonoBehaviour
 
     void OnEnable()
     {
+        damage = data.damage;
         targetEnemy = null;
         shapeId = 0;
-        delayDeadTime = 0.5f;
-        speed = 20.0f;
+        delayDeadTime = data.projectileDelayTime;
+        speed = data.projectileSpeed;
         lastPosition = Vector3.zero;
         startTimer = false;
         reachTarget = false;

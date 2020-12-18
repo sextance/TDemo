@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class DefenceTowerEntity : TowerEntity
 {
-    public float powerRange = 35.0f;
-    public float tauntRange = 35.0f;
+    Data data = Data.GlobalData;
+    public float tauntRange;
 
     void OnEnable()
     {
         base.OnEnable();
-        maxHealth = health = 50;
-        powerRange = 10.0f;
+        tauntRange = data.tauntRange;
+        maxHealth = health = data.defenceTowerMaxHealth;
     }
 
 
@@ -59,8 +59,7 @@ public class DefenceTowerEntity : TowerEntity
         if (allowance)
         {
             allowance = true;
-            tauntRange = tauntRange * 2;
-            powerRange = powerRange * 3;
+            tauntRange = tauntRange * data.factorTauntRange;
         }
         return allowance;
     }

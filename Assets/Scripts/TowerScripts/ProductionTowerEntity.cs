@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class ProductionTowerEntity : TowerEntity
 {
+    Data data = Data.GlobalData;
     int production;
-    float powerRange = 10.0f;
+    public int powerRange;
 
     float coolDownTime;
     bool isCoolDownTime;
@@ -14,9 +15,10 @@ public class ProductionTowerEntity : TowerEntity
     void OnEnable()
     {
         base.OnEnable();
-        maxHealth = health = 20;
-        production = 1;
-        coolDownTime = 1.0f;
+        powerRange = data.powerRange;
+        maxHealth = health = data.productionTowerMaxHealth;
+        production = data.production;
+        coolDownTime = data.productionCoolDownTime;
         isCoolDownTime = true;
     }
 
@@ -30,13 +32,12 @@ public class ProductionTowerEntity : TowerEntity
                 GameManager.gm.money += production;
                 Debug.Log("Money: "+ GameManager.gm.money);
                 isCoolDownTime = true;
-            }
-            else
+            } else 
             {
                 coolDownTime -= Time.deltaTime;
                 if (coolDownTime <= 0f)
                 {
-                    coolDownTime = 1.0f;
+                    coolDownTime = data.productionCoolDownTime;
                     isCoolDownTime = false;
                 }
             }
@@ -54,7 +55,8 @@ public class ProductionTowerEntity : TowerEntity
         if (allowance) 
         {
             allowance = true;
-            production = production * 3;
+            production = production * data.factorProduction;
+            powerRange = powerRange * data.factorPowerRange;
         }
         return allowance;
     }

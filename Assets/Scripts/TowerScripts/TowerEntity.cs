@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TowerEntity : MonoBehaviour
 {
+    Data data = Data.GlobalData;
+
     public int health;
     public int maxHealth;
     public int state; //0 constructing, 1 normal-alive, 
@@ -20,6 +22,7 @@ public class TowerEntity : MonoBehaviour
     public bool isConvertingFinished;
     public bool isConvertingCoolDown;
 
+    public HexCell cell; //the cell that tower occupied
     // float
     // bool isSolidificated;
 
@@ -27,13 +30,14 @@ public class TowerEntity : MonoBehaviour
     {
         state = 0;
         convertDirection = 0;
-        constructTime = 2.0f;
-        convertingTime = 2.0f;
-        convertingCoolDonwnTime = 5.0f;
+        constructTime = data.constructTime;
+        convertingTime = data.convertingTime;
+        convertingCoolDonwnTime = data.convertingCoolDonwnTime;
         isConstructing = true;
         isConverting = false;
         isConvertingCoolDown = false;
         isConvertingFinished = false;
+        cell = null;
         healthFactor = 1;
     }
 
@@ -77,7 +81,7 @@ public class TowerEntity : MonoBehaviour
             if (constructTime <= 0)
             {
                 state = 1;
-                constructTime = 2.0f;
+                constructTime = data.constructTime;
                 isConstructing = false;
             }
         }
@@ -88,7 +92,7 @@ public class TowerEntity : MonoBehaviour
             if (convertingTime <= 0)
             {
                 state = 3;
-                convertingTime = 2.0f;
+                convertingTime = data.convertingTime;
                 isConverting = false;
                 isConvertingFinished = true;
             }
@@ -99,7 +103,7 @@ public class TowerEntity : MonoBehaviour
             convertingCoolDonwnTime -= Time.deltaTime;
             if (convertingCoolDonwnTime <= 0)
             {
-                convertingCoolDonwnTime = 5.0f;
+                convertingCoolDonwnTime = data.convertingCoolDonwnTime;
                 isConvertingCoolDown = false;
             }
         }
@@ -141,18 +145,18 @@ public class TowerEntity : MonoBehaviour
         {
             Debug.Log("Not allow to solidificate!");
             allowance = false;
-        } else if (GameManager.gm.money < 10)
+        } else if (GameManager.gm.money < data.solidificateCost)
         {
             allowance = false;
             Debug.Log("Not enought money!");
         }  else {
             /*change state*/
-            health = this.health * 3;
+            health = this.health * data.factorHealth;
             state = 4;
 
             /*change shape*/
             Transform t = this.gameObject.transform;
-            t.localScale *= 1.5f;
+            t.localScale *= data.factorScale;
 
             /*return flag*/
             allowance = true;
