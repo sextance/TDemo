@@ -97,6 +97,7 @@ public class GameManager : MonoBehaviour
                 {
                     CreateTowerShape(0, pickRegion, Vector3.zero, 0);
                     selectTypeHandler = 0;
+                    this.money -= data.buildCost;
                     for (int i = 0; i < enemies.Count; i++)
                         SearchAndGo(enemies[i]);
                 }  else {
@@ -114,6 +115,7 @@ public class GameManager : MonoBehaviour
                 {
                     CreateTowerShape(1, pickRegion, Vector3.zero, 0);
                     selectTypeHandler = 0;
+                    this.money -= data.buildCost;
                     for (int i = 0; i < enemies.Count; i++)
                         SearchAndGo(enemies[i]);
                 }  else {
@@ -131,6 +133,7 @@ public class GameManager : MonoBehaviour
                 {
                     CreateTowerShape(2, pickRegion, Vector3.zero, 0);
                     selectTypeHandler = 0;
+                    this.money -= data.buildCost;
                 } else 
                     Debug.Log("Not enough money to build!");
             }
@@ -237,7 +240,6 @@ public class GameManager : MonoBehaviour
                 instance.gameObject.GetComponent<ProductionTowerEntity>());
         
         towerShapes.Add(instance);
-        this.money -= data.buildCost;
 
         instance.GetComponent<TowerEntity>().state = initState;
 
