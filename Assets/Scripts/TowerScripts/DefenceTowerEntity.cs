@@ -24,7 +24,8 @@ public class DefenceTowerEntity : TowerEntity
     void FixedUpdate()
     {
         base.FixedUpdate();
-        TauntEnemy();
+        if(state != 0 && state !=2)
+            TauntEnemy();
     }
 
     void TauntEnemy()

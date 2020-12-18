@@ -149,7 +149,6 @@ public class TowerEntity : MonoBehaviour
     }
 
 
-
     public virtual bool ConvertRight()
     {
         bool allowance;
@@ -200,5 +199,11 @@ public class TowerEntity : MonoBehaviour
             allowance = true;
         }
         return allowance;
+    }
+
+    public virtual void SetHealth(int originHealth, int originMaxHealth)
+    {
+        int t = this.health;
+        this.health = t * originHealth / originMaxHealth;
     }
 }
