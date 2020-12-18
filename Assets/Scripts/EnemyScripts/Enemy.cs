@@ -47,6 +47,12 @@ public class Enemy : MonoBehaviour
         collider = GetComponent<Collider>();
     }
 
+    private void FixedUpdate()
+    {
+        OnTriggerStay(collider);
+        OnTriggerExit(collider);
+    }
+
     protected void Update()
     {
         if (health <= 0f)
@@ -75,19 +81,6 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    /*public void Attack(Enemy enemy)
-    {
-        s = GameManager.gm.Search(GameManager.gm.towerShapes, enemy);
-        float distance = Vector3.Distance(enemy.transform.localPosition, s.point);
-        if(distance > 5f) { }
-        else if(distance <= 5f)
-        {
-            GameManager.gm.towerShapes[s.num].GetComponent<AttackTowerEntity>().TakeDamage(attack);
-            Debug.Log("Attacking");
-            Debug.LogError("Can't Attack");
-        }
-    }*/
-
     private void OnTriggerStay(Collider other)
     {
         s = GameManager.gm.Search(GameManager.gm.towerShapes, this);
@@ -100,11 +93,14 @@ public class Enemy : MonoBehaviour
             {
                 Attack();
             }
-            else if (GameManager.gm.towerShapes[s.num] == null)
-            {
-                GameManager.gm.SearchAndGo(this);
-                anim.SetInteger("CommonEnemy", 1);
-            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if(GameManager.gm.towerShapes.Count > 0)
+        {
+            GameManager.gm.SearchAndGo(this);
         }
         
     }
@@ -112,28 +108,40 @@ public class Enemy : MonoBehaviour
     void Attack()
     {
         s = GameManager.gm.Search(GameManager.gm.towerShapes, this);
-        GameObject t = GameManager.gm.towerShapes[s.num].gameObject;
-        if (startAttack)
+        if(s.num < 0)
         {
-            anim.SetInteger("CommonEnemy", 2);
-            t.GetComponent<TowerEntity>().TakeDamage(attack);
-            startAttack = false;
+            return;
         }
-        else if (!startAttack)
+        else
         {
-            anim.SetInteger("CommonEnemy", 0);
-            attackTime += Time.deltaTime;
-            if (attackTime >= 1f)
+            GameObject t = GameManager.gm.towerShapes[s.num].gameObject;
+            if (startAttack)
             {
-                attackTime -= 1f;
-                startAttack = true;
+                anim.SetInteger("CommonEnemy", 2);
+                t.GetComponent<TowerEntity>().TakeDamage(attack);
+                startAttack = false;
+            }
+            else if (!startAttack)
+            {
+                anim.SetInteger("CommonEnemy", 0);
+                attackTime += Time.deltaTime;
+                if (attackTime >= 1f)
+                {
+                    attackTime -= 1f;
+                    startAttack = true;
+                }
             }
         }
     }
 
     public void ForceAttack(DefenceTowerEntity defenceTowerEntity)
     {
-        if (defenceTowerEntity == null)
+        if(GameManager.gm.towerShapes.Count < 0)
+        {
+            isLock = false;
+            anim.SetInteger("CommonEnemy", 0);
+        }
+        else if (defenceTowerEntity == null)
         {
             isLock = false;
             anim.SetInteger("CommonEnemy", 0);

@@ -18,12 +18,12 @@ public class TEnemy : Enemy
         //tauntTower();
     }
 
-    /*void tauntTower()
+    void tauntTower()
     {
         Collider[] colliders = Physics.OverlapSphere(this.transform.localPosition, tauntRange, LayerMask.GetMask("Tower"));
         foreach (Collider collider in colliders)
         {
-            DefenceTowerEnity t = collider.gameObject.GetComponent<DefenceTowerEnity>();
+            DefenceTowerEntity t = collider.gameObject.GetComponent<DefenceTowerEntity>();
             if (t == null)
                 break;
             else
@@ -31,5 +31,5 @@ public class TEnemy : Enemy
                 // t.嘲讽函数(this);
             }
         }
-    }*/
+    }
 }

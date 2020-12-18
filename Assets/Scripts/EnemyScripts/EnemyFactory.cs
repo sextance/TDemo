@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 [CreateAssetMenu]
 public class EnemyFactory : ScriptableObject
@@ -40,6 +41,14 @@ public class EnemyFactory : ScriptableObject
         return instance;
     }
 
+    public Enemy GetAroundEnemy(Vector3 spawnPosition)
+    {
+        Enemy instance = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+        instance.OriginFactory = this;
+        return instance;
+
+    }
+
     public void Reclaim(Enemy enemy)
     {
         //Debug.Assert(enemy == this, "Wrong Factory Reclaimed!");
@@ -59,6 +68,11 @@ public class EnemyFactory : ScriptableObject
     }
 
     private void OnEnable()
+    {
+        enemyF = this;
+    }
+
+    private void Awake()
     {
         enemyF = this;
     }

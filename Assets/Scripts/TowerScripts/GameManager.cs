@@ -50,6 +50,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     float timeLimit = 0f;
 
+    [SerializeField]
+    Enemy enemyprefab = default;
+
     //private Animator anim;
 
     /*Game Datas*/
@@ -137,6 +140,7 @@ public class GameManager : MonoBehaviour
             if (selectTypeHandler == 1 && pickTower != null)
             {
                 DestroyTowerShape(pickTower);
+
                 selectTypeHandler = 0;
                 for(int i = 0; i < enemies.Count; i++)
                 {
@@ -187,8 +191,16 @@ public class GameManager : MonoBehaviour
         {
             //int index = Random.Range(0, towerShapes.Count);
             int index = towerShapes.FindIndex(a => a.SerialId == pickTower.SerialId);
+            //
+            foreach(Enemy enemy in enemies)
+            {
+                if (pickTower.GetComponent<DefenceTowerEntity>() != null)
+                {
+                    enemy.isLock = false;
+                }
+            }
+            //
             towerShapeFactory.Reclaim(towerShapes[index]);
-
             mapManager.hexGrid.cells[pickTower.coordinates.X + pickTower.coordinates.Y * 12].available = true;
             //Switch the index of selected and last one
             int lastIndex = towerShapes.Count - 1;
@@ -199,6 +211,10 @@ public class GameManager : MonoBehaviour
             highLightObj.gameObject.SetActive(false);
             selectedObject.GetComponent<MeshRenderer>().material = previousMaterial;
             selectedObject = null;
+            for (int i = 0; i < GameManager.gm.enemies.Count; i++)
+            {
+                SearchAndGo(GameManager.gm.enemies[i]);
+            }
         }
         else
         {
@@ -397,7 +413,7 @@ public class GameManager : MonoBehaviour
         {
             spawnCoordinates = edge[i];
             Vector3 spawnPosition = HexCoordinates.FromCoordinate(spawnCoordinates);
-            Enemy enemy = enemyFactory.GetEnemy();
+            Enemy enemy = enemyFactory.GetAroundEnemy(spawnPosition);
             enemies.Add(enemy);
             SearchAndGo(enemy);
         }
