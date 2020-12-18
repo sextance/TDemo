@@ -199,9 +199,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allTime: 0
-  timelimit1: 5
-  timelimit2: 10
-  timelimit3: 20
+  timelimit1: 120
+  timelimit2: 300
+  timelimit3: 480
   timeToSpawn: 0
   intAllTime: 0
 --- !u!1 &76463241
