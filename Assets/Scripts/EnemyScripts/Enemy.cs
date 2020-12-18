@@ -90,7 +90,7 @@ public class Enemy : MonoBehaviour
             return;
         } else {
             TowerShape t = GameManager.gm.towerShapes[s.num];
-            if (t == other.gameObject.GetComponent<TowerShape>())
+            if (t == other.gameObject.GetComponentInParent<TowerShape>())
             {
                 transform.LookAt(t.transform);
                 Attack();

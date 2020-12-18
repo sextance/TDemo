@@ -167,10 +167,10 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3014386412994151428}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.53
+  m_Radius: 1.6
   m_Center: {x: 0, y: 0.42644972, z: 0}
 --- !u!1 &3014641461787610252
 GameObject:
@@ -282,6 +282,8 @@ MonoBehaviour:
   isConverting: 0
   isConvertingFinished: 0
   isConvertingCoolDown: 0
+  cell: {fileID: 0}
+  powerRange: 0
 --- !u!208 &8054017765707634755
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -292,7 +294,7 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 0
-  m_Extents: {x: 1.41, y: 1, z: 1.41}
+  m_Extents: {x: 1.38, y: 1, z: 1.38}
   m_MoveThreshold: 0.1
   m_Carve: 0
   m_CarveOnlyStationary: 1
