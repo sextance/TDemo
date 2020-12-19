@@ -52,7 +52,7 @@ namespace BaseFramework.Network
             timeoutTimer = new Timer(new TimerCallback(timeoutCheck), null, Timeout.Infinite, Timeout.Infinite);
             regServerMonitor("isMatchSuccess", Match); 
             regServerMonitor("other_player_coming", other_player_coming);
-            regServerMonitor("powerShow", powerShow);
+            regServerMonitor("powerShow", GetTowerNum);
         }
         private void powerShow(Message msg)
         {
@@ -74,6 +74,22 @@ namespace BaseFramework.Network
 
             }
         }
+
+        private void GetTowerNum(Message msg)
+        {
+            if(msg.OpCode == OPCODE.NotifyInfo)
+            {
+                var seq = msg.NotifyInfo.Sequence;
+                if(seq > 0)
+                {
+                    object getNum = MessagePackDecoder<object>(msg.NotifyInfo.RpcParams);
+
+                    DebugLogger.Debug(getNum.ToString());
+                    Debug.Log("num is" + getNum.ToString());
+                }
+            }
+        }
+
         private void other_player_coming(Message msg)
         {
             if (msg.OpCode == OPCODE.NotifyInfo)
@@ -109,6 +125,18 @@ namespace BaseFramework.Network
                     if (retParam)
                     {
                         DebugLogger.Debug("匹配成功");
+                        /*LoginRequist.ucl.rpcCall("combat.getOtherId", null, (byte[] data) =>
+                        {
+                            var massage = BaseFramework.Network.UserClient.ProtobufDecoder(data);
+
+                            if (massage.Response.RpcRsp != null)
+                            {
+                                var result = UserClient.MessagePackDecoder<object>(massage.Response.RpcRsp);
+
+                                DebugLogger.Debug("OtherID callback: " + result);
+                            }
+                        });*/
+
                         SceneManager.LoadScene("TowerScene");
                     }
                     else
@@ -116,7 +144,7 @@ namespace BaseFramework.Network
                         DebugLogger.Debug("匹配失败");
                     }
 
-                    Debug.Log("server callback");
+                    Debug.Log("server callback:isMatchSuccess");
                     // clientReceiveSeq = seq;
                 }
             }
