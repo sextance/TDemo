@@ -9,19 +9,23 @@ public class HexGrid : MonoBehaviour
 
     public HexCell cellPrefab;
     public HexCell[] cells;
+    bool[] brightened;
 
     public Text cellLabelPrefab;
     Canvas gridCanvas;
+    public Material previousMaterial;
+    public Material poweredMaterial;
 
     void Awake()
     {
         gridCanvas = GetComponentInChildren<Canvas>();
         cells = new HexCell[height * width];
-
+        brightened = new bool[height * width];
         for (int y = 0, i = 0; y < height; y++)
         {
             for (int x = 0; x < width; x++)
             {
+                brightened[i] = false;
                 CreateCell(x, y, i++);
             }
         }
@@ -32,9 +36,18 @@ public class HexGrid : MonoBehaviour
 
     }
 
-    void Update()
+    void LateUpdate()
     {
-
+        for(int i = 0; i < height * width; i++){
+            if (cells[i].powerLinks.Count != 0){
+                cells[i].GetComponent<MeshRenderer>().material = poweredMaterial;
+                brightened[i] = true;
+            }
+            else if(cells[i].powerLinks.Count == 0 && brightened[i] == true){
+                cells[i].GetComponent<MeshRenderer>().material = previousMaterial;
+                brightened[i] = false;
+            }
+        }
     }
 
     /*public void TouchCell(Vector3 position)
