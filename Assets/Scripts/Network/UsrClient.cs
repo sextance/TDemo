@@ -146,7 +146,7 @@ namespace BaseFramework.Network
                     if (retParam)
                     {
                         DebugLogger.Debug("匹配成功");
-                        LoginRequist.ucl.rpcCall("combat.getOtherId", null, (byte[] data) =>
+                        /*LoginRequist.ucl.rpcCall("combat.getOtherId", null, (byte[] data) =>
                         {
                             var massage = BaseFramework.Network.UserClient.ProtobufDecoder(data);
 
@@ -156,7 +156,7 @@ namespace BaseFramework.Network
 
                                 DebugLogger.Debug("OtherID callback: " + result);
                             }
-                        });
+                        });*/
 
                         SceneManager.LoadScene("TowerScene");
                     }
