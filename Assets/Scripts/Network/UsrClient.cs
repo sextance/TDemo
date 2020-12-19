@@ -29,7 +29,6 @@ namespace BaseFramework.Network
         private IProtocol netProtocol;
         private Login usrLogin;
         private NetClient netClient;
-        public static LoginRequist loginRequist;
         private int index;
         private Timer heartTimer;
         private Timer timeoutTimer;
@@ -74,6 +73,8 @@ namespace BaseFramework.Network
 
             }
         }
+
+
         private void other_player_coming(Message msg)
         {
             if (msg.OpCode == OPCODE.NotifyInfo)
@@ -93,11 +94,6 @@ namespace BaseFramework.Network
             }
         }
 
-        public void regServerMonitor(string funName, Action<Message> ac)
-        {
-            severMonitorCallback[funName] = ac;
-        }
-
         private void Match(Message msg)
         {
             if(msg.NotifyInfo.RpcParams != "0")
@@ -109,6 +105,18 @@ namespace BaseFramework.Network
                     if (retParam)
                     {
                         DebugLogger.Debug("匹配成功");
+                        /*LoginRequist.ucl.rpcCall("combat.getOtherId", null, (byte[] data) =>
+                        {
+                            var massage = BaseFramework.Network.UserClient.ProtobufDecoder(data);
+
+                            if (massage.Response.RpcRsp != null)
+                            {
+                                var result = UserClient.MessagePackDecoder<object>(massage.Response.RpcRsp);
+
+                                DebugLogger.Debug("OtherID callback: " + result);
+                            }
+                        });*/
+
                         SceneManager.LoadScene("TowerScene");
                     }
                     else
@@ -116,11 +124,17 @@ namespace BaseFramework.Network
                         DebugLogger.Debug("匹配失败");
                     }
 
-                    Debug.Log("server callback");
+                    Debug.Log("server callback:isMatchSuccess");
                     // clientReceiveSeq = seq;
                 }
             }
         }
+
+        public void regServerMonitor(string funName, Action<Message> ac)
+        {
+            severMonitorCallback[funName] = ac;
+        }
+
 
 
         // 对发送给服务端的数据进行打包

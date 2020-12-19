@@ -1,3 +1,4 @@
+using BaseFramework.Network;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -49,7 +50,6 @@ public class GameManager : MonoBehaviour
     Material previousMaterial;
     Material selectedMaterial;
 
-    
     //private Animator anim;
 
     /*Game Datas*/
@@ -91,7 +91,7 @@ public class GameManager : MonoBehaviour
                     CreateTowerShape(0, pickRegion, 0);
                     selectTypeHandler = 0;
                     this.money -= data.buildCost;
-                }  else {
+            }  else {
                     Debug.Log("Not enough money.");
                 }
             }
@@ -108,7 +108,7 @@ public class GameManager : MonoBehaviour
                     CreateTowerShape(1, pickRegion, 0);
                     selectTypeHandler = 0;
                     this.money -= data.buildCost;
-                    for (int i = 0; i < enemies.Count; i++)
+                for (int i = 0; i < enemies.Count; i++)
                         SearchAndGo(enemies[i]);
                 }  else {
                     Debug.Log("Not enough money.");
@@ -274,7 +274,7 @@ public class GameManager : MonoBehaviour
 
         //Care if move the root of prefabs to ground
         t.localPosition = buildPosition;
-        if (t.localScale.y >= 15.0f)
+        if (t.localScale.y >= 6)
             t.localScale /= data.factorScale;
 
         //Create link if production tower
@@ -283,11 +283,12 @@ public class GameManager : MonoBehaviour
         //       instance.gameObject.GetComponent<ProductionTowerEntity>());
         
         towerShapes.Add(instance);
-
+        TestPack.TowerNum(towerShapes);
         instance.GetComponent<TowerEntity>().state = initState;
 
         for (int i = 0; i < enemies.Count; i++)
             SearchAndGo(enemies[i]);
+
     }
 
     public void DestroyTowerShape(TowerShape pickTower)
@@ -305,13 +306,22 @@ public class GameManager : MonoBehaviour
                 }
             }
             //
+
+            // release cell
+            TowerEntity t = pickTower.gameObject.GetComponent<TowerEntity>() ;
+            t.cell.available = true;
+            if(t.linkTowers.Count > 0)
+            {
+                t.linkCells[0].available = false;
+                t.linkCells[1].available = false;
+            }
+
             towerShapeFactory.Reclaim(towerShapes[index]);
-            mapManager.hexGrid.cells[pickTower.coordinates.X + pickTower.coordinates.Y * 12].available = true;
             //Switch the index of selected and last one
             int lastIndex = towerShapes.Count - 1;
             towerShapes[index] = towerShapes[lastIndex];
             towerShapes.RemoveAt(lastIndex);
-
+            TestPack.TowerNum(towerShapes);
             //Disable selected outline
             //highLightObj.gameObject.SetActive(false);
             //selectedObject.GetComponent<MeshRenderer>().material = previousMaterial;

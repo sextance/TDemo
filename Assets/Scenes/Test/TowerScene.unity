@@ -392,8 +392,8 @@ MonoBehaviour:
   enemycount1: 1
   enemycount2: 2
   enmeycount3: 3
-  timelimit1: 10
-  timelimit2: 20
+  timelimit1: 120
+  timelimit2: 300
   timelimit3: 480
 --- !u!4 &65195216
 Transform:
