@@ -12,6 +12,7 @@ public class DefenceTowerEntity : TowerEntity
     void OnEnable()
     {
         base.OnEnable();
+        towerType = 1;
         tauntRange = data.tauntRange;
         maxHealth = health = data.defenceTowerMaxHealth;
     }
