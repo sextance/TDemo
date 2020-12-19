@@ -66,9 +66,9 @@ public class TestPack : MonoBehaviour
     //游戏结束
     public static void GameOver()
     {
-        if(TimeManager.timeManager.allTime >= 10f)
+        if (TimeManager.timeManager.allTime >= 10f)
         {
-            if (GameManager.gm.towerShapes.Count <= 0)
+            if (GameManager.gm.towerShapes.Count <= 0 || GameManager.gm.CheckPower() == false)
             {
                 TowerChange gg = new TowerChange();
                 gg.result = "false";
@@ -78,6 +78,7 @@ public class TestPack : MonoBehaviour
             }
         }
     }
+
 }
 
 

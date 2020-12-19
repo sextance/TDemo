@@ -69,7 +69,7 @@ namespace BaseFramework.Network
                         case OptionType.UPDATE_TOWER:
                             if(tc.towernum >= 0)
                             {
-
+                                Debug.Log("num is" + tc.towernum.ToString());
                             }//TODO:与UI势力条绑定
                             break;
                         case OptionType.TOWER_CHANGE:
@@ -94,11 +94,18 @@ namespace BaseFramework.Network
                             {
                                 foreach(TowerShape towerShape in tc.scanTower)
                                 {
-                                    TowerShape ts = Instantiate(TowerShapeFactory.tsf.prefabs[towerShape.ShapeId],towerShape.transform.localPosition,Quaternion.identity);
+                                    Vector3 v = new Vector3();
+                                    v = towerShape.transform.localPosition;
+                                    v.x += 1200f;
+                                    TowerShape ts = Instantiate(TowerShapeFactory.tsf.prefabs[towerShape.ShapeId],v,Quaternion.identity);
                                 }
                             }
                             break;
                         case OptionType.GAME_OVER:
+                            if(tc.result == "false")
+                            {
+                                SceneManager.LoadScene("EndScene");
+                            }
                             break;
                     }
                     

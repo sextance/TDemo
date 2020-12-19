@@ -221,6 +221,9 @@ public class GameManager : MonoBehaviour
             CC();
         }
 
+        //游戏结束
+        TestPack.GameOver();
+
         //if ( (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         if (Input.GetMouseButton(0))
             if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
@@ -321,7 +324,7 @@ public class GameManager : MonoBehaviour
             int lastIndex = towerShapes.Count - 1;
             towerShapes[index] = towerShapes[lastIndex];
             towerShapes.RemoveAt(lastIndex);
-            TestPack.TowerNum(towerShapes);
+            TestPack.DestoryOwnTower(pickTower);
             //Disable selected outline
             //highLightObj.gameObject.SetActive(false);
             //selectedObject.GetComponent<MeshRenderer>().material = previousMaterial;
@@ -354,8 +357,9 @@ public class GameManager : MonoBehaviour
             }
             if (allowance)
             {
-                pickTower.IsSolidificated = false;
+                pickTower.IsSolidificated = true;
                 this.money -= data.solidificateCost;
+                TestPack.TowerChange(pickTower);
             }
         }
         else
