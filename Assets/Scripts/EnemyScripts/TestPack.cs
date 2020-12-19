@@ -11,18 +11,18 @@ using UnityEngine.UI;
 
 public class TestPack : MonoBehaviour
 {
-    Button scanButton;
+    Button EnemyButton;
     Text scanTowerText;
 
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
-        scanButton = GameObject.Find("ScanButton").GetComponent<Button>();
-        scanTowerText = scanButton.transform.Find("Text").GetComponent<Text>();
+        EnemyButton = GameObject.Find("EnemyButton").GetComponent<Button>();
+        scanTowerText = EnemyButton.transform.Find("EnemyText").GetComponent<Text>();
         scanTowerText.text = "扫描";
 
         //active UI event;
-        scanButton.onClick.AddListener(Scan);
+        EnemyButton.onClick.AddListener(Scan);
     }
 
 

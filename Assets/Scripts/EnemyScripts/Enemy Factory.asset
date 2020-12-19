@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 915368727127017279, guid: fcf631c409e6552469d21b102f5c5dfb,
     type: 3}
-  tEnemyPrefab: {fileID: 6056445321265174001, guid: da1c1ae815cafad4fb393b4ec0f313bc,
+  tEnemyPrefab: {fileID: 2536696172028692441, guid: 62f8fe7d876a7fe4d90c63434a2eff57,
     type: 3}
-  dpsEnemyPrefab: {fileID: 8546387027938319110, guid: b7f4fc6e436d8e9449d1f4dd68cf0530,
+  dpsEnemyPrefab: {fileID: 2476960470732696119, guid: 66da15affbf16f14e98100ba78f7f3c2,
     type: 3}
