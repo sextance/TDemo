@@ -26,6 +26,7 @@ public class TowerEntity : MonoBehaviour
 
     public HexCell cell; // the cell that tower occupied
     public List<TowerEntity> linkTowers; // init if tower is solidificated
+    public List<HexCell> linkCells; // init if tower is solidificated
     // float
     // bool isSolidificated;
 
@@ -45,6 +46,8 @@ public class TowerEntity : MonoBehaviour
         cell = null;
         if (linkTowers.Count > 0) linkTowers.Clear();
         else if (linkTowers == null) linkTowers = new List<TowerEntity>();
+        if (linkCells.Count > 0) linkCells.Clear();
+        else if (linkCells == null) linkCells = new List<HexCell>();
         healthFactor = 1;
     }
 
@@ -185,8 +188,8 @@ public class TowerEntity : MonoBehaviour
             GameManager.gm.DestroyTowerShape(this.linkTowers[1].gameObject.GetComponent<TowerShape>());
 
             /*remark cells*/
-            this.linkTowers[0].cell.available = false;
-            this.linkTowers[1].cell.available = false;
+            this.linkCells[0].available = false;
+            this.linkCells[1].available = false;
 
             /*return flag*/
             allowance = true;
@@ -236,8 +239,8 @@ public class TowerEntity : MonoBehaviour
                      && tmpList[i].towerType == this.towerType && tmpList[j].towerType == this.towerType
                     )
                 {
-                    this.linkTowers.Add(tmpList[i]);
-                    this.linkTowers.Add(tmpList[j]);
+                    this.linkTowers.Add(tmpList[i]); this.linkCells.Add(tmpList[i].cell);
+                    this.linkTowers.Add(tmpList[j]); this.linkCells.Add(tmpList[j].cell);
                 }
             }
         }
