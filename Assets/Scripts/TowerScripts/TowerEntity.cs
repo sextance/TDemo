@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TowerEntity : MonoBehaviour
 {
-    Data data = Data.GlobalData;
+    public Data data;
 
     public int health;
     public int maxHealth;
@@ -28,6 +28,7 @@ public class TowerEntity : MonoBehaviour
 
     protected void OnEnable()
     {
+        data = Data.GlobalData;
         state = 0;
         convertDirection = 0;
         constructTime = data.constructTime;
@@ -168,13 +169,13 @@ public class TowerEntity : MonoBehaviour
     public virtual bool SelfDestruction()
     {
         bool allowance;
-        if ( state == 1 || state == 4)
+        if ( state != 1)
         {
+            allowance = false;
+        } else {
             health = 0;
             state = 6;
             /*Reseve for audio*/
-            allowance = false;
-        } else {
             allowance = true;
         }
         return allowance;
