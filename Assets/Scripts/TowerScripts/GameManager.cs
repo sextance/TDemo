@@ -1,3 +1,4 @@
+using BaseFramework.Network;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -90,7 +91,7 @@ public class GameManager : MonoBehaviour
                     CreateTowerShape(0, pickRegion, 0);
                     selectTypeHandler = 0;
                     this.money -= data.buildCost;
-                }  else {
+            }  else {
                     Debug.Log("Not enough money.");
                 }
             }
@@ -107,7 +108,7 @@ public class GameManager : MonoBehaviour
                     CreateTowerShape(1, pickRegion, 0);
                     selectTypeHandler = 0;
                     this.money -= data.buildCost;
-                    for (int i = 0; i < enemies.Count; i++)
+                for (int i = 0; i < enemies.Count; i++)
                         SearchAndGo(enemies[i]);
                 }  else {
                     Debug.Log("Not enough money.");
@@ -275,11 +276,12 @@ public class GameManager : MonoBehaviour
         //       instance.gameObject.GetComponent<ProductionTowerEntity>());
         
         towerShapes.Add(instance);
-
+        TestPack.TowerNum(towerShapes);
         instance.GetComponent<TowerEntity>().state = initState;
 
         for (int i = 0; i < enemies.Count; i++)
             SearchAndGo(enemies[i]);
+
     }
 
     public void DestroyTowerShape(TowerShape pickTower)
@@ -312,8 +314,7 @@ public class GameManager : MonoBehaviour
             int lastIndex = towerShapes.Count - 1;
             towerShapes[index] = towerShapes[lastIndex];
             towerShapes.RemoveAt(lastIndex);
-
-
+            TestPack.TowerNum(towerShapes);
             //Disable selected outline
             //highLightObj.gameObject.SetActive(false);
             //selectedObject.GetComponent<MeshRenderer>().material = previousMaterial;
