@@ -54,6 +54,14 @@ public class Data : MonoBehaviour
     public int timelimit1;                                           //第一波出现时间
     public int timelimit2;                                           //第二波出现时间
     public int timelimit3;                                           //第三波开始时间
+     
+    public int enemyCount0 = 1;                                            //固化攻击塔单次生成敌人数量
+    public int enemyCount1 = 1;                                            //固化防御塔单次生成敌人数量
+    public int enemyCount2 = 3;                                            //固化生产塔单次生成敌人数量
+    public float spawnOtherTime0 = 5f;                                     //固化攻击塔对应敌人生成间隔
+    public float spawnOtherTime1 = 5f;                                     //固化防御塔对应敌人生成间隔
+    public float spawnOtherTime2 = 5f;                                     //固化生产塔对应敌人生成间隔
+    public int DestoryToMakeCount = 5;                                     //自爆塔生成的怪数量
     /*------------------------------------------------EOF---------------------------------------------------------------*/
 
     static public Data _instance;

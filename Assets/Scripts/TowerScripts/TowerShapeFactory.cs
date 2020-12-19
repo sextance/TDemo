@@ -9,7 +9,7 @@ public class TowerShapeFactory : ScriptableObject
     public static TowerShapeFactory tsf;
 
     [SerializeField]
-    TowerShape[] prefabs;
+    public TowerShape[] prefabs;
 
     //The order of elements is Attack, Defense, Production
     [SerializeField]

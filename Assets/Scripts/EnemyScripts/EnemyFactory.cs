@@ -67,6 +67,27 @@ public class EnemyFactory : ScriptableObject
         Destroy(dpsEnemy.gameObject);
     }
 
+    public Enemy CreateCommonEnemyInOtherWorld(Vector3 position)
+    {
+        Enemy instance = Instantiate(enemyPrefab, position, Quaternion.identity);
+        instance.OriginFactory = this;
+        return instance;
+    }
+
+    public Enemy CreateTEnemyInOtherWorld(Vector3 position)
+    {
+        Enemy instance = Instantiate(tEnemyPrefab, position, Quaternion.identity);
+        instance.OriginFactory = this;
+        return instance;
+    }
+
+    public Enemy CreatedpsEnemyInOtherWorld(Vector3 position)
+    {
+        Enemy instance = Instantiate(dpsEnemyPrefab, position, Quaternion.identity);
+        instance.OriginFactory = this;
+        return instance;
+    }
+
     private void OnEnable()
     {
         enemyF = this;

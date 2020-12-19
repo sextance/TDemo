@@ -488,7 +488,22 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void SpawnCommonEnemy(float enemySpawnSpeed)//生成敌人
+    public bool CheckPower()
+    {
+        bool isNoPower = false;
+        for (int i = 0; i < 12 * 8; i++)
+        {
+            if (HexGrid.hexGrid.cells[i].powered == true)
+            {
+                isNoPower = true;
+                break;
+            }
+        }
+        return isNoPower;
+    }
+
+
+    public void SpawnCommonEnemy(float enemySpawnSpeed)//生成敌人
     {
         spawnSpeed += spawnSpeed * Time.deltaTime;
         while (spawnSpeed >= enemySpawnSpeed)
@@ -500,14 +515,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void SpawnTEnemy()
+    public void SpawnTEnemy()
     {
         TEnemy tEnemy = enemyFactory.GetTEnemy();
         enemies.Add(tEnemy);
         SearchAndGo(tEnemy);
     }
 
-    void SpawnDpsEnemy()
+    public void SpawnDpsEnemy()
     {
         DpsEnemy dpsEnemy = enemyFactory.GetDpsEnemy();
         enemies.Add(dpsEnemy);

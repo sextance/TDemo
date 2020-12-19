@@ -31,7 +31,8 @@ public class TestPack : MonoBehaviour
         TowerChange tn = new TowerChange();
         tn.towernum = towershapes.Count;
         Debug.Log("通信阶段");
-        LoginRequist.ucl.rpcCall("combat.get_tower_num", JsonConvert.SerializeObject(tn.towerShapeInfo), null);
+        tn.OptType = OptionType.UPDATE_TOWER;
+        LoginRequist.ucl.rpcCall("combat.get_tower_num", JsonConvert.SerializeObject(tn), null);
     }
 
     //塔固化时调用，发送固化塔的类型与位置
@@ -39,7 +40,17 @@ public class TestPack : MonoBehaviour
     {
         TowerChange tch = new TowerChange();
         tch.towerShapeInfo = towershape;
+        tch.OptType = OptionType.TOWER_CHANGE;
         LoginRequist.ucl.rpcCall("combat.get_tower_num", JsonConvert.SerializeObject(tch), null);
+    }
+
+    //自爆塔
+    public static void DestoryOwnTower(TowerShape towershape)
+    {
+        TowerChange dot = new TowerChange();
+        dot.towerShapeInfo = towershape;
+        dot.OptType = OptionType.DESTORY_TOWER;
+        LoginRequist.ucl.rpcCall("combat.get_tower_num", JsonConvert.SerializeObject(dot), null);
     }
 
     //扫描敌人时发送
@@ -47,8 +58,10 @@ public class TestPack : MonoBehaviour
     {
         TowerChange st = new TowerChange();
         st.scanTower = GameManager.gm.towerShapes;
+        st.OptType = OptionType.SCAN;
         LoginRequist.ucl.rpcCall("combat.get_tower_num", JsonConvert.SerializeObject(st), null);
     }
+
 
     //游戏结束
     public static void GameOver()
@@ -57,7 +70,10 @@ public class TestPack : MonoBehaviour
         {
             if (GameManager.gm.towerShapes.Count <= 0)
             {
-                LoginRequist.ucl.rpcCall("combat.get_tower_num", "false", null);
+                TowerChange gg = new TowerChange();
+                gg.result = "false";
+                gg.OptType = OptionType.GAME_OVER;
+                LoginRequist.ucl.rpcCall("combat.get_tower_num", JsonConvert.SerializeObject(gg), null);
                 SceneManager.LoadScene("EndScene");
             }
         }
@@ -67,13 +83,20 @@ public class TestPack : MonoBehaviour
 
 public class TowerChange
 {
-    public Transform vec;
+    public OptionType OptType;
     public TowerShape towerShapeInfo;
     public int towernum;
     public List<TowerShape> scanTower;
+    public string result;
 }
 
-
+public enum OptionType{ 
+    UPDATE_TOWER,
+    TOWER_CHANGE,
+    DESTORY_TOWER,
+    SCAN,
+    GAME_OVER
+}
 
 
 

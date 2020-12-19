@@ -61,14 +61,48 @@ namespace BaseFramework.Network
                 if (seq > 0)
                 {
 
-                    object retParam = MessagePackDecoder<object>(msg.NotifyInfo.RpcParams);
+                    //object retParam = MessagePackDecoder<object>(msg.NotifyInfo.RpcParams);
+                    TowerChange tc = JsonConvert.DeserializeObject<TowerChange> (msg.NotifyInfo.RpcParams);
+                    
+                    switch (tc.OptType)
+                    {
+                        case OptionType.UPDATE_TOWER:
+                            if(tc.towernum >= 0)
+                            {
 
-                    DebugLogger.Debug(retParam.ToString());
+                            }//TODO:与UI势力条绑定
+                            break;
+                        case OptionType.TOWER_CHANGE:
+                            if(tc.towerShapeInfo != null)
+                            {
+                                Vector3 createEnemyPosition = tc.towerShapeInfo.transform.localPosition;
+                                var a = new GameObject();
+                                a.AddComponent<MonsterMake>().SetData(tc.towerShapeInfo.ShapeId, createEnemyPosition,OptionType.TOWER_CHANGE);
+                            }
+                            break;
+                        case OptionType.DESTORY_TOWER:
+                            {
+                                if(tc.towerShapeInfo != null)
+                                {
+                                    var a = new GameObject();
+                                    a.AddComponent<MonsterMake>().SetData(tc.towerShapeInfo.ShapeId, tc.towerShapeInfo.transform.localPosition, OptionType.DESTORY_TOWER);
+                                }
+                            }
+                            break;
+                        case OptionType.SCAN:
+                            if(tc.scanTower.Count > 0)
+                            {
+                                foreach(TowerShape towerShape in tc.scanTower)
+                                {
+                                    TowerShape ts = Instantiate(TowerShapeFactory.tsf.prefabs[towerShape.ShapeId],towerShape.transform.localPosition,Quaternion.identity);
+                                }
+                            }
+                            break;
+                        case OptionType.GAME_OVER:
+                            break;
+                    }
+                    
 
-                    // var param = msg.NotifyInfo.RpcParams;
-
-                    Debug.Log("server callback:powerShow"/*+param*/);
-                    // clientReceiveSeq = seq;
                 }
 
             }

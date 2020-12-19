@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 public class HexGrid : MonoBehaviour
 {
+    public static HexGrid hexGrid;
     public int width = 12;
     public int height = 8;
     bool CoordinateOffset;
@@ -29,7 +30,7 @@ public class HexGrid : MonoBehaviour
 
     void Start()
     {
-
+        hexGrid = this;
     }
 
     void Update()

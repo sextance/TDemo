@@ -390,6 +390,13 @@ MonoBehaviour:
   timelimit1: 120
   timelimit2: 300
   timelimit3: 480
+  enemyCount0: 1
+  enemyCount1: 1
+  enemyCount2: 3
+  spawnOtherTime0: 0
+  spawnOtherTime1: 0
+  spawnOtherTime2: 0
+  DestoryToMakeCount: 0
 --- !u!4 &65195216
 Transform:
   m_ObjectHideFlags: 0
