@@ -49,7 +49,6 @@ public class GameManager : MonoBehaviour
     Material previousMaterial;
     Material selectedMaterial;
 
-    
     //private Animator anim;
 
     /*Game Datas*/
@@ -267,7 +266,7 @@ public class GameManager : MonoBehaviour
 
         //Care if move the root of prefabs to ground
         t.localPosition = buildPosition;
-        if (t.localScale.y >= 15.0f)
+        if (t.localScale.y >= 6)
             t.localScale /= data.factorScale;
 
         //Create link if production tower
@@ -298,12 +297,22 @@ public class GameManager : MonoBehaviour
                 }
             }
             //
+
+            // release cell
+            TowerEntity t = pickTower.gameObject.GetComponent<TowerEntity>() ;
+            t.cell.available = true;
+            if(t.linkTowers.Count > 0)
+            {
+                t.linkTowers[0].cell.available = true;
+                t.linkTowers[1].cell.available = true;
+            }
+
             towerShapeFactory.Reclaim(towerShapes[index]);
-            mapManager.hexGrid.cells[pickTower.coordinates.X + pickTower.coordinates.Y * 12].available = true;
             //Switch the index of selected and last one
             int lastIndex = towerShapes.Count - 1;
             towerShapes[index] = towerShapes[lastIndex];
             towerShapes.RemoveAt(lastIndex);
+
 
             //Disable selected outline
             //highLightObj.gameObject.SetActive(false);

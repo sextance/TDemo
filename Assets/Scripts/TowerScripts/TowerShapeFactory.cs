@@ -70,6 +70,13 @@ public class TowerShapeFactory : ScriptableObject
             if (pools == null)
                 CreatePools();
             pools[shapeToRecycle.ShapeId].Add(shapeToRecycle);
+
+            if( shapeToRecycle.gameObject.GetComponent<TowerEntity>().isSolidicated == true)
+            {
+                Transform t = shapeToRecycle.transform;
+                t.localScale /= Data.GlobalData.factorScale;
+            }
+
             shapeToRecycle.gameObject.SetActive(false);
         } else {
             Destroy(shapeToRecycle.gameObject);
@@ -83,17 +90,10 @@ public class TowerShapeFactory : ScriptableObject
             pools[i] = new List<TowerShape>();
     }
 
-    // Start is called before the first frame update
     void Awake()
     {
         tsf = this;
         recycle = true;
         serialNumber = 0;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

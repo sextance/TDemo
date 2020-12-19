@@ -12,13 +12,14 @@ public class TowerEntity : MonoBehaviour
                       //2 converting, 3 just finish converting, 4 normal-solidificate, 
                       //5 shattered by enemy, 6 self destruction (self explosion)
     public int convertDirection; // 0 - null, 1 - left, 2 - right
+    public int towerType;
     public float healthFactor;
 
     float constructTime;
     float convertingTime;
     float convertingCoolDonwnTime;
     bool isConstructing;
-    bool isSolidicated;
+    public bool isSolidicated;
     public bool isConverting;
     public bool isConvertingFinished;
     public bool isConvertingCoolDown;
@@ -171,6 +172,7 @@ public class TowerEntity : MonoBehaviour
             /*change state*/
             health = this.health * data.factorHealth;
             state = 4;
+            isSolidicated = true;
 
             /*change shape*/
             Transform t = this.gameObject.transform;
@@ -230,7 +232,9 @@ public class TowerEntity : MonoBehaviour
         {
             for(int j = i+1; j< tmpList.Count; j++)
             {
-                if (Vector3.Distance(tmpList[i].transform.localPosition, tmpList[j].transform.localPosition)<= data.cellLength + 0.3f)
+                if ( Vector3.Distance(tmpList[i].transform.localPosition, tmpList[j].transform.localPosition)<= data.cellLength + 0.3f
+                     && tmpList[i].towerType == this.towerType && tmpList[j].towerType == this.towerType
+                    )
                 {
                     this.linkTowers.Add(tmpList[i]);
                     this.linkTowers.Add(tmpList[j]);

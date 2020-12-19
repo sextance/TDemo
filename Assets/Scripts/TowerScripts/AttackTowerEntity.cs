@@ -23,6 +23,7 @@ public class AttackTowerEntity : TowerEntity
     void OnEnable()
     {
         base.OnEnable();
+        towerType = 0;
         damage = data.damage;
         maxHealth = health = data.attackTowerMaxHealth;
         attackRange = data.attackRange;
