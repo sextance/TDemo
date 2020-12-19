@@ -22,7 +22,7 @@ public class MonsterMake : MonoBehaviour
     {
         if(shapeid == 4)
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 

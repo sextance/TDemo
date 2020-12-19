@@ -4,6 +4,7 @@ using NinjaMessage;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -30,7 +31,6 @@ public class TestPack : MonoBehaviour
     {
         TowerChange tn = new TowerChange();
         tn.towernum = towershapes.Count;
-        Debug.Log("通信阶段");
         tn.OptType = OptionType.UPDATE_TOWER;
         LoginRequist.ucl.rpcCall("combat.get_tower_num", JsonConvert.SerializeObject(tn), null);
     }
@@ -68,7 +68,7 @@ public class TestPack : MonoBehaviour
     {
         if (TimeManager.timeManager.allTime >= 10f)
         {
-            if (GameManager.gm.towerShapes.Count <= 0 || GameManager.gm.CheckPower() == false)
+            if (GameManager.gm.towerShapes.Count == 0 || GameManager.gm.CheckPower() == false)
             {
                 TowerChange gg = new TowerChange();
                 gg.result = "false";
