@@ -39,7 +39,7 @@ public class TestPack : MonoBehaviour
     public static void TowerChange(TowerShape towershape)
     {
         TowerChange tch = new TowerChange();
-        tch.towerShapeInfo = towershape;
+        tch.ti = new TowerInfo(towershape.ShapeId,towershape.transform.localPosition.x, towershape.transform.localPosition.y, towershape.transform.localPosition.z);
         tch.OptType = OptionType.TOWER_CHANGE;
         LoginRequist.ucl.rpcCall("combat.get_tower_num", JsonConvert.SerializeObject(tch), null);
     }
@@ -48,7 +48,7 @@ public class TestPack : MonoBehaviour
     public static void DestoryOwnTower(TowerShape towershape)
     {
         TowerChange dot = new TowerChange();
-        dot.towerShapeInfo = towershape;
+        dot.ti = new TowerInfo(towershape.ShapeId, towershape.transform.localPosition.x, towershape.transform.localPosition.y, towershape.transform.localPosition.z);
         dot.OptType = OptionType.DESTORY_TOWER;
         LoginRequist.ucl.rpcCall("combat.get_tower_num", JsonConvert.SerializeObject(dot), null);
     }
@@ -57,7 +57,11 @@ public class TestPack : MonoBehaviour
     void Scan()
     {
         TowerChange st = new TowerChange();
-        st.scanTower = GameManager.gm.towerShapes;
+        foreach(TowerShape towerShape in GameManager.gm.towerShapes)
+        {
+            TowerInfo temp=new TowerInfo(towerShape.ShapeId, towerShape.transform.localPosition.x, towerShape.transform.localPosition.y, towerShape.transform.localPosition.z);
+            st.a.Add(temp);
+        }
         st.OptType = OptionType.SCAN;
         LoginRequist.ucl.rpcCall("combat.get_tower_num", JsonConvert.SerializeObject(st), null);
     }
@@ -85,9 +89,9 @@ public class TestPack : MonoBehaviour
 public class TowerChange
 {
     public OptionType OptType;
-    public TowerShape towerShapeInfo;
     public int towernum;
-    public List<TowerShape> scanTower;
+    public TowerInfo ti;
+    public List<TowerInfo> a = new List<TowerInfo>();
     public string result;
 }
 
@@ -97,6 +101,19 @@ public enum OptionType{
     DESTORY_TOWER,
     SCAN,
     GAME_OVER
+}
+
+public class TowerInfo//towershape
+{
+    public int shapeid;
+    public float x, y, z;
+    public TowerInfo(int shapeid,float x, float y,float z)
+    {
+        this.shapeid = shapeid;
+        this.x = x;
+        this.y = y;
+        this.z = z;
+    }
 }
 
 

@@ -73,31 +73,42 @@ namespace BaseFramework.Network
                             }//TODO:与UI势力条绑定
                             break;
                         case OptionType.TOWER_CHANGE:
-                            if(tc.towerShapeInfo != null)
+
+
+                            if (tc.ti != null)
                             {
-                                Vector3 createEnemyPosition = tc.towerShapeInfo.transform.localPosition;
+                                Vector3 createEnemyPosition = new Vector3();
+                                createEnemyPosition.x = tc.ti.x;
+                                createEnemyPosition.y = tc.ti.y;
+                                createEnemyPosition.z = tc.ti.z;
                                 var a = new GameObject();
-                                a.AddComponent<MonsterMake>().SetData(tc.towerShapeInfo.ShapeId, createEnemyPosition,OptionType.TOWER_CHANGE);
+                                a.AddComponent<MonsterMake>().SetData(tc.ti.shapeid, createEnemyPosition,OptionType.TOWER_CHANGE);
                             }
                             break;
                         case OptionType.DESTORY_TOWER:
                             {
-                                if(tc.towerShapeInfo != null)
+                                if(tc.ti != null)
                                 {
+                                    Vector3 CreateEnemyPosition = new Vector3();
+                                    CreateEnemyPosition.x = tc.ti.x;
+                                    CreateEnemyPosition.y = tc.ti.y;
+                                    CreateEnemyPosition.z = tc.ti.z;
                                     var a = new GameObject();
-                                    a.AddComponent<MonsterMake>().SetData(tc.towerShapeInfo.ShapeId, tc.towerShapeInfo.transform.localPosition, OptionType.DESTORY_TOWER);
+                                    a.AddComponent<MonsterMake>().SetData(tc.ti.shapeid, CreateEnemyPosition, OptionType.DESTORY_TOWER);
                                 }
                             }
                             break;
                         case OptionType.SCAN:
-                            if(tc.scanTower.Count > 0)
+                            if(tc.a.Count > 0)
                             {
-                                foreach(TowerShape towerShape in tc.scanTower)
+                                foreach(TowerInfo tif in tc.a)
                                 {
                                     Vector3 v = new Vector3();
-                                    v = towerShape.transform.localPosition;
+                                    v.x = tif.x;
+                                    v.y = tif.y;
+                                    v.z = tif.z;
                                     v.x += 1200f;
-                                    TowerShape ts = Instantiate(TowerShapeFactory.tsf.prefabs[towerShape.ShapeId],v,Quaternion.identity);
+                                    TowerShape ts = Instantiate(TowerShapeFactory.tsf.prefabs[tif.shapeid],v,Quaternion.identity);
                                 }
                             }
                             break;
