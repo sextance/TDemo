@@ -125,6 +125,7 @@ public class GameManager : MonoBehaviour
             if (money >= data.buildCost)
             {
                 CreateTowerShape(2, pickRegion, 0);
+
                 selectTypeHandler = 0;
                 this.money -= data.buildCost;
             } else 
@@ -138,6 +139,7 @@ public class GameManager : MonoBehaviour
     {
         if (selectTypeHandler == 1 && pickTower != null)
         {
+            TestPack.TowerChange(pickTower);
             SolidificateTowerShape(pickTower);
             //selectTypeHandler = 0;
         }
@@ -153,6 +155,7 @@ public class GameManager : MonoBehaviour
             {
                 if (this.money > data.deconstructionCost)
                 {
+                    TestPack.DestoryOwnTower(pickTower);
                     DestroyTowerShape(pickTower);
                     selectTypeHandler = 0;
                     this.money -= data.deconstructionCost;
@@ -287,6 +290,7 @@ public class GameManager : MonoBehaviour
         
         towerShapes.Add(instance);
         TestPack.TowerNum(towerShapes);
+
         instance.GetComponent<TowerEntity>().state = initState;
 
         for (int i = 0; i < enemies.Count; i++)
@@ -324,7 +328,8 @@ public class GameManager : MonoBehaviour
             int lastIndex = towerShapes.Count - 1;
             towerShapes[index] = towerShapes[lastIndex];
             towerShapes.RemoveAt(lastIndex);
-            TestPack.DestoryOwnTower(pickTower);
+            TestPack.TowerNum(towerShapes);
+
             //Disable selected outline
             //highLightObj.gameObject.SetActive(false);
             //selectedObject.GetComponent<MeshRenderer>().material = previousMaterial;
@@ -359,7 +364,7 @@ public class GameManager : MonoBehaviour
             {
                 pickTower.IsSolidificated = true;
                 this.money -= data.solidificateCost;
-                TestPack.TowerChange(pickTower);
+                
             }
         }
         else
