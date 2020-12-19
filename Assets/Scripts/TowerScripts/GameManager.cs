@@ -239,9 +239,16 @@ public class GameManager : MonoBehaviour
         GameUpdate();
         costText.text = "COST: " + money.ToString();
         if(inEnemyScene){
-            camera.transform.position = new Vector3(1300,150,10);
             enemySceneTimer += Time.deltaTime;
-            if(enemySceneTimer >= 2f){
+            if(enemySceneTimer <= 1f)
+            {
+                camera.transform.position = new Vector3(-1200*enemySceneTimer*enemySceneTimer+2400*enemySceneTimer+100,150,10);
+            }
+            else if(enemySceneTimer >= 3f && enemySceneTimer < 4f)
+            {
+                camera.transform.position = new Vector3(-1200*enemySceneTimer*enemySceneTimer+7200*enemySceneTimer-9500,150,10);
+            }
+            else if(enemySceneTimer >= 4f){
                 camera.transform.position = new Vector3(100,150,10);
                 inEnemyScene = false;
                 enemySceneTimer = 0f;

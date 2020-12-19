@@ -53,8 +53,8 @@ GameObject:
   - component: {fileID: 7393340599989440189}
   - component: {fileID: 1224508014496842388}
   m_Layer: 0
-  m_Name: Hex Cell 2
-  m_TagString: Map
+  m_Name: Hex Cell 3
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -86,11 +86,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 712d9d8de0b807d4eb605dc98c758ca8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerLinks: []
   coordinates:
     x: 0
     y: 0
   color: {r: 0, g: 0, b: 0, a: 0}
   available: 0
+  powered: 0
 --- !u!33 &-4059089937687631240
 MeshFilter:
   m_ObjectHideFlags: 0
