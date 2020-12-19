@@ -29,7 +29,6 @@ namespace BaseFramework.Network
         private IProtocol netProtocol;
         private Login usrLogin;
         private NetClient netClient;
-        public static LoginRequist loginRequist;
         private int index;
         private Timer heartTimer;
         private Timer timeoutTimer;
@@ -52,7 +51,7 @@ namespace BaseFramework.Network
             timeoutTimer = new Timer(new TimerCallback(timeoutCheck), null, Timeout.Infinite, Timeout.Infinite);
             regServerMonitor("isMatchSuccess", Match); 
             regServerMonitor("other_player_coming", other_player_coming);
-            regServerMonitor("powerShow", GetTowerNum);
+            regServerMonitor("powerShow", powerShow);
         }
         private void powerShow(Message msg)
         {
@@ -75,20 +74,6 @@ namespace BaseFramework.Network
             }
         }
 
-        private void GetTowerNum(Message msg)
-        {
-            if(msg.OpCode == OPCODE.NotifyInfo)
-            {
-                var seq = msg.NotifyInfo.Sequence;
-                if(seq > 0)
-                {
-                    object getNum = MessagePackDecoder<object>(msg.NotifyInfo.RpcParams);
-
-                    DebugLogger.Debug(getNum.ToString());
-                    Debug.Log("num is" + getNum.ToString());
-                }
-            }
-        }
 
         private void other_player_coming(Message msg)
         {
@@ -107,11 +92,6 @@ namespace BaseFramework.Network
                 }
 
             }
-        }
-
-        public void regServerMonitor(string funName, Action<Message> ac)
-        {
-            severMonitorCallback[funName] = ac;
         }
 
         private void Match(Message msg)
@@ -149,6 +129,12 @@ namespace BaseFramework.Network
                 }
             }
         }
+
+        public void regServerMonitor(string funName, Action<Message> ac)
+        {
+            severMonitorCallback[funName] = ac;
+        }
+
 
 
         // 对发送给服务端的数据进行打包

@@ -31,28 +31,14 @@ public class TestPack : MonoBehaviour
         TowerChange tn = new TowerChange();
         tn.towernum = towershapes.Count;
         Debug.Log("通信阶段");
-        LoginRequist.ucl.rpcCall("combat.get_tower_num", JsonConvert.SerializeObject(tn), null);
+        LoginRequist.ucl.rpcCall("combat.get_tower_num", JsonConvert.SerializeObject(tn.towerShapeInfo), null);
     }
 
     //塔固化时调用，发送固化塔的类型与位置
     public static void TowerChange(TowerShape towershape)
     {
         TowerChange tch = new TowerChange();
-        if (towershape.ShapeId == 0)
-        {
-            tch.towerShapeType.ShapeId = 0;
-            tch.vec = towershape.transform.localPosition;
-        }
-        else if (towershape.ShapeId == 1)
-        {
-            tch.towerShapeType.ShapeId = 1;
-            tch.vec = towershape.transform.localPosition;
-        }
-        else if (towershape.ShapeId == 2)
-        {
-            tch.towerShapeType.ShapeId = 2;
-            tch.vec = towershape.transform.localPosition;
-        }
+        tch.towerShapeInfo = towershape;
         LoginRequist.ucl.rpcCall("combat.get_tower_num", JsonConvert.SerializeObject(tch), null);
     }
 
@@ -81,8 +67,8 @@ public class TestPack : MonoBehaviour
 
 public class TowerChange
 {
-    public Vector3 vec;
-    public TowerShape towerShapeType;
+    public Transform vec;
+    public TowerShape towerShapeInfo;
     public int towernum;
     public List<TowerShape> scanTower;
 }
