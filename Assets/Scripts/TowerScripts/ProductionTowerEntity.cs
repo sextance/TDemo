@@ -47,7 +47,6 @@ public class ProductionTowerEntity : TowerEntity
             if (!isCoolDownTime)
             {
                 GameManager.gm.money += production;
-                Debug.Log("Money: "+ GameManager.gm.money);
                 isCoolDownTime = true;
             } else 
             {
