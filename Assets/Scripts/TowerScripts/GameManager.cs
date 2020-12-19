@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour
             {
                 if(money >= data.buildCost)
                 {
-                    CreateTowerShape(0, pickRegion, Vector3.zero, 0);
+                    CreateTowerShape(0, pickRegion, 0);
                     selectTypeHandler = 0;
                     this.money -= data.buildCost;
                 }  else {
@@ -102,7 +102,7 @@ public class GameManager : MonoBehaviour
             {
                 if (money >= data.buildCost)
                 {
-                    CreateTowerShape(1, pickRegion, Vector3.zero, 0);
+                    CreateTowerShape(1, pickRegion, 0);
                     selectTypeHandler = 0;
                     this.money -= data.buildCost;
                     for (int i = 0; i < enemies.Count; i++)
@@ -121,7 +121,7 @@ public class GameManager : MonoBehaviour
         {
             if (money >= data.buildCost)
             {
-                CreateTowerShape(2, pickRegion, Vector3.zero, 0);
+                CreateTowerShape(2, pickRegion, 0);
                 selectTypeHandler = 0;
                 this.money -= data.buildCost;
             } else 
@@ -244,30 +244,26 @@ public class GameManager : MonoBehaviour
                 enemySceneTimer = 0f;
             }
         }
-
     }
 
-    void CreateTowerShape(int towerId, HexCell buildRegion, Vector3 localPostion, int initState, float healthFactor = 1)
+    void CreateTowerShape(int towerId, HexCell buildRegion, int initState, float healthFactor = 1)
     {
-        Vector3 buildPosition;
         TowerShape instance = towerShapeFactory.Get(towerId, towerId);
         Transform t = instance.transform;
         TowerEntity e = instance.gameObject.GetComponent<TowerEntity>();
         e.health = (int)(e.maxHealth * healthFactor);
 
         if (buildRegion == null)
-        {
-            buildPosition = localPostion;
-            buildPosition.y = 0;
-        } else {
+            Debug.LogError("No cell found?");
+        else {
             e.cell = buildRegion;
             buildPosition = HexCoordinates.FromCoordinate(buildRegion.coordinates);
             instance.coordinates = buildRegion.coordinates;
             buildRegion.available = false;
         }
 
-        //Move the root of prefabs to ground
-        t.localPosition = buildPosition + Vector3.up * instance.transform.localScale.y;
+        //Care if move the root of prefabs to ground
+        t.localPosition = buildPosition;
         if (t.localScale.y >= 15.0f)
             t.localScale /= data.factorScale;
 
@@ -322,7 +318,6 @@ public class GameManager : MonoBehaviour
         if (pickTower != null && pickTower.IsSolidificated == false)
         {
             bool allowance = false;
-            pickTower.IsSolidificated = false;
 
             if(pickTower.gameObject.GetComponent<AttackTowerEntity>() != null)
             {
@@ -338,10 +333,13 @@ public class GameManager : MonoBehaviour
                 allowance = tmp.Solidification();
             }
             if (allowance)
+            {
+                pickTower.IsSolidificated = false;
                 this.money -= data.solidificateCost;
+            }
         }
         else
-            Debug.Log("Tower already solidificreateAttackTowered");
+            Debug.Log("Tower already solidificreate AttackTowered");
     }
 
     void MobilePick()
@@ -455,27 +453,27 @@ public class GameManager : MonoBehaviour
         if (origin == null)
             Debug.LogError("No Tower found to convert!");
 
-        Vector3 position = origin.transform.position;
+        HexCell cell = origin.gameObject.GetComponent<TowerEntity>().cell;
+        if (cell == null) Debug.LogError("?");
         DestroyTowerShape(origin);
 
         if (targetName == "AttackTower")
         {
-            CreateTowerShape(0, null, position, 3, healthFactor);
+            CreateTowerShape(0, cell, 3, healthFactor);
             for (int i = 0; i < enemies.Count; i++)
                 SearchAndGo(enemies[i]);
         } else if (targetName == "DefenceTower")
         {
-            CreateTowerShape(1, null, position, 3, healthFactor);
+            CreateTowerShape(1, cell, 3, healthFactor);
             for (int i = 0; i < enemies.Count; i++)
                 SearchAndGo(enemies[i]);
         } else if (targetName == "ProductionTower")
         {
-            CreateTowerShape(2, null, position, 3, healthFactor);
+            CreateTowerShape(2, cell, 3, healthFactor);
             for (int i = 0; i < enemies.Count; i++)
                 SearchAndGo(enemies[i]);
         }
     }
-
 
     void SpawnCommonEnemy(float enemySpawnSpeed)//生成敌人
     {

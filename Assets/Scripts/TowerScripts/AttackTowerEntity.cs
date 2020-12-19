@@ -56,7 +56,7 @@ public class AttackTowerEntity : TowerEntity
         base.Update();
         if (state == 1 || state == 4 ) // only enabled when normal or normal updated
         {
-            if (isActive || state == 4)
+            if (isActive || state == 4) 
             {
                 if (isEnemyLocked)
                 {
@@ -79,12 +79,12 @@ public class AttackTowerEntity : TowerEntity
                         }
                     }
                 }
-            } else if (state == 3)//finish converting
-            {
-                if (convertDirection == 0) { state = 1; isConvertingCoolDown = true; }
-                else if (convertDirection == 1) { ConvertAntiClockwise(); }
-                else if (convertDirection == 2) { ConvertClockwise(); }
-            }
+            } 
+        } else if (state == 3)//finish converting
+        {
+            if (convertDirection == 0) { state = 1; isConvertingCoolDown = true; }
+            else if (convertDirection == 1) { ConvertAntiClockwise(); }
+            else if (convertDirection == 2) { ConvertClockwise(); }
         }
     }
 

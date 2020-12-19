@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7615611530918320003}
   - component: {fileID: 7608091822321606775}
   - component: {fileID: 4578364474233846219}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 2
   m_TagString: Tower
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 5444182297275901010}
   - component: {fileID: 3868090431715078888}
   - component: {fileID: 1475413676511417482}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: AttackTower_1
   m_TagString: Tower
   m_Icon: {fileID: 0}
@@ -156,6 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 235c97d07269c1d4aa2bfa1040a89e36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  data: {fileID: 0}
   health: 0
   maxHealth: 0
   state: 0
@@ -165,6 +166,7 @@ MonoBehaviour:
   isConvertingFinished: 0
   isConvertingCoolDown: 0
   cell: {fileID: 0}
+  linkTowers: []
   attackRange: 20
   projectile: {fileID: 0}
 --- !u!23 &3868090431715078888
@@ -233,7 +235,7 @@ GameObject:
   - component: {fileID: 7626774808624634239}
   - component: {fileID: 7616506475394613425}
   - component: {fileID: 7607257185509406341}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

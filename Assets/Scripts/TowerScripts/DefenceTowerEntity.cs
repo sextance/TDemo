@@ -20,7 +20,7 @@ public class DefenceTowerEntity : TowerEntity
     {
         base.FixedUpdate();
         isActive = cell.powered;
-        if (isActive || state == 4)
+        if(isActive || state == 4)
         {
             if (state != 0 && state != 2)
                 TauntEnemy();

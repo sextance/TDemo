@@ -19,22 +19,22 @@ public class Data : MonoBehaviour
 
     //Attack Tower
     public int attackTowerMaxHealth= 10;                                   //固化前最大生命值
-    public float attackRange = 20.0f;                                            //固化前攻击/索敌范围
+    public float attackRange = 1.5f * 17.32051f;                           //固化前攻击/索敌范围
     public int factorAtkRange = 2;                                                //固化后攻击距离扩大倍数
     public int damage = 3;                                                            //固化前单次弹道伤害
-    public int factorDamage = 2;                                                  //固化后单次弹道伤害扩大倍数
+    public int factorDamage = 2;                                                  //固化后单次弹道伤害扩大倍数 
     public float attackCoolDownTime = 1.0f;                               //攻击冷却时间
-    public float projectileSpeed = 20.0f;                                      //弹道速度
+    public float projectileSpeed = 20.0f;                                      //弹道速度 
     public float projectileDelayTime = 0.5f;                                 //弹道延迟消失时间
 
     //Defence Tower
     public int defenceTowerMaxHealth = 50;                               //固化前最大生命值
-    public float tauntRange = 35.0f;                                             //固化前嘲讽范围（注意用的是unity世界坐标）
+    public float tauntRange = 1.5f * 17.32051f;                            //固化前嘲讽范围
     public int factorTauntRange = 2;                                            //固化后索敌范围扩大倍数
 
     //Production Tower
     public int productionTowerMaxHealth = 20;                         //固化前最大生命值
-    public float powerRange = 1;                                                //固化前充能范围             ->          实际会转化为 x * cellLength
+    public float powerRange = 1.0f * 17.32051f;                          //固化前充能范围
     public int factorPowerRange = 3;                                          //固化后充能范围扩大倍数
     public int production = 1;                                                      //固化前每次生产量
     public int factorProduction = 2;                                             //固化后生产量扩大倍数

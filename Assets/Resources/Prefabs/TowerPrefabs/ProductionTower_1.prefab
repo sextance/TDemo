@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3016813847726619618}
   - component: {fileID: 3001238619093319922}
   - component: {fileID: 2992592912249962532}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 2_9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 3001116844013439110}
   - component: {fileID: 2992624903848687244}
   - component: {fileID: 1993741707101228923}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 1_9
   m_TagString: Tower
   m_Icon: {fileID: 0}
@@ -185,9 +185,9 @@ GameObject:
   - component: {fileID: -8656583701896824424}
   - component: {fileID: -6318718410475724211}
   - component: {fileID: 8054017765707634755}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ProductionTower_1
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -200,7 +200,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3014641461787610252}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 10}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
   - {fileID: 3016335021340180676}
@@ -274,6 +274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e91f78fc80371fe4db92091ccf7c17ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  data: {fileID: 0}
   health: 0
   maxHealth: 0
   state: 0
@@ -283,6 +284,7 @@ MonoBehaviour:
   isConvertingFinished: 0
   isConvertingCoolDown: 0
   cell: {fileID: 0}
+  linkTowers: []
   powerRange: 0
 --- !u!208 &8054017765707634755
 NavMeshObstacle:

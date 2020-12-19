@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 4804718429341349668}
   - component: {fileID: 6104289082426110616}
   - component: {fileID: 6938772817842650156}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefenseTower_1
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 586081917851839968}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.3, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
   - {fileID: 6790004826071166944}
@@ -102,6 +102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfdd982cd091f904b91a8e72a6f0cf95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  data: {fileID: 0}
   health: 0
   maxHealth: 0
   state: 0
@@ -111,6 +112,7 @@ MonoBehaviour:
   isConvertingFinished: 0
   isConvertingCoolDown: 0
   cell: {fileID: 0}
+  linkTowers: []
   tauntRange: 35
 --- !u!208 &6938772817842650156
 NavMeshObstacle:
@@ -139,7 +141,7 @@ GameObject:
   - component: {fileID: 5242062327891883068}
   - component: {fileID: 6984310136240780710}
   - component: {fileID: 5125972005203953988}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 2_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -218,7 +220,7 @@ GameObject:
   - component: {fileID: 5244811357019617662}
   - component: {fileID: 2286189374546383313}
   - component: {fileID: 1831767071891104385}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 1_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -295,7 +297,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7470989235422111468}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: flag_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -330,7 +332,7 @@ GameObject:
   - component: {fileID: 5130658198702761296}
   - component: {fileID: 3664259956780439614}
   - component: {fileID: 1536544516500553262}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 3_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -410,7 +412,7 @@ GameObject:
   - component: {fileID: 6792100401488768772}
   - component: {fileID: 6802486340554098304}
   - component: {fileID: 4307734520597904183}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tower_main
   m_TagString: Tower
   m_Icon: {fileID: 0}

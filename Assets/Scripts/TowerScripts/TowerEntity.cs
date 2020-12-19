@@ -18,11 +18,13 @@ public class TowerEntity : MonoBehaviour
     float convertingTime;
     float convertingCoolDonwnTime;
     bool isConstructing;
+    bool isSolidicated;
     public bool isConverting;
     public bool isConvertingFinished;
     public bool isConvertingCoolDown;
 
-    public HexCell cell; //the cell that tower occupied
+    public HexCell cell; // the cell that tower occupied
+    public List<TowerEntity> linkTowers; // init if tower is solidificated
     // float
     // bool isSolidificated;
 
@@ -34,11 +36,14 @@ public class TowerEntity : MonoBehaviour
         constructTime = data.constructTime;
         convertingTime = data.convertingTime;
         convertingCoolDonwnTime = data.convertingCoolDonwnTime;
+        isSolidicated = false;
         isConstructing = true;
         isConverting = false;
         isConvertingCoolDown = false;
         isConvertingFinished = false;
         cell = null;
+        if (linkTowers.Count > 0) linkTowers.Clear();
+        else if (linkTowers == null) linkTowers = new List<TowerEntity>();
         healthFactor = 1;
     }
 
@@ -62,7 +67,9 @@ public class TowerEntity : MonoBehaviour
                 /*Reserve for animation*/
             }
             GameManager.gm.DestroyTowerShape(this.gameObject.GetComponent<TowerShape>());
-        } else {
+        }
+        else
+        {
             if (state == 0) // constructing
             {
                 /*Reserve for animation*/
@@ -125,12 +132,16 @@ public class TowerEntity : MonoBehaviour
         bool allowance;
         if (state != 1)
         {
-            Debug.Log("Current State: "+ state + ", Not allow to convert");
+            Debug.Log("Current State: " + state + ", Not allow to convert");
             allowance = false;
-        } else if (isConvertingCoolDown) {
+        }
+        else if (isConvertingCoolDown)
+        {
             Debug.Log("Conveting in cooling down time!");
             allowance = false;
-        } else {
+        }
+        else
+        {
             // condition all satisfy, start converting
             state = 2;
             isConverting = true;
@@ -146,18 +157,34 @@ public class TowerEntity : MonoBehaviour
         {
             Debug.Log("Not allow to solidificate!");
             allowance = false;
-        } else if (GameManager.gm.money < data.solidificateCost)
+        }
+        else if (GameManager.gm.money < data.solidificateCost)
         {
             allowance = false;
-            Debug.Log("Not enought money!");
-        }  else {
+            Debug.Log("Not enough money!");
+        } else if( !CheckSurroundings() )
+        {
+            Debug.Log("Not enough surrounding tower or meet solidification pattern!");
+            allowance = false;
+        }  else
+        {
             /*change state*/
             health = this.health * data.factorHealth;
             state = 4;
 
             /*change shape*/
             Transform t = this.gameObject.transform;
+            t.localPosition = (this.linkTowers[0].gameObject.transform.localPosition +
+                this.linkTowers[1].gameObject.transform.localPosition + this.gameObject.transform.localPosition) / 3;
             t.localScale *= data.factorScale;
+
+            /*destroy surrounding towers*/
+            GameManager.gm.DestroyTowerShape(this.linkTowers[0].gameObject.GetComponent<TowerShape>());
+            GameManager.gm.DestroyTowerShape(this.linkTowers[1].gameObject.GetComponent<TowerShape>());
+
+            /*remark cells*/
+            this.linkTowers[0].cell.available = false;
+            this.linkTowers[1].cell.available = false;
 
             /*return flag*/
             allowance = true;
@@ -169,10 +196,11 @@ public class TowerEntity : MonoBehaviour
     public virtual bool SelfDestruction()
     {
         bool allowance;
-        if ( state != 1)
+        if (state != 1)
         {
             allowance = false;
-        } else {
+        } else
+        {
             health = 0;
             state = 6;
             /*Reseve for audio*/
@@ -186,4 +214,34 @@ public class TowerEntity : MonoBehaviour
         int t = this.health;
         this.health = t * originHealth / originMaxHealth;
     }
+
+    public bool CheckSurroundings() 
+    {
+        bool allowance = false;
+        Collider[] surroundingTowers = Physics.OverlapSphere(this.transform.localPosition, data.cellLength, LayerMask.GetMask("Tower"));
+        List<TowerEntity> tmpList = new List<TowerEntity>();
+        foreach (Collider tower in surroundingTowers)
+        {
+            TowerEntity t = tower.gameObject.GetComponentInParent<TowerEntity>();
+            if (t.state == 1 && t != this)
+                tmpList.Add(t);
+        }
+        for (int i =0; i< tmpList.Count; i++)
+        {
+            for(int j = i+1; j< tmpList.Count; j++)
+            {
+                if (Vector3.Distance(tmpList[i].transform.localPosition, tmpList[j].transform.localPosition)<= data.cellLength + 0.3f)
+                {
+                    this.linkTowers.Add(tmpList[i]);
+                    this.linkTowers.Add(tmpList[j]);
+                }
+            }
+        }
+
+        if (this.linkTowers.Count >= 2)
+            allowance = true;
+
+        return allowance;
+    }
+
 }
