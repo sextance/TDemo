@@ -11,9 +11,6 @@ public class TimeManager : MonoBehaviour
     }
     public float allTime;
 
-    public int timelimit1;
-    public int timelimit2;
-    public int timelimit3;
 
     public float timeToSpawn;
 

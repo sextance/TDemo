@@ -39,6 +39,21 @@ public class Data : MonoBehaviour
     public int production = 1;                                                      //固化前每次生产量
     public int factorProduction = 2;                                             //固化后生产量扩大倍数
     public float productionCoolDownTime = 4.0f;                      //生产间隔时间
+
+    public float enemySpawnSpeed1 = 0f;                              //先期敌人生成速度
+    public float enemySpawnSpeed2 = 0f;                              //后期敌人生成速度
+    public float timeLimit = 0f;                                     //先后期转变时间点
+    public float s1 = 1f;                                            //第一波尸潮时怪物生成间隔
+    public float s2 = 1f;                                            //第二波尸潮时怪物生成间隔
+    public float s3 = 5f;                                            //第三波尸潮时怪物生成间隔
+    public int count1;                                                //第一波尸潮刷新波数
+    public int count2;                                                //第二波尸潮波数
+    public int enemycount1;                                           //第一波单波敌人生成数量
+    public int enemycount2;                                          //第二波单波敌人生成数量
+    public int enmeycount3;                                          //第三波单波敌人生成数量
+    public int timelimit1;                                           //第一波出现时间
+    public int timelimit2;                                           //第二波出现时间
+    public int timelimit3;                                           //第三波开始时间
     /*------------------------------------------------EOF---------------------------------------------------------------*/
 
     static public Data _instance;

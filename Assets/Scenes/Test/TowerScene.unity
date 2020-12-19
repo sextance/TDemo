@@ -289,11 +289,7 @@ MonoBehaviour:
   mapButton: {fileID: 949108123}
   towerButton1: {fileID: 2074454463}
   towerButton2: {fileID: 400189719}
-  spawnSpeed: 1
-  time: 0
-  enemySpawnSpeed1: 10
-  enemySpawnSpeed2: 5
-  timeLimit: 300
+  camera: {fileID: 0}
   money: 0
 --- !u!4 &51244436
 Transform:
@@ -322,9 +318,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allTime: 0
-  timelimit1: 120
-  timelimit2: 300
-  timelimit3: 480
   timeToSpawn: 0
   intAllTime: 0
 --- !u!1 &65195214
@@ -382,6 +375,20 @@ MonoBehaviour:
   production: 1
   factorProduction: 2
   productionCoolDownTime: 4
+  enemySpawnSpeed1: 10
+  enemySpawnSpeed2: 5
+  timeLimit: 300
+  s1: 1
+  s2: 1
+  s3: 5
+  count1: 2
+  count2: 5
+  enemycount1: 1
+  enemycount2: 2
+  enmeycount3: 3
+  timelimit1: 120
+  timelimit2: 300
+  timelimit3: 480
 --- !u!4 &65195216
 Transform:
   m_ObjectHideFlags: 0

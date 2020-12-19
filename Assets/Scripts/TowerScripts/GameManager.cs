@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
     public GameObject camera;
     bool inEnemyScene;
     float enemySceneTimer;
+    float spawnSpeed = 1f;
 
     int selectTypeHandler; // 0 - non, 1 - tower...
     TowerShape pickTower;
@@ -45,25 +46,7 @@ public class GameManager : MonoBehaviour
     Material previousMaterial;
     Material selectedMaterial;
 
-    [SerializeField]
-    float spawnSpeed = 1f;
-
-    [SerializeField]
-    float time = 0f;
-
-    [SerializeField]
-    float enemySpawnSpeed1 = 0f;
-
-    [SerializeField]
-    float enemySpawnSpeed2 = 0f;
-
-    [SerializeField]
-    float timeLimit = 0f;
-
-    float s1 = 1f;
-    float s2 = 1f;
-    float s3 = 5f;
-    int count;
+    
     //private Animator anim;
 
     /*Game Datas*/
@@ -547,56 +530,60 @@ public class GameManager : MonoBehaviour
 
     void TimeToSpawn()//随时间限制改变怪物生成速度
     {
-        time += Time.deltaTime;
-        SpawnCommonEnemy(enemySpawnSpeed1);
-        if (time > timeLimit)
+        SpawnCommonEnemy(data.enemySpawnSpeed1);
+        if (TimeManager.timeManager.allTime > data.timeLimit)
         {
-            SpawnCommonEnemy(enemySpawnSpeed2);
+            SpawnCommonEnemy(data.enemySpawnSpeed2);
         }
     }
 
     void TimeToSpawnAround()//获取边缘地图坐标，批量生成
     {
-        if(TimeManager.timeManager.intAllTime >= TimeManager.timeManager.timelimit1 && TimeManager.timeManager.intAllTime < TimeManager.timeManager.timelimit1+2)
+        if(TimeManager.timeManager.intAllTime >= data.timelimit1 && TimeManager.timeManager.intAllTime < data.timelimit1 +data.count1 * data.s1)
         {
-            s1 += Time.deltaTime;
-            count = 0;
-            while(count < 2 && s1 >= 1f)
+            float datas1 = data.s1;
+            data.s1 += Time.deltaTime;
+            int count1;
+            count1 = data.count1;
+            while(count1 > 0 && data.s1 >= datas1)
             {
-                for (int i = 0; i < 1; i++)
+                for (int i = 0; i < data.enemycount1; i++)
                 {
                     OnceToCreateAround();
                 }
-                count++;
-                s1 -= 1f;
+                count1--;
+                data.s1 -= datas1;
             }
         }
 
-        if (TimeManager.timeManager.intAllTime >= TimeManager.timeManager.timelimit2 && TimeManager.timeManager.intAllTime < TimeManager.timeManager.timelimit2 + 5)
+        if (TimeManager.timeManager.intAllTime >= data.timelimit2 && TimeManager.timeManager.intAllTime < data.timelimit2 + data.count2 * data.s2)
         {
-            s2 += Time.deltaTime;
-            count = 0;
-            while (count < 5 && s2 >= 1f)
+            float datas2 = data.s2;
+            data.s2 += Time.deltaTime;
+            int count2;
+            count2 = data.count2;
+            while (count2 > 0 && data.s2 >= datas2)
             {
-                for (int i = 0; i < 2; i++)
+                for (int i = 0; i < data.enemycount2; i++)
                 {
                     OnceToCreateAround();
                 }
-                count++;
-                s2 -= 1f;
+                count2--;
+                data.s2 -= datas2;
             }
         }
 
-        if (TimeManager.timeManager.intAllTime >= TimeManager.timeManager.timelimit3)
+        if (TimeManager.timeManager.intAllTime >= data.timelimit3)
         {
-            s3 += Time.deltaTime;
-            while (s3 >= 5f)
+            float datas3 = data.s3;
+            data.s3 += Time.deltaTime;
+            while (data.s3 >= datas3)
             {
-                for (int i = 0; i < 2; i++)
+                for (int i = 0; i < data.enmeycount3; i++)
                 {
                     OnceToCreateAround();
                 }
-                s3 -= 5f;
+                data.s3 -= datas3;
             }
         }
     }

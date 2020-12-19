@@ -52,8 +52,28 @@ namespace BaseFramework.Network
             timeoutTimer = new Timer(new TimerCallback(timeoutCheck), null, Timeout.Infinite, Timeout.Infinite);
             regServerMonitor("isMatchSuccess", Match); 
             regServerMonitor("other_player_coming", other_player_coming);
+            regServerMonitor("powerShow", powerShow);
         }
+        private void powerShow(Message msg)
+        {
+            if (msg.OpCode == OPCODE.NotifyInfo)
+            {
+                var seq = msg.NotifyInfo.Sequence;
+                if (seq > 0)
+                {
 
+                    object retParam = MessagePackDecoder<object>(msg.NotifyInfo.RpcParams);
+
+                    DebugLogger.Debug(retParam.ToString());
+
+                    // var param = msg.NotifyInfo.RpcParams;
+
+                    //Debug.Log("server callback:powerShow"+param);
+                    // clientReceiveSeq = seq;
+                }
+
+            }
+        }
         private void other_player_coming(Message msg)
         {
             if (msg.OpCode == OPCODE.NotifyInfo)
@@ -89,7 +109,7 @@ namespace BaseFramework.Network
                     if (retParam)
                     {
                         DebugLogger.Debug("匹配成功");
-                       // SceneManager.LoadScene("TowerScene");
+                        SceneManager.LoadScene("TowerScene");
                     }
                     else
                     {
