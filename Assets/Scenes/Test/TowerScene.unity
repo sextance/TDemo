@@ -353,6 +353,7 @@ MonoBehaviour:
   buildCost: 5
   solidificateCost: 10
   deconstructionCost: 5
+  cellLength: 17.32051
   constructTime: 2
   convertingTime: 2
   convertingCoolDonwnTime: 5
@@ -386,8 +387,8 @@ MonoBehaviour:
   enemycount1: 1
   enemycount2: 2
   enmeycount3: 3
-  timelimit1: 120
-  timelimit2: 300
+  timelimit1: 10
+  timelimit2: 20
   timelimit3: 480
 --- !u!4 &65195216
 Transform:

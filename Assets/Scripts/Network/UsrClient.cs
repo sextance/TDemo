@@ -68,7 +68,7 @@ namespace BaseFramework.Network
 
                     // var param = msg.NotifyInfo.RpcParams;
 
-                    //Debug.Log("server callback:powerShow"+param);
+                    Debug.Log("server callback:powerShow"/*+param*/);
                     // clientReceiveSeq = seq;
                 }
 

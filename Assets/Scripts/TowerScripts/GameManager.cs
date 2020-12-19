@@ -36,6 +36,9 @@ public class GameManager : MonoBehaviour
     bool inEnemyScene;
     float enemySceneTimer;
     float spawnSpeed = 1f;
+    float datas1 = Data.GlobalData.s1;
+    float datas2 = Data.GlobalData.s2;
+    float datas3 = Data.GlobalData.s3;
 
     int selectTypeHandler; // 0 - non, 1 - tower...
     TowerShape pickTower;
@@ -541,7 +544,7 @@ public class GameManager : MonoBehaviour
     {
         if(TimeManager.timeManager.intAllTime >= data.timelimit1 && TimeManager.timeManager.intAllTime < data.timelimit1 +data.count1 * data.s1)
         {
-            float datas1 = data.s1;
+            
             data.s1 += Time.deltaTime;
             int count1;
             count1 = data.count1;
@@ -558,7 +561,7 @@ public class GameManager : MonoBehaviour
 
         if (TimeManager.timeManager.intAllTime >= data.timelimit2 && TimeManager.timeManager.intAllTime < data.timelimit2 + data.count2 * data.s2)
         {
-            float datas2 = data.s2;
+            
             data.s2 += Time.deltaTime;
             int count2;
             count2 = data.count2;
@@ -575,7 +578,6 @@ public class GameManager : MonoBehaviour
 
         if (TimeManager.timeManager.intAllTime >= data.timelimit3)
         {
-            float datas3 = data.s3;
             data.s3 += Time.deltaTime;
             while (data.s3 >= datas3)
             {
