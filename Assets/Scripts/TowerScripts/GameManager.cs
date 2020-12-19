@@ -315,8 +315,8 @@ public class GameManager : MonoBehaviour
             t.cell.available = true;
             if(t.linkTowers.Count > 0)
             {
-                t.linkCells[0].available = false;
-                t.linkCells[1].available = false;
+                t.linkCells[0].available = true;
+                t.linkCells[1].available = true;
             }
 
             towerShapeFactory.Reclaim(towerShapes[index]);

@@ -18,7 +18,7 @@ public class ProductionTowerEntity : TowerEntity
     {
         base.OnEnable();
         towerType = 2;
-        powerRange = data.powerRange * data.cellLength;
+        powerRange = data.powerRange;
         maxHealth = health = data.productionTowerMaxHealth;
         production = data.production;
         coolDownTime = data.productionCoolDownTime;

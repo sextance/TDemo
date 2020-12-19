@@ -68,7 +68,7 @@ public class TestPack : MonoBehaviour
     {
         if (TimeManager.timeManager.allTime >= 10f)
         {
-            if (GameManager.gm.towerShapes.Count == 0 || GameManager.gm.CheckPower() == false)
+            if (GameManager.gm.towerShapes.Count == 0 /*|| GameManager.gm.CheckPower() == false*/)
             {
                 TowerChange gg = new TowerChange();
                 gg.result = "false";
