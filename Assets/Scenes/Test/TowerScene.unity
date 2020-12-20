@@ -287,6 +287,7 @@ MonoBehaviour:
   towerShapes: []
   enemies: []
   costText: {fileID: 603915900}
+  forceSlider: {fileID: 1828288063}
   mapButton: {fileID: 949108123}
   towerButton1: {fileID: 2074454463}
   towerButton2: {fileID: 400189719}
