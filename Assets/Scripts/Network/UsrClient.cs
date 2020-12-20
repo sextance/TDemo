@@ -178,17 +178,18 @@ namespace BaseFramework.Network
                     if (retParam)
                     {
                         DebugLogger.Debug("匹配成功");
-                        /*LoginRequist.ucl.rpcCall("combat.getOtherId", null, (byte[] data) =>
+                        LoginRequist.ucl.rpcCall("combat.getOtherId", null, (byte[] data) =>
                         {
                             var massage = BaseFramework.Network.UserClient.ProtobufDecoder(data);
 
                             if (massage.Response.RpcRsp != null)
                             {
                                 var result = UserClient.MessagePackDecoder<object>(massage.Response.RpcRsp);
+                                //TODO:显示两个对战玩家信息(uid)
 
                                 DebugLogger.Debug("OtherID callback: " + result);
                             }
-                        });*/
+                        });
 
                         SceneManager.LoadScene("TowerScene");
                     }
