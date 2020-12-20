@@ -70,7 +70,7 @@ namespace BaseFramework.Network
                         case OptionType.UPDATE_TOWER:
                             if(tc.towernum >= 0)
                             {
-                                Debug.Log("num is" + tc.towernum.ToString());
+                                GameManager.gm.setEnemyTowerCount(tc.towernum);
                             }//TODO:与UI势力条绑定
                             break;
                         case OptionType.TOWER_CHANGE:
