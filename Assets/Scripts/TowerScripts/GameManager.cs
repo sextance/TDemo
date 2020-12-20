@@ -53,6 +53,8 @@ public class GameManager : MonoBehaviour
     Transform highLightObj;
     Material previousMaterial;
     Material selectedMaterial;
+    int ypos = 347;
+    int zpos = -264;
 
 
     //private Animator anim;
@@ -283,14 +285,14 @@ public class GameManager : MonoBehaviour
             enemySceneTimer += Time.deltaTime;
             if(enemySceneTimer <= 1f)
             {
-                camera.transform.position = new Vector3(-1200*enemySceneTimer*enemySceneTimer+2400*enemySceneTimer+100,150,10);
+                camera.transform.position = new Vector3(-1200*enemySceneTimer*enemySceneTimer+2400*enemySceneTimer+100,ypos,zpos);
             }
             else if(enemySceneTimer >= 3f && enemySceneTimer < 4f)
             {
-                camera.transform.position = new Vector3(-1200*enemySceneTimer*enemySceneTimer+7200*enemySceneTimer-9500,150,10);
+                camera.transform.position = new Vector3(-1200*enemySceneTimer*enemySceneTimer+7200*enemySceneTimer-9500,ypos,zpos);
             }
             else if(enemySceneTimer >= 4f){
-                camera.transform.position = new Vector3(100,150,10);
+                camera.transform.position = new Vector3(100,ypos,zpos);
                 inEnemyScene = false;
                 enemySceneTimer = 0f;
             }
