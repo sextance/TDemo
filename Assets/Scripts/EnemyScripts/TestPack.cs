@@ -53,19 +53,13 @@ public class TestPack : MonoBehaviour
         LoginRequist.ucl.rpcCall("combat.get_tower_num", JsonConvert.SerializeObject(dot), null);
     }
 
-    //扫描敌人时发送
+    //扫描请求发送
     void Scan()
     {
         TowerChange st = new TowerChange();
-        foreach(TowerShape towerShape in GameManager.gm.towerShapes)
-        {
-            TowerInfo temp=new TowerInfo(towerShape.ShapeId, towerShape.transform.localPosition.x, towerShape.transform.localPosition.y, towerShape.transform.localPosition.z);
-            st.a.Add(temp);
-        }
         st.OptType = OptionType.SCAN;
         LoginRequist.ucl.rpcCall("combat.get_tower_num", JsonConvert.SerializeObject(st), null);
     }
-
 
     //游戏结束
     public static void GameOver()
@@ -100,7 +94,8 @@ public enum OptionType{
     TOWER_CHANGE,
     DESTORY_TOWER,
     SCAN,
-    GAME_OVER
+    GAME_OVER,
+    SCAN_MAKE
 }
 
 public class TowerInfo//towershape
