@@ -89,7 +89,6 @@ namespace BaseFramework.Network
                             }
                             break;
                         case OptionType.DESTORY_TOWER:
-                            {
                                 if(tc.ti != null)
                                 {
                                     Vector3 CreateEnemyPosition = new Vector3();
@@ -99,7 +98,6 @@ namespace BaseFramework.Network
                                     var a = new GameObject();
                                     a.AddComponent<MonsterMake>().SetData(tc.ti.shapeid, CreateEnemyPosition, OptionType.DESTORY_TOWER);
                                 }
-                            }
                             break;
                         case OptionType.SCAN:
                             TowerChange st = new TowerChange();

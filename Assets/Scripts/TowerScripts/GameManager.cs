@@ -193,7 +193,6 @@ public class GameManager : MonoBehaviour
                 {
                     if(pickTower != null)
                     {
-                        Debug.Log("Destory My Tower");
                         TestPack.DestoryOwnTower(pickTower);
                     }
                     DestroyTowerShape(pickTower);

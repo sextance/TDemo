@@ -18,13 +18,13 @@ public class MonsterMake : MonoBehaviour
         SingleCountMake(shapeid);
     }
 
-    private void Update()
-    {
-        if(shapeid == 4)
-        {
-            Destroy(gameObject);
-        }
-    }
+    //private void Update()
+    //{
+    //    if(shapeid == 4)
+    //    {
+    //        Destroy(gameObject);
+    //    }
+    //}
 
     public IEnumerator LoopMakeMonster() {
 
@@ -83,7 +83,7 @@ public class MonsterMake : MonoBehaviour
 
     public int SingleCountMake(int shapeid)
     {
-        if(option == OptionType.SCAN)
+        if(option == OptionType.DESTORY_TOWER)
         {
             singleCount = Data.GlobalData.DestoryToMakeCount;
         }
