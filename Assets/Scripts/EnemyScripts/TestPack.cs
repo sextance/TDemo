@@ -13,6 +13,7 @@ using UnityEditor;
 public class TestPack : MonoBehaviour
 {
     Button EnemyButton;
+    Button ExitButton;
     Text scanTowerText;
 
     private void Awake()
@@ -21,9 +22,11 @@ public class TestPack : MonoBehaviour
         EnemyButton = GameObject.Find("EnemyButton").GetComponent<Button>();
         scanTowerText = EnemyButton.transform.Find("EnemyText").GetComponent<Text>();
         scanTowerText.text = "扫描";
+        ExitButton = GameObject.Find("ExitButton").GetComponent<Button>();
 
         //active UI event;
         EnemyButton.onClick.AddListener(Scan);
+        ExitButton.onClick.AddListener(ExitGame);
     }
 
 
@@ -77,6 +80,14 @@ public class TestPack : MonoBehaviour
                 GameManager.gm.sceneSwitch.ToScene("EndScene");
             }
         }
+    }
+
+    void ExitGame()
+    {
+        TowerChange eg = new TowerChange();
+        eg.OptType = OptionType.GAME_OVER;
+        eg.result = "false";
+        LoginRequist.ucl.rpcCall("combat.get_tower_num", JsonConvert.SerializeObject(eg), null);
     }
 
 }
