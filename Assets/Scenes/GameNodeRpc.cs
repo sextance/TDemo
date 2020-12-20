@@ -11,11 +11,11 @@ namespace BaseFramework.Network
         Button SerializeButton;
         Text SerializeButtonText;
         Button NotificationButton;
-        Text NotificationButtonText;
+        internal static Text NotificationButtonText;
         internal static Text SerializedPlayername;
         internal static Text SerializedUid;
         internal static Text NotificationMsg;
-        static bool matchFlag;
+        internal static bool matchFlag;
 
         private void OnEnable()
         {
@@ -55,8 +55,8 @@ namespace BaseFramework.Network
         {   
             if(!matchFlag)
             {
-                NotificationButtonText.text = "取消匹配";
-                matchFlag = !matchFlag;
+                NotificationButtonText.text = "取消(10s返回)";
+                matchFlag = true;
                 LoginRequist.ucl.rpcCall("combat.start_match", null, (byte[] data) =>
                 {   
 
@@ -74,7 +74,7 @@ namespace BaseFramework.Network
             else
             {
                 NotificationButtonText.text = "新的匹配";
-                matchFlag = !matchFlag;
+                matchFlag = false;
                 LoginRequist.ucl.rpcCall("combat.cancel_match", null, (byte[] data) =>
                 {
                     var msg = UserClient.ProtobufDecoder(data);

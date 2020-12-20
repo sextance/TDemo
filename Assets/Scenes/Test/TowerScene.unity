@@ -192,17 +192,17 @@ MonoBehaviour:
   enemySpawnSpeed1: 10
   enemySpawnSpeed2: 3
   timeLimit: 300
-  s1: 120
-  s2: 120
-  s3: 180
+  s1: 1
+  s2: 1
+  s3: 10
   count1: 2
   count2: 3
   enemycount1: 1
   enemycount2: 1
   enmeycount3: 3
-  timelimit1: 5
-  timelimit2: 5
-  timelimit3: 10
+  timelimit1: 120
+  timelimit2: 120
+  timelimit3: 180
   enemyCount0: 1
   enemyCount1: 1
   enemyCount2: 3

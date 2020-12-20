@@ -33,7 +33,7 @@ public class TestPack : MonoBehaviour
         TowerChange tn = new TowerChange();
         tn.towernum = towershapes.Count;
         tn.OptType = OptionType.UPDATE_TOWER;
-        //LoginRequist.ucl.rpcCall("combat.get_tower_num", JsonConvert.SerializeObject(tn), null);
+        LoginRequist.ucl.rpcCall("combat.get_tower_num", JsonConvert.SerializeObject(tn), null);
     }
 
     //塔固化时调用，发送固化塔的类型与位置

@@ -54,8 +54,13 @@ namespace BaseFramework.Network
             regServerMonitor("isMatchSuccess", Match); 
             regServerMonitor("other_player_coming", other_player_coming);
             regServerMonitor("powerShow", powerShow);
+            regServerMonitor("kickOut", kickOut);
         }
-
+        private void kickOut(Message msg)
+        {
+            GameNodeRpc.NotificationButtonText.text = "新的匹配";
+            GameNodeRpc.matchFlag = false;
+        }
         private void powerShow(Message msg)
         {
             if (msg.OpCode == OPCODE.NotifyInfo)
@@ -120,6 +125,8 @@ namespace BaseFramework.Network
                                     v.z = tif.z;
                                     v.x += 1200f;
                                     TowerShape ts = Instantiate(TowerShapeFactory.tsf.prefabs[tif.shapeid],v,Quaternion.identity);
+                                    TowerEntity te = ts.gameObject.GetComponent<TowerEntity>();
+                                    Destroy(te);
                                 }
                             }
                             break;
