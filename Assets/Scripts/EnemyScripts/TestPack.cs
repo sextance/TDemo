@@ -72,7 +72,8 @@ public class TestPack : MonoBehaviour
                 gg.result = "false";
                 gg.OptType = OptionType.GAME_OVER;
                 LoginRequist.ucl.rpcCall("combat.get_tower_num", JsonConvert.SerializeObject(gg), null);
-                SceneManager.LoadScene("EndScene");
+                //SceneManager.LoadScene("EndScene");
+                GameManager.gm.sceneSwitch.ToScene("EndScene");
             }
         }
     }

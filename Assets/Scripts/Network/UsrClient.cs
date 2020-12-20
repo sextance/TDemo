@@ -126,6 +126,16 @@ namespace BaseFramework.Network
                         case OptionType.GAME_OVER:
                             if(tc.result == "false")
                             {
+                                Debug.log("Game Over");
+                                TowerChange uw = new TowerChange();
+                                uw.result = "true";
+                                uw.OptType = OptionType.GAME_OVER;
+                                rpcCall("combat.get_tower_num", JsonConvert.SerializeObject(uw), null);
+                                SceneManager.LoadScene("EndScene");
+                            }
+                            else if(tc.result == "true")
+                            {
+                                Debug.log("You Win");
                                 SceneManager.LoadScene("EndScene");
                             }
                             break;

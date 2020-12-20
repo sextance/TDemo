@@ -54,6 +54,7 @@ public class GameManager : MonoBehaviour
     //private Animator anim;
 
     /*Game Datas*/
+    public SceneSwitch sceneSwitch;
     public int money;
     int enemyTowerCount;
     /*Reserve for other objects*/
