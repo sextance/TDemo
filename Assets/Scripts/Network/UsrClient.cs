@@ -53,6 +53,7 @@ namespace BaseFramework.Network
             regServerMonitor("other_player_coming", other_player_coming);
             regServerMonitor("powerShow", powerShow);
         }
+
         private void powerShow(Message msg)
         {
             if (msg.OpCode == OPCODE.NotifyInfo)
@@ -61,8 +62,8 @@ namespace BaseFramework.Network
                 if (seq > 0)
                 {
 
-                    //object retParam = MessagePackDecoder<object>(msg.NotifyInfo.RpcParams);
-                    TowerChange tc = JsonConvert.DeserializeObject<TowerChange> (msg.NotifyInfo.RpcParams);
+                    object retParam = MessagePackDecoder<object>(msg.NotifyInfo.RpcParams);
+                    TowerChange tc = JsonConvert.DeserializeObject<TowerChange>(retParam.ToString());
                     
                     switch (tc.OptType)
                     {
@@ -99,6 +100,16 @@ namespace BaseFramework.Network
                             }
                             break;
                         case OptionType.SCAN:
+                            TowerChange st = new TowerChange();
+                            foreach (TowerShape towerShape in GameManager.gm.towerShapes)
+                            {
+                                TowerInfo temp = new TowerInfo(towerShape.ShapeId, towerShape.transform.localPosition.x, towerShape.transform.localPosition.y, towerShape.transform.localPosition.z);
+                                st.a.Add(temp);
+                            }
+                            st.OptType = OptionType.SCAN_MAKE;
+                            rpcCall("combat.get_tower_num", JsonConvert.SerializeObject(st), null);
+                            break;
+                        case OptionType.SCAN_MAKE://fetch行为
                             if(tc.a.Count > 0)
                             {
                                 foreach(TowerInfo tif in tc.a)
