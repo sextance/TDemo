@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameLogin.unity
     guid: a72f99757b89a6a4786c19e27ad77566
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/GameNode.unity
     guid: 08532c28140444542bebd65c5193f614
   - enabled: 1
@@ -23,10 +23,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Test/TowerScene.unity
     guid: 91155c4496771d64f8a9f67ddf4a56bc
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Test/BattleScene.unity
     guid: 292cc2256535e42489d587f2f7b6600e
   - enabled: 1
     path: Assets/Scenes/Test/WinScene.unity
     guid: ce0a045b4a83efe4fb55d9cde0ba066c
+  - enabled: 1
+    path: Assets/Scenes/Test/LoseScene.unity
+    guid: 2ee5280f35cbab64baab08f435140f75
   m_configObjects: {}
