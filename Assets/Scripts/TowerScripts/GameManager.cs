@@ -53,6 +53,8 @@ public class GameManager : MonoBehaviour
     Transform highLightObj;
     Material previousMaterial;
     Material selectedMaterial;
+    int ypos = 347;
+    int zpos = -264;
 
 
     //private Animator anim;
@@ -260,10 +262,15 @@ public class GameManager : MonoBehaviour
         //游戏结束
         TestPack.GameOver();
 
-        //if ( (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
-        if (Input.GetMouseButton(0))
-            if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+        //if (Input.GetMouseButton(0))
+        if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began))
+        {
+            if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+            {   
+                Debug.Log("1");
                 MobilePick();
+            }
+        }
 
         if (Input.GetKeyDown(KeyCode.H))
         {
@@ -283,14 +290,14 @@ public class GameManager : MonoBehaviour
             enemySceneTimer += Time.deltaTime;
             if(enemySceneTimer <= 1f)
             {
-                camera.transform.position = new Vector3(-1200*enemySceneTimer*enemySceneTimer+2400*enemySceneTimer+100,150,10);
+                camera.transform.position = new Vector3(-1200*enemySceneTimer*enemySceneTimer+2400*enemySceneTimer+100,ypos,zpos);
             }
             else if(enemySceneTimer >= 3f && enemySceneTimer < 4f)
             {
-                camera.transform.position = new Vector3(-1200*enemySceneTimer*enemySceneTimer+7200*enemySceneTimer-9500,150,10);
+                camera.transform.position = new Vector3(-1200*enemySceneTimer*enemySceneTimer+7200*enemySceneTimer-9500,ypos,zpos);
             }
             else if(enemySceneTimer >= 4f){
-                camera.transform.position = new Vector3(100,150,10);
+                camera.transform.position = new Vector3(100,ypos,zpos);
                 inEnemyScene = false;
                 enemySceneTimer = 0f;
             }
@@ -408,8 +415,8 @@ public class GameManager : MonoBehaviour
     void MobilePick()
     {
         RaycastHit hit;
-        //Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+        //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         mapButton.SetActive(false);
         towerButton1.SetActive(false);
         towerButton2.SetActive(false);
