@@ -400,9 +400,9 @@ MonoBehaviour:
   spawnOtherTime1: 5
   spawnOtherTime2: 5
   DestoryToMakeCount: 5
-  enemyPrefab1: {fileID: -1233511338744702813, guid: 25cfd35a4381f25458b095619b003def,
+  enemyPrefab1: {fileID: 4423170946036484545, guid: 328bd1384500c7640a91f83210dcdb3c,
     type: 3}
-  enemyPrefab2: {fileID: -1233511338744702813, guid: 25cfd35a4381f25458b095619b003def,
+  enemyPrefab2: {fileID: 4423170946036484545, guid: 328bd1384500c7640a91f83210dcdb3c,
     type: 3}
   enemyPrefab3: {fileID: 2476960470732696119, guid: 66da15affbf16f14e98100ba78f7f3c2,
     type: 3}
