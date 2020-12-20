@@ -191,7 +191,11 @@ public class GameManager : MonoBehaviour
             {
                 if (this.money > data.deconstructionCost)
                 {
-                    TestPack.DestoryOwnTower(pickTower);
+                    if(pickTower != null)
+                    {
+                        Debug.Log("Destory My Tower");
+                        TestPack.DestoryOwnTower(pickTower);
+                    }
                     DestroyTowerShape(pickTower);
                     selectTypeHandler = 0;
                     this.money -= data.deconstructionCost;
