@@ -28,12 +28,12 @@ public class TowerEntity : MonoBehaviour
     public List<TowerEntity> linkTowers; // init if tower is solidificated
     public List<HexCell> solidificationLinkCells; // init if tower is solidificated
 
-    //Effect
+    //Effect and Audio
     public GameObject buildEffect;
-
+    public AudioSource audio;
+    bool isAudioPlaying;
     // float
     // bool isSolidificated;
-
     protected void OnEnable()
     {
         data = Data.GlobalData;
@@ -43,6 +43,7 @@ public class TowerEntity : MonoBehaviour
         convertingTime = data.convertingTime;
         convertingCoolDonwnTime = data.convertingCoolDonwnTime;
         isSolidicated = false;
+        isAudioPlaying = false;
         isConstructing = true;
         isConverting = false;
         isConvertingCoolDown = false;
@@ -57,18 +58,32 @@ public class TowerEntity : MonoBehaviour
 
     private void Start()
     {
-        Vector3 position = HexCoordinates.FromCoordinate(cell.coordinates);
-        Instantiate(buildEffect, position, Quaternion.identity);
+        audio = GetComponent<AudioSource>();
+        if (state == 0)
+        {
+            Vector3 position = HexCoordinates.FromCoordinate(cell.coordinates);
+            Instantiate(buildEffect, position, Quaternion.identity);
+        }
     }
     protected void FixedUpdate()
     {
         UpdateFunctionTime();
+        if (isConstructing == true)// constructing
+        {
+            if (audio.isPlaying == false)
+                audio.Play();
+        } else
+        {
+            audio.Stop();
+        }
+
         healthFactor = (float)this.health / this.maxHealth;
     }
 
     // Update is called once per frame
     protected void Update()
     {
+
         if (health <= 0)
         {
             if (state == 5) // shattered by enemy 
@@ -83,10 +98,6 @@ public class TowerEntity : MonoBehaviour
         }
         else
         {
-            if (state == 0) // constructing
-            {
-                /*Reserve for animation*/
-            }
             if (state == 2) // converting
             {
                 /*Reserve for animation*/
@@ -96,6 +107,9 @@ public class TowerEntity : MonoBehaviour
 
     void UpdateFunctionTime()
     {
+        if (state != 0)
+            isConstructing = false;
+
         if (isConstructing) // if constructing, in state 0
         {
             constructTime -= Time.deltaTime;
@@ -156,6 +170,7 @@ public class TowerEntity : MonoBehaviour
         else
         {
             // condition all satisfy, start converting
+            //convertAudio.Play();
             state = 2;
             isConverting = true;
             allowance = true;
@@ -218,6 +233,7 @@ public class TowerEntity : MonoBehaviour
             health = 0;
             state = 6;
             /*Reseve for audio*/
+            //deconstructionAudio.Play();
             allowance = true;
         }
         return allowance;
