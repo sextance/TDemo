@@ -41,6 +41,7 @@ namespace BaseFramework.Network
         internal Thread SendThread;
         internal Thread ReceiveThread;
         private Dictionary<string, Action<Message>> severMonitorCallback = new Dictionary<string, Action<Message>>();
+        SceneLoader sceneLoader;
 
         public UserClient(Login ulogin, int idx, NetClient ncli)
         {
@@ -190,7 +191,9 @@ namespace BaseFramework.Network
                             }
                         });*/
 
-                        SceneManager.LoadScene("TowerScene");
+                        //SceneManager.LoadScene("TowerScene");
+                        sceneLoader = GameObject.Find("SceneLoader").GetComponent<SceneLoader>();
+                        sceneLoader.LoadScene("TowerScene");
                     }
                     else
                     {

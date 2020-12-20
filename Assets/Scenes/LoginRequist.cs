@@ -13,11 +13,13 @@ namespace BaseFramework.Network
         private readonly int ServerPort = 7001;
         Button LoginButton;
         Text LoginButtonText;
+        public SceneLoader sceneLoader;
         internal static UserClient ucl;
 
         private void Awake()
         {
             DontDestroyOnLoad(gameObject);
+            //sceneLoader = GameObject.Find("SceneLoader").GetComponent<SceneLoader>();
             // init basic UI and network status
             LoginButton = GameObject.Find("LoginBtn").GetComponent<Button>();
             LoginButtonText = LoginButton.transform.Find("Text").GetComponent<Text>();
@@ -47,11 +49,12 @@ namespace BaseFramework.Network
         }
         public void switchScene(string sceneName)
         {
-            StartCoroutine(Load(sceneName));
+            //StartCoroutine(Load(sceneName));
+            sceneLoader.LoadScene(sceneName);
         }
 
         private IEnumerator Load(string sceneName)
-        {
+        {   
             AsyncOperation op = SceneManager.LoadSceneAsync(sceneName);
             DebugLogger.Debug(op.ToString());
             yield return new WaitForEndOfFrame();

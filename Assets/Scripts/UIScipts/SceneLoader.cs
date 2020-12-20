@@ -40,7 +40,7 @@ public class SceneLoader : MonoBehaviour
     /// </summary>
     /// <param name="levelName">场景名称</param>
     /// <returns></returns>
-    private IEnumerator LoadLevel(string levelName){
+    public IEnumerator LoadLevel(string levelName){
         // 异步加载场景
         AsyncOperation loading = SceneManager.LoadSceneAsync(levelName);
 
