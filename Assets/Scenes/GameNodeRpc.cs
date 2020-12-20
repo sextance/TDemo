@@ -15,13 +15,15 @@ namespace BaseFramework.Network
         internal static Text SerializedPlayername;
         internal static Text SerializedUid;
         internal static Text NotificationMsg;
+        static bool matchFlag;
 
         private void OnEnable()
         {
             //SerializeButton = GameObject.Find("SerilizeRpc").GetComponent<Button>();
             //SerializeButtonText = SerializeButton.transform.Find("Text").GetComponent<Text>();
-
+            matchFlag = false;
             NotificationButton = GameObject.Find("PVPButton").GetComponent<Button>();
+            NotificationButtonText = GameObject.Find("PVPTextLabel").GetComponent<Text>();
             //NotificationButtonText = NotificationButton.transform.Find("Text").GetComponent<Text>();
 
            // SerializedPlayername = GameObject.Find("playername").GetComponent<Text>();
@@ -50,20 +52,42 @@ namespace BaseFramework.Network
         }
 
         void StartNotify()
-        {
-            LoginRequist.ucl.rpcCall("combat.start_match", null, (byte[] data) =>
-            {   
+        {   
+            if(!matchFlag)
+            {
+                NotificationButtonText.text = "取消匹配";
+                matchFlag = !matchFlag;
+                LoginRequist.ucl.rpcCall("combat.start_match", null, (byte[] data) =>
+                {   
 
-                var msg = BaseFramework.Network.UserClient.ProtobufDecoder(data);
+                    var msg = BaseFramework.Network.UserClient.ProtobufDecoder(data);
 
-                if (msg.Response.RpcRsp != null)
+                    if (msg.Response.RpcRsp != null)
+                    {
+                        var result = UserClient.MessagePackDecoder<object>(msg.Response.RpcRsp);
+
+                        DebugLogger.Debug("start_match callback: " + result);
+                        //NotificationMsg.text = result.ToString();
+                    }
+                });
+            }
+            else
+            {
+                NotificationButtonText.text = "新的匹配";
+                matchFlag = !matchFlag;
+                LoginRequist.ucl.rpcCall("combat.cancel_match", null, (byte[] data) =>
                 {
-                    var result = UserClient.MessagePackDecoder<object>(msg.Response.RpcRsp);
+                    var msg = UserClient.ProtobufDecoder(data);
 
-                    DebugLogger.Debug("start_match callback: " + result);
-                    //NotificationMsg.text = result.ToString();
-                }
-            });
+                    if (msg.Response.RpcRsp != null)
+                    {
+                        object result = UserClient.MessagePackDecoder<object>(msg.Response.RpcRsp);
+                        //TODO:UI按钮改回“新的匹配”
+                        DebugLogger.Debug("cancel_match callback: " + result);
+                        //NotificationMsg.text = result.ToString();
+                    }
+                });
+            }     
         }
     }
 }
