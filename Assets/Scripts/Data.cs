@@ -52,8 +52,8 @@ public class Data : MonoBehaviour
     public int enemycount2 = 1;                                          //第二波单波敌人生成数量
     public int enmeycount3 = 3;                                          //第三波单波敌人生成数量
     public int timelimit1 = 120;                                           //第一波出现时间
-    public int timelimit2 = 300;                                           //第二波出现时间
-    public int timelimit3 = 480;                                           //第三波开始时间第三波开始时间
+    public int timelimit2 = 120;                                           //第二波出现时间
+    public int timelimit3 = 180;                                           //第三波开始时间第三波开始时间
 
 
     public int enemyCount0 = 1;                                            //固化攻击塔单次生成敌人数量

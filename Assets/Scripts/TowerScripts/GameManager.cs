@@ -46,6 +46,8 @@ public class GameManager : MonoBehaviour
     float datas1;
     float datas2;
     float datas3;
+    int counts1;
+    int counts2;
 
     int selectTypeHandler; // 0 - non, 1 - tower...
     TowerShape pickTower;
@@ -102,6 +104,8 @@ public class GameManager : MonoBehaviour
         datas1 = data.s1;
         datas2 = data.s2;
         datas3 = data.s3;
+        counts1 = data.count1;
+        counts2 = data.count2;
 
         highLightObj = GameObject.CreatePrimitive(PrimitiveType.Sphere).GetComponent<Transform>();
         Destroy(highLightObj.GetComponent<Collider>());
@@ -645,42 +649,45 @@ public class GameManager : MonoBehaviour
 
     void TimeToSpawnAround()//获取边缘地图坐标，批量生成
     {
-        if(TimeManager.timeManager.intAllTime >= data.timelimit1 && TimeManager.timeManager.intAllTime < data.timelimit1 +data.count1 * data.s1)
+        
+        if(TimeManager.timeManager.intAllTime >= data.timelimit1 && TimeManager.timeManager.intAllTime < data.timelimit1 + 20)
         {
             
             data.s1 += Time.deltaTime;
-            int count1;
-            count1 = data.count1;
-            while(count1 > 0 && data.s1 >= datas1)
+            //int count1;
+            //count1 = data.count1;
+            while (counts1 > 0 && data.s1 >= datas1)
             {
                 for (int i = 0; i < data.enemycount1; i++)
                 {
                     OnceToCreateAround1(data.enemyPrefab1);
                 }
-                count1--;
+                counts1--;
                 data.s1 -= datas1;
             }
         }
 
-        if (TimeManager.timeManager.intAllTime >= data.timelimit2 && TimeManager.timeManager.intAllTime < data.timelimit2 + data.count2 * data.s2)
+        if(TimeManager.timeManager.intAllTime >= (data.timelimit2 + data.timelimit1) && TimeManager.timeManager.intAllTime < data.timelimit2 + 40)
         {
-            
+            Debug.Log("第二波");
             data.s2 += Time.deltaTime;
-            int count2;
-            count2 = data.count2;
-            while (count2 > 0 && data.s2 >= datas2)
+            //int count2;
+            //count2 = data.count2;
+            while (counts2 > 0 && data.s2 >= datas2)
             {
                 for (int i = 0; i < data.enemycount2; i++)
                 {
                     OnceToCreateAround2(data.enemyPrefab2);
                 }
-                count2--;
+     
+                counts2--;
                 data.s2 -= datas2;
             }
         }
 
-        if (TimeManager.timeManager.intAllTime >= data.timelimit3)
+        if(TimeManager.timeManager.intAllTime >= (data.timelimit3 + data.timelimit2 + data.timelimit1))
         {
+            Debug.Log("第三波");
             data.s3 += Time.deltaTime;
             while (data.s3 >= datas3)
             {

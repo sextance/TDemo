@@ -15,7 +15,7 @@ public class TimeManager : MonoBehaviour
 
     public float timeToSpawn = 1f;
 
-    public int intAllTime = 0;
+    public int intAllTime;
     public int lastTime1;
     public int lastTime2;
     public int lastTime3;
@@ -23,6 +23,7 @@ public class TimeManager : MonoBehaviour
     private void Start()
     {
         allTime = 0f;
+        intAllTime = 0;
         lastTime1 = Data.GlobalData.timelimit1;
         lastTime2 = Data.GlobalData.timelimit2;
         lastTime3 = Data.GlobalData.timelimit3;
@@ -59,7 +60,7 @@ public class TimeManager : MonoBehaviour
                 else if(lastTime1 < 0)
                 {
                     count1--;
-                    lastTime1 = -1;
+                    lastTime1 = 0;
                 }
             }
 
@@ -73,7 +74,7 @@ public class TimeManager : MonoBehaviour
                 else if (lastTime2 < 0)
                 {
                     count1--;
-                    lastTime2 = -1;
+                    lastTime2 = 0;
                 }
             }
 
@@ -87,7 +88,7 @@ public class TimeManager : MonoBehaviour
                 else if (lastTime3 < 0)
                 {
                     count1--;
-                    lastTime3 = -1;
+                    lastTime3 = 0;
                 }
             }
             else if (count1 == 0)

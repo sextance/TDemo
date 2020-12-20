@@ -200,9 +200,9 @@ MonoBehaviour:
   enemycount1: 1
   enemycount2: 1
   enmeycount3: 3
-  timelimit1: 120
-  timelimit2: 120
-  timelimit3: 180
+  timelimit1: 5
+  timelimit2: 5
+  timelimit3: 10
   enemyCount0: 1
   enemyCount1: 1
   enemyCount2: 3
