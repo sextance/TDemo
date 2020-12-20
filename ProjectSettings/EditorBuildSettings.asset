@@ -27,6 +27,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Test/BattleScene.unity
     guid: 292cc2256535e42489d587f2f7b6600e
   - enabled: 1
-    path: Assets/Scenes/Test/EndScene.unity
+    path: Assets/Scenes/Test/WinScene.unity
     guid: ce0a045b4a83efe4fb55d9cde0ba066c
   m_configObjects: {}

@@ -278,7 +278,7 @@ public class GameManager : MonoBehaviour
         GameUpdate();
         forceSlider.value = enemyTowerCount==0?1:(float)towerShapes.Count/(towerShapes.Count+enemyTowerCount);
         costText.text = "COST: " + money.ToString();
-        timerText.text = "尸潮倒计时: " + money.ToString();
+        timerText.text = "尸潮倒计时: " + TimeManager.timeManager.intAllTime.ToString();
         if(inEnemyScene){
             enemySceneTimer += Time.deltaTime;
             if(enemySceneTimer <= 1f)
@@ -786,5 +786,10 @@ public class GameManager : MonoBehaviour
     public void setEnemyText(string s)
     {
         enemyText.text = s;
+    }
+
+    public void setUserText(string s)
+    {
+        userText.text = s;
     }
 }

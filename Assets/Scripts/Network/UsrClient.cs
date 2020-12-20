@@ -41,6 +41,8 @@ namespace BaseFramework.Network
         internal Thread SendThread;
         internal Thread ReceiveThread;
         private Dictionary<string, Action<Message>> severMonitorCallback = new Dictionary<string, Action<Message>>();
+        internal static string userText;
+        public SceneLoader sceneLoader = GameObject.Find("SceneLoader").GetComponent<SceneLoader>();
 
         public UserClient(Login ulogin, int idx, NetClient ncli)
         {
@@ -131,12 +133,14 @@ namespace BaseFramework.Network
                                 uw.result = "true";
                                 uw.OptType = OptionType.GAME_OVER;
                                 rpcCall("combat.get_tower_num", JsonConvert.SerializeObject(uw), null);
-                                SceneManager.LoadScene("EndScene");
+                                //SceneManager.LoadScene("LoseScene");
+                                sceneLoader.LoadScene("LoseScene");
                             }
                             else if(tc.result == "true")
                             {
                                 Debug.Log("You Win");
-                                SceneManager.LoadScene("EndScene");
+                                //SceneManager.LoadScene("WinScene");
+                                sceneLoader.LoadScene("WinScene");
                             }
                             break;
                     }
@@ -187,7 +191,7 @@ namespace BaseFramework.Network
                                 var result = UserClient.MessagePackDecoder<object>(massage.Response.RpcRsp);
                                 //TODO:显示两个对战玩家信息(uid)
                                 GameManager.gm.setEnemyText(result.ToString());
-                                //GameManager.gm.setUserText(result);
+                                GameManager.gm.setUserText(userText);
                                 DebugLogger.Debug("OtherID callback: " + result);
                             }
                         });
@@ -468,6 +472,7 @@ namespace BaseFramework.Network
             else
             {
                 // 登陆成功
+                userText = secret;
                 DebugLogger.Debug("Login success");
             }
             RpcCallBackDelegate callback = new RpcCallBackDelegate(LoginRpcCallback);
