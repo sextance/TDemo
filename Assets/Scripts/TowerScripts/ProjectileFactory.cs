@@ -11,9 +11,10 @@ public class ProjectileFactory : ScriptableObject
 
     [SerializeField]
     bool recycle;
-    List<Projectile>[] pools;
+    
+    public List<Projectile>[] pools;
 
-     static int serialNumber;
+    static int serialNumber;
 
     void OnEnable()
     {

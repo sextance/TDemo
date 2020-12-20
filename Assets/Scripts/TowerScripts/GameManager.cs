@@ -57,6 +57,27 @@ public class GameManager : MonoBehaviour
     public int money;
     int enemyTowerCount;
     /*Reserve for other objects*/
+
+    void OnEnable()
+    {
+        if (towerShapes != null) towerShapes.Clear();
+        if (enemies != null) enemies.Clear();
+        if(towerShapeFactory.pools.Length >= 0)
+        {
+            for (int i=0; i< towerShapeFactory.pools.Length; i++)
+            {
+                towerShapeFactory.pools[i].Clear();
+            }
+        }
+        if (projectileFactory.pools.Length >= 0)
+        {
+            for (int i = 0; i < projectileFactory.pools.Length; i++)
+            {
+                projectileFactory.pools[i].Clear();
+            }
+        }
+    }
+
     void Start()
     {
         /* Reserve for Sence logic*/
