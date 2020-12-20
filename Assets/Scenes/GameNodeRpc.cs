@@ -52,7 +52,8 @@ namespace BaseFramework.Network
         void StartNotify()
         {
             LoginRequist.ucl.rpcCall("combat.start_match", null, (byte[] data) =>
-            {
+            {   
+
                 var msg = BaseFramework.Network.UserClient.ProtobufDecoder(data);
 
                 if (msg.Response.RpcRsp != null)

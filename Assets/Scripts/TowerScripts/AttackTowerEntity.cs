@@ -9,7 +9,7 @@ public class AttackTowerEntity : TowerEntity
     public float attackRange;
 
     public Projectile projectile;
-
+    int projectileId;
     int damage;
 
     float coolDownTime;
@@ -23,6 +23,7 @@ public class AttackTowerEntity : TowerEntity
     void OnEnable()
     {
         base.OnEnable();
+        projectileId = 0;
         towerType = 0;
         damage = data.damage;
         maxHealth = health = data.attackTowerMaxHealth;
@@ -63,7 +64,7 @@ public class AttackTowerEntity : TowerEntity
                 {
                     if (!isCoolDownTime)
                     {
-                        Projectile instance = ProjectileFactory.pf.Get();
+                        Projectile instance = ProjectileFactory.pf.Get(projectileId);
                         instance.damage = this.damage;
                         instance.targetEnemy = lockTarget;
                         Transform t = instance.transform;

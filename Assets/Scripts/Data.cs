@@ -78,16 +78,15 @@ public class Data : MonoBehaviour
     void Awake()
     {
         _instance = this;
+        DontDestroyOnLoad(_instance.gameObject);
     }
 
     public static Data GlobalData
     {
         get
         {
-            if (_instance == null)
-                _instance = new Data();
             return _instance;
         }
     }
-
 }
+

@@ -271,7 +271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7960e9d4b00fe64c988d46ef3b462a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 0}
+  data: {fileID: 65195215}
   mapManager: {fileID: 2126979422}
   towerShapeFactory: {fileID: 11400000, guid: c4642ff5ed8c423408f81d46f7751b6a, type: 2}
   projectileFactory: {fileID: 11400000, guid: 27f83782d606502478a7b1677e4ba41d, type: 2}
@@ -413,8 +413,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 65195214}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
