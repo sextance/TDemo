@@ -584,7 +584,7 @@ public class GameManager : MonoBehaviour
             VectorAndNum se = new VectorAndNum();
             se = Search(towerShapes, enemy);
             enemy.navMesh.SetDestination(se.point);
-            enemy.anim.SetInteger("CommonEnemy", 1);
+            //enemy.anim.SetInteger("CommonEnemy", 1);
             if (se.num < 0)
             {
                 return;

@@ -119,13 +119,13 @@ public class Enemy : MonoBehaviour
             GameObject t = GameManager.gm.towerShapes[s.num].gameObject;
             if (startAttack)
             {
-                anim.SetInteger("CommonEnemy", 2);
+               // anim.SetInteger("CommonEnemy", 2);
                 t.GetComponent<TowerEntity>().TakeDamage(attack);
                 startAttack = false;
             }
             else if (!startAttack)
             {
-                anim.SetInteger("CommonEnemy", 0);
+                //anim.SetInteger("CommonEnemy", 0);
                 attackTime += Time.deltaTime;
                 if (attackTime >= 1f)
                 {
@@ -141,19 +141,19 @@ public class Enemy : MonoBehaviour
         if(GameManager.gm.towerShapes.Count < 0)
         {
             isLock = false;
-            anim.SetInteger("CommonEnemy", 0);
+            //anim.SetInteger("CommonEnemy", 0);
         }
         else if (defenceTowerEntity == null)
         {
             isLock = false;
-            anim.SetInteger("CommonEnemy", 0);
+            //anim.SetInteger("CommonEnemy", 0);
         }
 
         else if (isLock == false)
         {
             isLock = true;
             navMesh.SetDestination(defenceTowerEntity.transform.localPosition);
-            anim.SetInteger("CommonEnemy", 1);
+            //anim.SetInteger("CommonEnemy", 1);
         }
 
     }
