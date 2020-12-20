@@ -174,7 +174,6 @@ public class GameManager : MonoBehaviour
     {
         if (selectTypeHandler == 1 && pickTower != null)
         {
-            TestPack.TowerChange(pickTower);
             SolidificateTowerShape(pickTower);
             //selectTypeHandler = 0;
         }
@@ -404,6 +403,7 @@ public class GameManager : MonoBehaviour
             }
             if (allowance)
             {
+                TestPack.TowerChange(pickTower);
                 pickTower.IsSolidificated = true;
                 this.money -= data.solidificateCost; 
             }
