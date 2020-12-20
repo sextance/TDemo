@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,11 +10,13 @@ public class TimeManager : MonoBehaviour
         timeManager = this;
     }
     public float allTime;
+    public int counts;
 
 
-    public float timeToSpawn;
+    public float timeToSpawn = 1f;
 
-    public int intAllTime=0;
+    public int intAllTime = 0;
+    public int lastTime = 180;
 
     private void Start()
     {
@@ -34,11 +36,16 @@ public class TimeManager : MonoBehaviour
 
     public void TimeToSpawnAroundManager()
     {
-        timeToSpawn += Time.deltaTime;
+        timeToSpawn -= Time.deltaTime;
         while(timeToSpawn >= 1f)
         {
             intAllTime++;
+            lastTime--;
             timeToSpawn -= 1f;
+        }
+        if(lastTime < 0)
+        {
+            lastTime += 180;
         }
     }
 }
