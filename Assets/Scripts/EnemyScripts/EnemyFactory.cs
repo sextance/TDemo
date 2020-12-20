@@ -41,9 +41,9 @@ public class EnemyFactory : ScriptableObject
         return instance;
     }
 
-    public Enemy GetAroundEnemy(Vector3 spawnPosition)
+    public Enemy GetAroundEnemy(Vector3 spawnPosition,Enemy enemyPrefab00)
     {
-        Enemy instance = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+        Enemy instance = Instantiate(enemyPrefab00, spawnPosition, Quaternion.identity);
         instance.OriginFactory = this;
         return instance;
 

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7744610966467952866}
   - component: {fileID: 7710637348496377708}
   - component: {fileID: 7719230468230919722}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: 2_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 7738502262534800608}
   - component: {fileID: 7710900475154439330}
   - component: {fileID: 7720867291747360354}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: h2_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 7738435589211148450}
   - component: {fileID: 7713709989905591776}
   - component: {fileID: 7720935853389395698}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: 1_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -248,7 +248,7 @@ GameObject:
   - component: {fileID: 7738642378604992176}
   - component: {fileID: 7711015087216542972}
   - component: {fileID: 7719440943270656428}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sphere_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -327,7 +327,7 @@ GameObject:
   - component: {fileID: 7745040097954178252}
   - component: {fileID: 7710699104896772400}
   - component: {fileID: 7721330552874236600}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: h1_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -406,7 +406,7 @@ GameObject:
   - component: {fileID: 7738486486282482442}
   - component: {fileID: 7711260059098070936}
   - component: {fileID: 7721149436844965008}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: he
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -483,7 +483,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7738407318505231874}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: shoulder_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -520,9 +520,9 @@ GameObject:
   - component: {fileID: -5572383029993394899}
   - component: {fileID: -8995540663538226980}
   - component: {fileID: 4984555227647811769}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DPSEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

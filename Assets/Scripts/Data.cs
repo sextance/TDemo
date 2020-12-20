@@ -55,6 +55,7 @@ public class Data : MonoBehaviour
     public int timelimit2 = 300;                                           //第二波出现时间
     public int timelimit3 = 480;                                           //第三波开始时间第三波开始时间
 
+
     public int enemyCount0 = 1;                                            //固化攻击塔单次生成敌人数量
     public int enemyCount1 = 1;                                            //固化防御塔单次生成敌人数量
     public int enemyCount2 = 3;                                            //固化生产塔单次生成敌人数量
@@ -62,6 +63,15 @@ public class Data : MonoBehaviour
     public float spawnOtherTime1 = 5f;                                     //固化防御塔对应敌人生成间隔
     public float spawnOtherTime2 = 5f;                                     //固化生产塔对应敌人生成间隔
     public int DestoryToMakeCount = 5;                                     //自爆塔生成的怪数量
+
+    [SerializeField]
+    public Enemy enemyPrefab1 = default;                                   //第一波尸潮的怪类型
+
+    [SerializeField]
+    public Enemy enemyPrefab2 = default;                                   //第二波尸潮的怪类型
+
+    [SerializeField]
+    public Enemy enemyPrefab3 = default;                                   //第三波尸潮的怪类型
     /*------------------------------------------------EOF---------------------------------------------------------------*/
 
     static public Data _instance;

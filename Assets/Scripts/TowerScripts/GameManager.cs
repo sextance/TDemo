@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour
     Material previousMaterial;
     Material selectedMaterial;
 
+
     //private Animator anim;
 
     /*Game Datas*/
@@ -619,7 +620,7 @@ public class GameManager : MonoBehaviour
             {
                 for (int i = 0; i < data.enemycount1; i++)
                 {
-                    OnceToCreateAround();
+                    OnceToCreateAround(data.enemyPrefab1);
                 }
                 count1--;
                 data.s1 -= datas1;
@@ -636,7 +637,7 @@ public class GameManager : MonoBehaviour
             {
                 for (int i = 0; i < data.enemycount2; i++)
                 {
-                    OnceToCreateAround();
+                    OnceToCreateAround(data.enemyPrefab2);
                 }
                 count2--;
                 data.s2 -= datas2;
@@ -650,14 +651,14 @@ public class GameManager : MonoBehaviour
             {
                 for (int i = 0; i < data.enmeycount3; i++)
                 {
-                    OnceToCreateAround();
+                    OnceToCreateAround3(data.enemyPrefab3);
                 }
                 data.s3 -= datas3;
             }
         }
     }
 
-    void OnceToCreateAround()
+    void OnceToCreateAround(Enemy enemyprefab)
     {
         HexCoordinates[] edge;
         edge = new HexCoordinates[36];
@@ -682,7 +683,38 @@ public class GameManager : MonoBehaviour
         {
             spawnCoordinates = edge[i];
             Vector3 spawnPosition = HexCoordinates.FromCoordinate(spawnCoordinates);
-            Enemy enemy = enemyFactory.GetAroundEnemy(spawnPosition);
+            Enemy enemy = enemyFactory.GetAroundEnemy(spawnPosition,enemyprefab);
+            enemies.Add(enemy);
+            SearchAndGo(enemy);
+        }
+    }
+
+    void OnceToCreateAround3(Enemy enemyprefab)
+    {
+        HexCoordinates[] edge;
+        edge = new HexCoordinates[36];
+        int count = 0;
+        for (int i = 0; i < 12; i++)
+        {
+            for (int j = 0; j < 8; j++)
+            {
+                if (i == 0 || i == 11)
+                {
+                    edge[count++] = new HexCoordinates(i, j);
+                }
+                else if (j == 0 || j == 7)
+                {
+                    edge[count++] = new HexCoordinates(i, j);
+                }
+            }
+        }
+
+        HexCoordinates spawnCoordinates;
+        for (int i = 0; i < 36; i+=2)
+        {
+            spawnCoordinates = edge[i];
+            Vector3 spawnPosition = HexCoordinates.FromCoordinate(spawnCoordinates);
+            Enemy enemy = enemyFactory.GetAroundEnemy(spawnPosition, enemyprefab);
             enemies.Add(enemy);
             SearchAndGo(enemy);
         }

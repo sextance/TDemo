@@ -126,7 +126,7 @@ namespace BaseFramework.Network
                         case OptionType.GAME_OVER:
                             if(tc.result == "false")
                             {
-                                Debug.log("Game Over");
+                                Debug.Log("Game Over");
                                 TowerChange uw = new TowerChange();
                                 uw.result = "true";
                                 uw.OptType = OptionType.GAME_OVER;
@@ -135,7 +135,7 @@ namespace BaseFramework.Network
                             }
                             else if(tc.result == "true")
                             {
-                                Debug.log("You Win");
+                                Debug.Log("You Win");
                                 SceneManager.LoadScene("EndScene");
                             }
                             break;
