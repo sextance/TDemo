@@ -186,7 +186,8 @@ namespace BaseFramework.Network
                             {
                                 var result = UserClient.MessagePackDecoder<object>(massage.Response.RpcRsp);
                                 //TODO:显示两个对战玩家信息(uid)
-
+                                GameManager.gm.setEnemyText(result.ToString());
+                                //GameManager.gm.setUserText(result);
                                 DebugLogger.Debug("OtherID callback: " + result);
                             }
                         });

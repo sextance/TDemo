@@ -30,6 +30,9 @@ public class GameManager : MonoBehaviour
     public List<TowerShape> towerShapes;
     public List<Enemy> enemies;
     public Text costText;
+    public Text timerText;
+    public Text enemyText;
+    public Text userText;
     public Slider forceSlider;
     public GameObject mapButton;
     public GameObject towerButton1;
@@ -105,7 +108,7 @@ public class GameManager : MonoBehaviour
         mapButton.SetActive(false);
         towerButton1.SetActive(false);
         towerButton2.SetActive(false);
-        
+
         /*Game Data*/
         money = data.startMoney; //start money for player
         enemyTowerCount = 0;
@@ -275,6 +278,7 @@ public class GameManager : MonoBehaviour
         GameUpdate();
         forceSlider.value = enemyTowerCount==0?1:(float)towerShapes.Count/(towerShapes.Count+enemyTowerCount);
         costText.text = "COST: " + money.ToString();
+        timerText.text = "尸潮倒计时: " + money.ToString();
         if(inEnemyScene){
             enemySceneTimer += Time.deltaTime;
             if(enemySceneTimer <= 1f)
@@ -394,8 +398,7 @@ public class GameManager : MonoBehaviour
             if (allowance)
             {
                 pickTower.IsSolidificated = true;
-                this.money -= data.solidificateCost;
-                
+                this.money -= data.solidificateCost; 
             }
         }
         else
@@ -778,5 +781,10 @@ public class GameManager : MonoBehaviour
     public void setEnemyTowerCount(int i)
     {
         enemyTowerCount = i;
+    }
+
+    public void setEnemyText(string s)
+    {
+        enemyText.text = s;
     }
 }
