@@ -201,8 +201,8 @@ MonoBehaviour:
   enemycount2: 1
   enmeycount3: 3
   timelimit1: 120
-  timelimit2: 300
-  timelimit3: 480
+  timelimit2: 120
+  timelimit3: 180
   enemyCount0: 1
   enemyCount1: 1
   enemyCount2: 3
@@ -1124,6 +1124,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 877920482}
+    - target: {fileID: 892481519124674190, guid: 011117e98b70d9540b1da0456401e8c1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: LoseScene
+      objectReference: {fileID: 0}
     - target: {fileID: 892481519124674191, guid: 011117e98b70d9540b1da0456401e8c1,
         type: 3}
       propertyPath: m_Sprite

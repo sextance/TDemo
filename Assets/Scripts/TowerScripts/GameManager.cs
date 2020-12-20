@@ -266,11 +266,11 @@ public class GameManager : MonoBehaviour
         //游戏结束
         TestPack.GameOver();
 
-        if (Input.GetMouseButton(0))
-        //if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began))
+        //if (Input.GetMouseButton(0))
+        if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began))
         {
-            if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
-            //if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+            //if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+            if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
             {   
                 Debug.Log("1");
                 MobilePick();
@@ -421,8 +421,8 @@ public class GameManager : MonoBehaviour
     void MobilePick()
     {
         RaycastHit hit;
-        //Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+        //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         mapButton.SetActive(false);
         towerButton1.SetActive(false);
         towerButton2.SetActive(false);
