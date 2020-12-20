@@ -7,6 +7,10 @@ public class Projectile : MonoBehaviour
     Data data = Data.GlobalData;
     public Enemy targetEnemy;
 
+    public GameObject hit;
+    public GameObject flash;
+    public float hitOffset = 0f;
+
     int shapeId = int.MinValue; //Default value
     public int ShapeId
     {
@@ -45,7 +49,6 @@ public class Projectile : MonoBehaviour
     {
         damage = data.damage;
         targetEnemy = null;
-        shapeId = 0;
         delayDeadTime = data.projectileDelayTime;
         speed = data.projectileSpeed;
         lastPosition = Vector3.zero;
@@ -56,7 +59,21 @@ public class Projectile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (flash != null)
+        {
+            var flashInstance = Instantiate(flash, transform.position, Quaternion.identity);
+            flashInstance.transform.forward = gameObject.transform.forward;
+            var flashPs = flashInstance.GetComponent<ParticleSystem>();
+            if (flashPs == null)
+            {
+                Destroy(flashInstance, flashPs.main.duration);
+            }
+            else
+            {
+                var flashPsParts = flashInstance.transform.GetChild(0).GetComponent<ParticleSystem>();
+                Destroy(flashInstance, flashPsParts.main.duration);
+            }
+        }
     }
 
     void FixedUpdate()
@@ -74,6 +91,37 @@ public class Projectile : MonoBehaviour
             delayDeadTime -= Time.deltaTime;
             if(delayDeadTime <= 0f)
                 ProjectileFactory.pf.ReClaim(this);
+        }
+    }
+
+    private void Update()
+    {
+        if (reachTarget)
+        {
+            Quaternion rot = Quaternion.FromToRotation(Vector3.up, transform.forward);
+            Vector3 pos = lastPosition;
+
+            /*
+            if (hit != null)
+            {
+                var hitInstance = Instantiate(hit, pos, rot);
+                //if (UseFirePointRotation)
+                hitInstance.transform.rotation = gameObject.transform.rotation * Quaternion.Euler(0, 180f, 0);
+                //else
+               // { hitInstance.transform.LookAt(contact.point + contact.normal); }
+
+                var hitPs = hitInstance.GetComponent<ParticleSystem>();
+                if (hitPs == null)
+                {
+                    Destroy(hitInstance, hitPs.main.duration);
+                }
+                else
+                {
+                    var hitPsParts = hitInstance.transform.GetChild(0).GetComponent<ParticleSystem>();
+                    Destroy(hitInstance, hitPsParts.main.duration);
+                }
+            }
+            */
         }
     }
 

@@ -38,9 +38,9 @@ public class GameManager : MonoBehaviour
     bool inEnemyScene;
     float enemySceneTimer;
     float spawnSpeed = 1f;
-    float datas1 = Data.GlobalData.s1;
-    float datas2 = Data.GlobalData.s2;
-    float datas3 = Data.GlobalData.s3;
+    float datas1;
+    float datas2;
+    float datas3;
 
     int selectTypeHandler; // 0 - non, 1 - tower...
     TowerShape pickTower;
@@ -64,14 +64,14 @@ public class GameManager : MonoBehaviour
     {
         if (towerShapes != null) towerShapes.Clear();
         if (enemies != null) enemies.Clear();
-        if(towerShapeFactory.pools.Length >= 0)
+        if(towerShapeFactory.pools != null)
         {
             for (int i=0; i< towerShapeFactory.pools.Length; i++)
             {
                 towerShapeFactory.pools[i].Clear();
             }
         }
-        if (projectileFactory.pools.Length >= 0)
+        if (projectileFactory.pools != null)
         {
             for (int i = 0; i < projectileFactory.pools.Length; i++)
             {
@@ -91,6 +91,10 @@ public class GameManager : MonoBehaviour
         pickRegion = null;
         selectTypeHandler = 0;
         buildPosition = Vector3.zero;
+
+        datas1 = data.s1;
+        datas2 = data.s2;
+        datas3 = data.s3;
 
         highLightObj = GameObject.CreatePrimitive(PrimitiveType.Sphere).GetComponent<Transform>();
         Destroy(highLightObj.GetComponent<Collider>());
@@ -346,8 +350,8 @@ public class GameManager : MonoBehaviour
             t.cell.available = true;
             if(t.linkTowers.Count > 0)
             {
-                t.linkCells[0].available = true;
-                t.linkCells[1].available = true;
+                t.solidificationLinkCells[0].available = true;
+                t.solidificationLinkCells[1].available = true;
             }
 
             towerShapeFactory.Reclaim(towerShapes[index]);

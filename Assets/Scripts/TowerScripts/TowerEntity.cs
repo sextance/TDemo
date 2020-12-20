@@ -26,7 +26,11 @@ public class TowerEntity : MonoBehaviour
 
     public HexCell cell; // the cell that tower occupied
     public List<TowerEntity> linkTowers; // init if tower is solidificated
-    public List<HexCell> linkCells; // init if tower is solidificated
+    public List<HexCell> solidificationLinkCells; // init if tower is solidificated
+
+    //Effect
+    public GameObject buildEffect;
+
     // float
     // bool isSolidificated;
 
@@ -46,11 +50,16 @@ public class TowerEntity : MonoBehaviour
         cell = null;
         if (linkTowers.Count > 0) linkTowers.Clear();
         else if (linkTowers == null) linkTowers = new List<TowerEntity>();
-        if (linkCells.Count > 0) linkCells.Clear();
-        else if (linkCells == null) linkCells = new List<HexCell>();
+        if (solidificationLinkCells.Count > 0) solidificationLinkCells.Clear();
+        else if (solidificationLinkCells == null) solidificationLinkCells = new List<HexCell>();
         healthFactor = 1;
     }
 
+    private void Start()
+    {
+        Vector3 position = HexCoordinates.FromCoordinate(cell.coordinates);
+        Instantiate(buildEffect, position, Quaternion.identity);
+    }
     protected void FixedUpdate()
     {
         UpdateFunctionTime();
@@ -188,8 +197,8 @@ public class TowerEntity : MonoBehaviour
             GameManager.gm.DestroyTowerShape(this.linkTowers[1].gameObject.GetComponent<TowerShape>());
 
             /*remark cells*/
-            this.linkCells[0].available = false;
-            this.linkCells[1].available = false;
+            this.solidificationLinkCells[0].available = false;
+            this.solidificationLinkCells[1].available = false;
 
             /*return flag*/
             allowance = true;
@@ -239,8 +248,8 @@ public class TowerEntity : MonoBehaviour
                      && tmpList[i].towerType == this.towerType && tmpList[j].towerType == this.towerType
                     )
                 {
-                    this.linkTowers.Add(tmpList[i]); this.linkCells.Add(tmpList[i].cell);
-                    this.linkTowers.Add(tmpList[j]); this.linkCells.Add(tmpList[j].cell);
+                    this.linkTowers.Add(tmpList[i]); this.solidificationLinkCells.Add(tmpList[i].cell);
+                    this.linkTowers.Add(tmpList[j]); this.solidificationLinkCells.Add(tmpList[j].cell);
                 }
             }
         }
