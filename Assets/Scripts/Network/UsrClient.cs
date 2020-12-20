@@ -134,13 +134,14 @@ namespace BaseFramework.Network
                                 uw.OptType = OptionType.GAME_OVER;
                                 rpcCall("combat.get_tower_num", JsonConvert.SerializeObject(uw), null);
                                 //SceneManager.LoadScene("LoseScene");
-                                sceneLoader.LoadScene("LoseScene");
+                                sceneLoader.LoadScene("WinScene");
                             }
                             else if(tc.result == "true")
                             {
-                                Debug.Log("You Win");
+                                //Debug.Log("You Win");
                                 //SceneManager.LoadScene("WinScene");
-                                sceneLoader.LoadScene("WinScene");
+                                sceneLoader.LoadScene("LoseScene");
+                                
                             }
                             break;
                     }

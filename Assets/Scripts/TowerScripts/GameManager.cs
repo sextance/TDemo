@@ -33,6 +33,8 @@ public class GameManager : MonoBehaviour
     public Text timerText;
     public Text enemyText;
     public Text userText;
+    public Text convertText1;
+    public Text convertText2;
     public Slider forceSlider;
     public GameObject mapButton;
     public GameObject towerButton1;
@@ -261,10 +263,11 @@ public class GameManager : MonoBehaviour
         //游戏结束
         TestPack.GameOver();
 
-        //if (Input.GetMouseButton(0))
-        if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began))
+        if (Input.GetMouseButton(0))
+        //if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began))
         {
-            if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+            if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+            //if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
             {   
                 Debug.Log("1");
                 MobilePick();
@@ -283,7 +286,7 @@ public class GameManager : MonoBehaviour
         TimeToSpawn();
         GameUpdate();
         forceSlider.value = enemyTowerCount==0?1:(float)towerShapes.Count/(towerShapes.Count+enemyTowerCount);
-        costText.text = "COST: " + money.ToString();
+        costText.text = "初光: " + money.ToString();
 
         if(inEnemyScene){
             enemySceneTimer += Time.deltaTime;
@@ -415,8 +418,8 @@ public class GameManager : MonoBehaviour
     void MobilePick()
     {
         RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
-        //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        //Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         mapButton.SetActive(false);
         towerButton1.SetActive(false);
         towerButton2.SetActive(false);
@@ -429,6 +432,21 @@ public class GameManager : MonoBehaviour
             else if (hit.transform.tag == "Tower")
             {
                 pickTower = hit.transform.parent.GetComponent<TowerShape>();
+                if (pickTower.gameObject.GetComponent<AttackTowerEntity>() != null)
+                {
+                    convertText1.text = "转守";
+                    convertText2.text = "转费";
+                }
+                else if (pickTower.gameObject.GetComponent<DefenceTowerEntity>() != null)
+                {
+                    convertText1.text = "转费";
+                    convertText2.text = "转攻";
+                }
+                else if (pickTower.gameObject.GetComponent<ProductionTowerEntity>() != null)
+                {
+                    convertText1.text = "转攻";
+                    convertText2.text = "转守";
+                }
                 Debug.Log("hit:" + hit.collider.gameObject.name);
                 selectTypeHandler = 1;
                 //Selected effect
@@ -634,7 +652,7 @@ public class GameManager : MonoBehaviour
             {
                 for (int i = 0; i < data.enemycount1; i++)
                 {
-                    OnceToCreateAround(data.enemyPrefab1);
+                    OnceToCreateAround1(data.enemyPrefab1);
                 }
                 count1--;
                 data.s1 -= datas1;
@@ -651,7 +669,7 @@ public class GameManager : MonoBehaviour
             {
                 for (int i = 0; i < data.enemycount2; i++)
                 {
-                    OnceToCreateAround(data.enemyPrefab2);
+                    OnceToCreateAround2(data.enemyPrefab2);
                 }
                 count2--;
                 data.s2 -= datas2;
@@ -672,7 +690,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void OnceToCreateAround(Enemy enemyprefab)
+    void OnceToCreateAround1(Enemy enemyprefab)
     {
         HexCoordinates[] edge;
         edge = new HexCoordinates[36];
@@ -698,6 +716,37 @@ public class GameManager : MonoBehaviour
             spawnCoordinates = edge[i];
             Vector3 spawnPosition = HexCoordinates.FromCoordinate(spawnCoordinates);
             Enemy enemy = enemyFactory.GetAroundEnemy(spawnPosition,enemyprefab);
+            enemies.Add(enemy);
+            SearchAndGo(enemy);
+        }
+    }
+
+    void OnceToCreateAround2(Enemy enemyprefab)
+    {
+        HexCoordinates[] edge;
+        edge = new HexCoordinates[36];
+        int count = 0;
+        for (int i = 0; i < 12; i++)
+        {
+            for (int j = 0; j < 8; j++)
+            {
+                if (i == 0 || i == 11)
+                {
+                    edge[count++] = new HexCoordinates(i, j);
+                }
+                else if (j == 0 || j == 7)
+                {
+                    edge[count++] = new HexCoordinates(i, j);
+                }
+            }
+        }
+
+        HexCoordinates spawnCoordinates;
+        for (int i = 0; i < 36; i+=3)
+        {
+            spawnCoordinates = edge[i];
+            Vector3 spawnPosition = HexCoordinates.FromCoordinate(spawnCoordinates);
+            Enemy enemy = enemyFactory.GetAroundEnemy(spawnPosition, enemyprefab);
             enemies.Add(enemy);
             SearchAndGo(enemy);
         }

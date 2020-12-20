@@ -92,7 +92,7 @@ Material:
     - _Metallic: 1
     - _Mode: 0
     - _NOVBias: 0
-    - _NOVPower: 1
+    - _NOVPower: 1.79
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _Shininess: 0.078125
@@ -104,9 +104,9 @@ Material:
     - _Color: {r: 0.057004265, g: 0.1981132, b: 0.19503339, a: 1}
     - _Emission: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0.033046007, b: 0.403, a: 1}
-    - _EndColor: {r: 1, g: 0, b: 0, a: 1}
+    - _EndColor: {r: 0.6792453, g: 0.06728373, b: 0.08664914, a: 1}
     - _HeightFogColor: {r: 1, g: 0, b: 0, a: 1}
     - _ReflectColor: {r: 1, g: 1, b: 1, a: 0.5}
     - _SpecColor: {r: 0.7264151, g: 0.16789784, b: 0.2358565, a: 1}
-    - _StartColor: {r: 0, g: 0.9612422, b: 1, a: 1}
+    - _StartColor: {r: 0.05873977, g: 0.21457921, b: 0.2264151, a: 1}
     - _TintColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}

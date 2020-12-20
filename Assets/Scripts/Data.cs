@@ -47,9 +47,9 @@ public class Data : MonoBehaviour
     public float s2 = 1f;                                            //第二波尸潮时怪物生成间隔
     public float s3 = 10f;                                            //第三波尸潮时怪物生成间隔
     public int count1 = 2;                                                //第一波尸潮刷新波数
-    public int count2 = 5;                                                //第二波尸潮波数
+    public int count2 = 3;                                                //第二波尸潮波数
     public int enemycount1 = 1;                                           //第一波单波敌人生成数量
-    public int enemycount2 = 2;                                          //第二波单波敌人生成数量
+    public int enemycount2 = 1;                                          //第二波单波敌人生成数量
     public int enmeycount3 = 3;                                          //第三波单波敌人生成数量
     public int timelimit1 = 120;                                           //第一波出现时间
     public int timelimit2 = 300;                                           //第二波出现时间

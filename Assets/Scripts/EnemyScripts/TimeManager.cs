@@ -23,11 +23,13 @@ public class TimeManager : MonoBehaviour
     private void Start()
     {
         allTime = 0f;
+        lastTime1 = Data.GlobalData.timelimit1;
+        lastTime2 = Data.GlobalData.timelimit2;
+        lastTime3 = Data.GlobalData.timelimit3;
     }
 
     private void Awake()
     {
-        
     }
 
     private void Update()
@@ -52,7 +54,7 @@ public class TimeManager : MonoBehaviour
                 lastTime1--;
                 if (lastTime1 >= 0 && count1 == 3)
                 {
-                    GameManager.gm.timerText.text = "尸潮倒计时: " + TimeManager.timeManager.lastTime1.ToString();
+                    GameManager.gm.timerText.text = "爆发倒计时: " + TimeManager.timeManager.lastTime1.ToString();
                 }
                 else if(lastTime1 < 0)
                 {
@@ -66,7 +68,7 @@ public class TimeManager : MonoBehaviour
                 lastTime2--;
                 if (lastTime2 >= 0 && count1 == 2)
                 {
-                    GameManager.gm.timerText.text = "尸潮倒计时: " + TimeManager.timeManager.lastTime2.ToString();
+                    GameManager.gm.timerText.text = "爆发倒计时: " + TimeManager.timeManager.lastTime2.ToString();
                 }
                 else if (lastTime2 < 0)
                 {
@@ -80,7 +82,7 @@ public class TimeManager : MonoBehaviour
                 lastTime3--;
                 if (lastTime3 >= 0 && count1 == 1)
                 {
-                    GameManager.gm.timerText.text = "尸潮倒计时: " + TimeManager.timeManager.lastTime3.ToString();
+                    GameManager.gm.timerText.text = "爆发倒计时: " + TimeManager.timeManager.lastTime3.ToString();
                 }
                 else if (lastTime3 < 0)
                 {
@@ -91,7 +93,7 @@ public class TimeManager : MonoBehaviour
             else if (count1 == 0)
             {
                 lastTime3 = -1;
-                GameManager.gm.timerText.text = "尸潮倒计时: " + TimeManager.timeManager.lastTime3.ToString();
+                GameManager.gm.timerText.text = "爆发倒计时: " + TimeManager.timeManager.lastTime3.ToString();
             }
             timeToSpawn -= 1f;
         }
