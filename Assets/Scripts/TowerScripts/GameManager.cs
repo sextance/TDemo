@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     public List<TowerShape> towerShapes;
     public List<Enemy> enemies;
     public Text costText;
+    public Slider forceSlider;
     public GameObject mapButton;
     public GameObject towerButton1;
     public GameObject towerButton2;
@@ -54,6 +55,7 @@ public class GameManager : MonoBehaviour
 
     /*Game Datas*/
     public int money;
+    int enemyTowerCount;
     /*Reserve for other objects*/
     void Start()
     {
@@ -79,6 +81,7 @@ public class GameManager : MonoBehaviour
         
         /*Game Data*/
         money = data.startMoney; //start money for player
+        enemyTowerCount = 0;
         enemySceneTimer = 0f;
     }
 
@@ -243,6 +246,7 @@ public class GameManager : MonoBehaviour
         TimeToSpawnAround();
         TimeToSpawn();
         GameUpdate();
+        forceSlider.value = enemyTowerCount==0?1:(float)towerShapes.Count/(towerShapes.Count+enemyTowerCount);
         costText.text = "COST: " + money.ToString();
         if(inEnemyScene){
             enemySceneTimer += Time.deltaTime;
@@ -713,5 +717,8 @@ public class GameManager : MonoBehaviour
         inEnemyScene = true;
     }
 
-
+    public void setEnemyTowerCount(int i)
+    {
+        enemyTowerCount = i;
+    }
 }
