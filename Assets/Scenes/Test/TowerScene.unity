@@ -384,7 +384,7 @@ MonoBehaviour:
   timeLimit: 300
   s1: 1
   s2: 1
-  s3: 5
+  s3: 10
   count1: 2
   count2: 5
   enemycount1: 1
