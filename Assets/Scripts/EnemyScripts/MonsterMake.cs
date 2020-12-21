@@ -16,6 +16,7 @@ public class MonsterMake : MonoBehaviour
         StartCoroutine(LoopMakeMonster());
         TimeToMakeMonster(shapeid);
         SingleCountMake(shapeid);
+        DestoryToMakeDestory(shapeid, position);
     }
 
     //private void Update()
@@ -41,26 +42,29 @@ public class MonsterMake : MonoBehaviour
     }
 
     private void MakeMonster(int shapeid,Vector3 position) {
-        switch (shapeid)
+        if(option == OptionType.TOWER_CHANGE)
         {
-            case 0:
-                for(int i = 0; i < singleCount; i++)
-                {
-                    EnemyFactory.enemyF.CreatedpsEnemyInOtherWorld(position);
-                }
-                break;
-            case 1:
-                for(int i = 0; i < singleCount; i++)
-                {
-                    EnemyFactory.enemyF.CreateTEnemyInOtherWorld(position);
-                }
-                break;
-            case 2:
-                for(int i = 0; i < singleCount; i++)
-                {
-                    EnemyFactory.enemyF.CreateCommonEnemyInOtherWorld(position);
-                }
-                break;
+            switch (shapeid)
+            {
+                case 0:
+                    for (int i = 0; i < 1; i++)
+                    {
+                        EnemyFactory.enemyF.CreatedpsEnemyInOtherWorld(position);
+                    }
+                    break;
+                case 1:
+                    for (int i = 0; i < 1; i++)
+                    {
+                        EnemyFactory.enemyF.CreateTEnemyInOtherWorld(position);
+                    }
+                    break;
+                case 2:
+                    for (int i = 0; i < singleCount; i++)
+                    {
+                        EnemyFactory.enemyF.CreateCommonEnemyInOtherWorld(position);
+                    }
+                    break;
+            }
         }
     }
 
@@ -103,5 +107,33 @@ public class MonsterMake : MonoBehaviour
             }
         }
         return singleCount;
+    }
+
+    public void DestoryToMakeDestory(int shpeid,Vector3 position)
+    {
+        if (option == OptionType.DESTORY_TOWER)
+        {
+            switch (shapeid)
+            {
+                case 0:
+                    for (int i = 0; i < singleCount; i++)
+                    {
+                        EnemyFactory.enemyF.CreatedpsEnemyInOtherWorld(position);
+                    }
+                    break;
+                case 1:
+                    for (int i = 0; i < singleCount; i++)
+                    {
+                        EnemyFactory.enemyF.CreateTEnemyInOtherWorld(position);
+                    }
+                    break;
+                case 2:
+                    for (int i = 0; i < singleCount; i++)
+                    {
+                        EnemyFactory.enemyF.CreateCommonEnemyInOtherWorld(position);
+                    }
+                    break;
+            }
+        }
     }
 }
