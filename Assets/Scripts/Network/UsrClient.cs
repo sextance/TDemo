@@ -127,6 +127,7 @@ namespace BaseFramework.Network
                                     TowerShape ts = Instantiate(TowerShapeFactory.tsf.prefabs[tif.shapeid],v,Quaternion.identity);
                                     TowerEntity te = ts.gameObject.GetComponent<TowerEntity>();
                                     Destroy(te);
+                                    Destroy(ts.gameObject, 4f);
                                 }
                             }
                             break;
